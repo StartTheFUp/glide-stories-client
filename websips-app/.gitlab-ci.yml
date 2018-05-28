@@ -1,0 +1,14 @@
+image: node:latest
+cache:
+  paths:
+  - node_modules/
+
+lint:
+  script:
+   - npm install
+   - npm run lint
+
+test:
+  script:
+   - npm install
+   - npm run test
