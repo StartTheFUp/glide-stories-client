@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import SlideText from './components/SlideText'
 
-
 class App extends Component {
   state = {
-    currentStep : 0,
-    sip : [],
+    currentStep: 0,
+    sip: []
   }
 
   handleNavigation = () => {
-    this.setState({currentStep : this.state.currentStep + 1})
+    this.setState({currentStep: this.state.currentStep + 1})
   }
 
   handlePrevious = () => {
-    this.setState({currentStep : this.state.currentStep - 1})
+    this.setState({currentStep: this.state.currentStep - 1})
   }
 
-  constructor() {
+  constructor () {
     super()
     fetch('http://localhost:5000/mock')
       .then(res => res.json())
-      .then(res => this.setState({sip : JSON.parse(res)}))
+      .then(res => this.setState({sip: JSON.parse(res)}))
   }
 
   render () {
@@ -30,8 +28,8 @@ class App extends Component {
       return (
         <div>
           <SlideText handleNavigation={this.handleNavigation}
-          handlePrevious={this.handlePrevious}
-          slide={this.state.sip[this.state.currentStep]} />
+            handlePrevious={this.handlePrevious}
+            slide={this.state.sip[this.state.currentStep]} />
         </div>
       )
     }
