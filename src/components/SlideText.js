@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SlideText = ({slide}) => {
+const SlideText = ({handleNavigation, slide}) => {
   return (
-    <div>
+    <div onClick={() => handleNavigation()}>
       <p>{slide.text}</p>
     </div>
   )
