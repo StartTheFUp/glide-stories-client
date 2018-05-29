@@ -29,7 +29,7 @@ const nextBtn = {
   border: 'none'
 }
 
-const previewBtn = {
+const previousBtn = {
   marginTop: '30vh',
   float: 'left',
   background: '#006784',
@@ -41,7 +41,7 @@ const previewBtn = {
 const SlideText = ({handleNavigation, handlePrevious, slide}) => {
   return (
     <div style={stylePage}>
-      <button style={previewBtn} onClick={() => handlePrevious()}>Preview</button>
+      <button style={previousBtn} onClick={() => handlePrevious()}>Previous</button>
       <button style={nextBtn} onClick={() => handleNavigation()}>Next</button>
       <div style={styleText}>
         <p>{slide.text}</p>
