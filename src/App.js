@@ -16,11 +16,10 @@ class App extends Component {
     this.setState({currentStep: this.state.currentStep - 1})
   }
 
-  constructor () {
-    super()
+  componentDidMount() {
     fetch('http://localhost:5000/mock')
       .then(res => res.json())
-      .then(res => this.setState({sip: JSON.parse(res)}))
+      .then(res => this.setState({sip: res}))
   }
 
   render () {
