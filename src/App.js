@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
-import SlideText from './components/SlideText'
+
+import SlideDisplay from './container/SlideDisplay'
 
 class App extends Component {
   state = {
@@ -8,7 +9,7 @@ class App extends Component {
     sip: []
   }
 
-  handleNavigation = () => {
+  handleNext = () => {
     this.setState({currentStep: this.state.currentStep + 1})
   }
 
@@ -22,11 +23,11 @@ class App extends Component {
       .then(res => this.setState({sip: res}))
   }
 
-  render () {
+  render() {
     if (this.state.currentStep < this.state.sip.length) {
       return (
         <div>
-          <SlideText handleNavigation={this.handleNavigation}
+          <SlideDisplay handleNext={this.handleNext}
             handlePrevious={this.handlePrevious}
             slide={this.state.sip[this.state.currentStep]} />
         </div>

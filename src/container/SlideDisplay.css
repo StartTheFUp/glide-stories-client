@@ -1,0 +1,23 @@
+.__SlideDisplay {
+  background: #EDEDED;
+  z-index: 0;
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.__SlideDisplay .nextBtn,
+.__SlideDisplay .previousBtn {
+  margin-top: 30vh;
+  background: #006784;
+  color: white;
+  padding: 1vh 3vh 1vh 3vh;
+  border: none;
+}
+
+.__SlideDisplay .nextBtn {
+  float: right;
+}
+
+.__SlideDisplay .previousBtn {
+  float: left;
+}
