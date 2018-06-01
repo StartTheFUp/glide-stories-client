@@ -1,0 +1,13 @@
+.SlideIntro {
+  width: 40%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 5vh;
+  background: white;
+  z-index: 1;
+  height: 60vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  background-image: url('https://i.ytimg.com/vi/gJGJ1WXE0HE/maxresdefault.jpg')
+}
