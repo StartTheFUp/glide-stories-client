@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions'
 
 import SlideText from '../components/SlideText'
 import SlideDisplay from '../container/SlideDisplay'
+import SlideIntro from '../components/SlideIntro'
 
 storiesOf('SlideDisplay', module)
   .add('show a text slide', () =>
@@ -24,3 +25,11 @@ storiesOf('SlideText', module)
     <SlideText text={<span role="img" aria-label="great job">
         ⭐👏⭐👏⭐👏⭐👏
     </span>} />)
+
+storiesOf('SlideIntro', module)
+  .add('show verticaly centred text property', () =>
+    <SlideIntro image="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg"
+    subTitle='je test des trucs'
+    title='hey hey heyyyyyyy' />)
+
+
