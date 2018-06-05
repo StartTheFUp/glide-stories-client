@@ -17,8 +17,8 @@ const SlideDisplay = ({handleNext, handlePrevious, slide}) => {
   return (
     <React.Fragment>
       <div className='__SlideDisplay'>
-        <div className='previousBtn' onClick={handlePrevious}>Previous</div>
-        <div className='nextBtn' onClick={handleNext}>Next</div>
+        <div className='previousBtn' onClick={handlePrevious}></div>
+        <div className='nextBtn' onClick={handleNext}></div>
         {slideComponents[slide.type](slide)}
         <div className='test'></div>
       </div>
