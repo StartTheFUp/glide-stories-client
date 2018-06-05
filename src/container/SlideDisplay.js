@@ -20,7 +20,6 @@ const SlideDisplay = ({handleNext, handlePrevious, slide}) => {
         <div className='previousBtn' onClick={handlePrevious}></div>
         <div className='nextBtn' onClick={handleNext}></div>
         {slideComponents[slide.type](slide)}
-        <div className='test'></div>
       </div>
 
     </React.Fragment>
