@@ -13,6 +13,7 @@
   background-repeat: no-repeat;
   background-position: center;
   filter: blur(2px);
+  z-index: 0;
 }
 
 .SlideIntroText {
@@ -26,6 +27,7 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0.5rem;
+  z-index: 1;
 }
 
 .SlideIntro h1 {

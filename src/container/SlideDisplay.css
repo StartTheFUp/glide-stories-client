@@ -7,6 +7,7 @@
 .__SlideDisplay .nextBtn, .__SlideDisplay .previousBtn {
   position: absolute;
   height: 100%;
+  z-index: 2;
 }
 
 .__SlideDisplay .previousBtn {
