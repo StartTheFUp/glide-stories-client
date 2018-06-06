@@ -1,7 +1,6 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
 import './SlideIntro.css'
-import './SlideCallToAction.css'
 import { Button } from 'semantic-ui-react'
 
 const SlideCallToAction = ({ subTitle, title, image, btnLink, btnText }) =>

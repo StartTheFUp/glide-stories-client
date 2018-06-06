@@ -44,7 +44,7 @@ storiesOf('SlideImage', module)
     slideWrap(<SlideImage
       image="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg"
       text='As for Tate St Ives, there has never been a pressing reason for it to exist, and its fate, alas, is to fiddle away at the margins of art, being ignored. Tate Liverpool, however, goes from strength to strength. Everything works here. The Merseyside location is…'
-      />))
+    />))
 
 storiesOf('SlideCallToAction', module)
   .add('Display slide CallToAction', () =>
