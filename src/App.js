@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import 'semantic-ui-css/semantic.min.css'
 import './App.css'
-import SlideDisplay from './container/SlideDisplay'
+import SlideDisplay from './container/SlideDisplay.js'
 
 class App extends Component {
   state = {

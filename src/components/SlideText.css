@@ -1,15 +1,7 @@
 .SlideText {
-  display: flex;
-  margin: auto;
-  width: 80%;
-  height: 100%;
   align-items: center;
 }
 
 .SlideText p {
-  vertical-align: middle;
-  line-height: 4.5vh;
-  font-size: 1em;
-  padding: 0 1vh;
-  text-align: justify;
+  font-size: 2vh;
 }

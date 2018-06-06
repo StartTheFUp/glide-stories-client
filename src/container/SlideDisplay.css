@@ -1,7 +1,39 @@
 .__SlideDisplay {
   height: 100vh;
-  width: 100%;
+  width: 66vh;
+  position: absolute;
   display: flex;
+  flex-direction: column;
+}
+
+.__SlideDisplay p,
+.__SlideDisplay h1,
+.__SlideDisplay h2,
+.__SlideDisplay h3 {
+  padding: 0 1vh;
+  vertical-align: middle;
+  line-height: 4.5vh;
+  text-align: justify;
+}
+
+.__SlideDisplay > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.__SlideDisplay > div.darkBackground {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.__SlideDisplay > div > div {
+  flex: 1;
 }
 
 .__SlideDisplay .nextBtn, .__SlideDisplay .previousBtn {
