@@ -29,7 +29,5 @@ storiesOf('SlideText', module)
 storiesOf('SlideIntro', module)
   .add('show verticaly centred text property', () =>
     <SlideIntro image="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg"
-    subTitle='je test des trucs'
-    title='hey hey heyyyyyyy' />)
-
-
+      subTitle='je test des trucs'
+      title='hey hey heyyyyyyy' />)

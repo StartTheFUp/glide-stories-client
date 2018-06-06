@@ -5,12 +5,11 @@ import SlideImageText from '../components/SlideImageText'
 import SlideCallToAction from '../components/SlideCallToAction'
 import './SlideDisplay.css'
 
-
 const slideComponents = {
   text: SlideText,
   intro: SlideIntro,
   imageText: SlideImageText,
-  callToAction: SlideCallToAction,
+  callToAction: SlideCallToAction
 }
 
 const SlideDisplay = ({handleNext, handlePrevious, slide}) => {

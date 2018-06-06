@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import './App.css'
 import SlideDisplay from './container/SlideDisplay'
 
-
 class App extends Component {
   state = {
-    currentStep:0,
+    currentStep: 0,
     sip: []
   }
 

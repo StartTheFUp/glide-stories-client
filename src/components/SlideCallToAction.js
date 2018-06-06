@@ -2,8 +2,7 @@ import React from 'react'
 import './SlideIntro.css'
 import { Button } from 'semantic-ui-react'
 
-
-const SlideCallToAction = ({ subTitle, title, image, btnLink, btnText  }) =>
+const SlideCallToAction = ({ subTitle, title, image, btnLink, btnText }) =>
   <div className='SlideIntro'>
     <p>{title}</p>
     <p>{subTitle}</p>
