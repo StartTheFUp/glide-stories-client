@@ -1,6 +1,5 @@
 .__SlideDisplay {
   height: 100vh;
-  width: 66vh;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
 .__SlideDisplay h1,
 .__SlideDisplay h2,
 .__SlideDisplay h3 {
-  padding: 0 1vh;
+  padding: 3vh;
   vertical-align: middle;
   line-height: 4.5vh;
   text-align: justify;

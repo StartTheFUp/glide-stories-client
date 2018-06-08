@@ -26,11 +26,9 @@ class App extends Component {
   render() {
     if (this.state.currentStep < this.state.sip.length) {
       return (
-        <div>
           <SlideDisplay handleNext={this.handleNext}
             handlePrevious={this.handlePrevious}
             slide={this.state.sip[this.state.currentStep]} />
-        </div>
       )
     }
     return <div><p>END</p></div>
