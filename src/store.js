@@ -7,17 +7,26 @@ const initialState = {
 const reducer = (state, action) => {
   if (action.type === 'LOAD_SIPS') {
     return {
+      ...state,
       sip: action.sips
     }
   }
   if (action.type === 'HANDLE_NEXT_SIP') {
+    const currentStep = state.currentStep + 1
+    if (currentStep > state.sip.length) {
+      return state
+    }
     return {
-      currentStep: action.currentStep + 1
+      ...state,
+      currentStep
     }
   }
   if (action.type === 'HANDLE_PREVIOUS_SIP') {
+    const currentStep = state.currentStep - 1
+    if (currentStep < 0) return state
     return {
-      currentStep: action.currentStep - 1
+      ...state,
+      currentStep
     }
   }
   return state
