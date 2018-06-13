@@ -1,7 +1,10 @@
 .__SlideDisplay {
   height: 100vh;
+  width: 80vh;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  position: relative;
 }
 
 .__SlideDisplay p,
