@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/mock')
+    fetch('http://localhost:5000/sips')
       .then(res => res.json())
       .then(res => this.setState({sip: res}))
   }
