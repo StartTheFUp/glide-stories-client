@@ -9,7 +9,7 @@ import { actions } from '../store.js'
 const slideComponents = {
   text: SlideText,
   intro: SlideIntro,
-  imageText: SlideImage,
+  image: SlideImage,
   callToAction: SlideCallToAction
 }
 
