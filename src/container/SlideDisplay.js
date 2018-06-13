@@ -8,11 +8,12 @@ import './SlideDisplay.css'
 const slideComponents = {
   text: SlideText,
   intro: SlideIntro,
-  imageText: SlideImage,
+  image: SlideImage,
   callToAction: SlideCallToAction
 }
 
 const SlideDisplay = ({handleNext, handlePrevious, slide}) => {
+  console.log(slide)
   return (
     <div className='__SlideDisplay'>
       <div className='previousBtn' onClick={handlePrevious}></div>
