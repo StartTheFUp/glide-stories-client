@@ -1,6 +1,5 @@
 .__SlideDisplay {
   height: 100vh;
-  position: absolute;
   display: flex;
   flex-direction: column;
 }

@@ -13,7 +13,7 @@ const reducer = (state, action) => {
   }
   if (action.type === 'HANDLE_NEXT_SIP') {
     const currentStep = state.currentStep + 1
-    if (currentStep > state.sip.length) {
+    if (currentStep >= state.sip.length) {
       return state
     }
     return {
