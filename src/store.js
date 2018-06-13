@@ -39,6 +39,7 @@ export const actions = {
   handleNextSip: currentStep => store.dispatch({ type: 'HANDLE_NEXT_SIP', currentStep }),
   handlePreviousSip: currentStep => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP', currentStep })
 }
-fetch('http://localhost:5000/mock')
+
+export const fetchInitialState = () => fetch('http://localhost:5000/mock')
   .then(res => res.json())
   .then(sips => actions.loadSips(sips))
