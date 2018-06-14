@@ -9,6 +9,7 @@ import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage.js'
 import SlideCallToAction from '../components/SlideCallToAction.js'
 import SlideTweet from '../components/SlideTweet.js'
+import SlideArticleQuote from '../components/SlideArticleQuote.js'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
@@ -65,4 +66,12 @@ storiesOf('SlideTweet', module)
       authorScreenName='@LaVillette'
       text= '#CloudGateDance " des instants d’une rare poésie " via @sceneweb https://t.co/dMDvRAZKqo https://t.co/oIpgAt8yQx'
       createdAt='8:50 PM - Jun 8, 2018'
+    />))
+
+storiesOf('SlideArticleQuote', module)
+  .add('Display slide ArticleQuote', () =>
+    slideWrap(<SlideArticleQuote
+      source='Le Monde'
+      authorName='Jacob Milza'
+      text= '« La supernature pose la question de notre place d’humain dans un monde de machines », commente la commissaire. Si on parle trop fort, les fleurs de la roseraie électronique, conçue par l’artiste sud-africaine Miranda Moss, vont se refermer.'
     />))
