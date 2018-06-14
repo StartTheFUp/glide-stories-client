@@ -4,17 +4,17 @@
     flex-grow: 0;
 }
 
-.tweetQuote {
+.quote {
     display : flex;
     flex-direction: column;
 }
 
-.tweetQuote > p {
+.quote > p {
     padding: 0 3vh;
     margin: 2vh 0 2vh 0; 
 }
 
-.tweetHead {
+.quoteHead {
     display: flex;
     flex-grow: 0;
     flex-shrink: 0;
@@ -24,7 +24,7 @@
     margin: 2vh 0;
 }
 
-.tweetHead > p {
+.quoteHead > p {
     padding-top: 0vh;
     padding-left: 1vh;
     padding-bottom: 1vh;
@@ -32,7 +32,7 @@
     margin-bottom: 0;
 }
 
-.tweetHead > img {
+.quoteHead > img {
     max-height: 3rem;
     max-width: 3rem;
     border-radius: 50%;

@@ -1,9 +1,9 @@
 import React from 'react'
-import './SlideTweet.css'
+import './SlideScrapping.css'
 
 const SlideTweet = ({authorPicture, authorName, authorScreenName, text, publicationDate}) =>
-  <div className='tweetQuote'>
-    <span className='tweetHead'>
+  <div className='quote'>
+    <span className='quoteHead'>
       <img src={ authorPicture } alt= 'profile_picture' />
       <p className='authorName'>{ authorName }</p>
       <p className='greyInfo'>{ authorScreenName }</p>

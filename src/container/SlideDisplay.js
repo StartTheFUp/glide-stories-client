@@ -4,6 +4,7 @@ import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage'
 import SlideCallToAction from '../components/SlideCallToAction'
 import SlideTweet from '../components/SlideTweet'
+import SlideArticleQuote from '../components/SlideArticleQuote'
 import './SlideDisplay.css'
 import { actions } from '../store.js'
 
@@ -12,7 +13,8 @@ const slideComponents = {
   intro: SlideIntro,
   image: SlideImage,
   callToAction: SlideCallToAction,
-  tweet: SlideTweet
+  tweet: SlideTweet,
+  articleQuote: SlideArticleQuote
 }
 
 const SlideDisplay = ({handleNextSip, handlePreviousSip, slide}) => {
