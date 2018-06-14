@@ -36,7 +36,7 @@ storiesOf('SlideIntro', module)
   .add('Display slide intro', () =>
     slideWrap(<SlideIntro
       image="http://cosmetotheque.com/wp-content/uploads/2018/04/mario-gogh-589733-unsplash-1200x385.jpg"
-      subTitle='Life in Motion — Egon Schiele and Francesca Woodman, Tate Liverpool'
+      subtitle='Life in Motion — Egon Schiele and Francesca Woodman, Tate Liverpool'
       title='Art review' />))
 
 storiesOf('SlideImage', module)
@@ -50,7 +50,7 @@ storiesOf('SlideCallToAction', module)
   .add('Display slide CallToAction', () =>
     slideWrap(<SlideCallToAction
       image='https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg'
-      subTitle='subTitle'
+      subtitle='subtitle'
       title='title'
       btnText='callToAction'
       btnLink='www.google.com'
