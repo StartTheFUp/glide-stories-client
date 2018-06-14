@@ -8,6 +8,7 @@ import SlideDisplay from '../container/SlideDisplay'
 import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage.js'
 import SlideCallToAction from '../components/SlideCallToAction.js'
+import SlideTweet from '../components/SlideTweet.js'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
@@ -54,4 +55,14 @@ storiesOf('SlideCallToAction', module)
       title='title'
       btnText='callToAction'
       btnLink='www.google.com'
+    />))
+
+storiesOf('SlideTweet', module)
+  .add('Display slide TweetQuote', () =>
+    slideWrap(<SlideTweet
+      authorPicture='https://pbs.twimg.com/profile_images/685018005990993920/bQzEIcoY_normal.jpg'
+      authorName='La Villette'
+      authorScreenName='@LaVillette'
+      text= '#CloudGateDance " des instants d’une rare poésie " via @sceneweb https://t.co/dMDvRAZKqo https://t.co/oIpgAt8yQx'
+      createdAt='8:50 PM - Jun 8, 2018'
     />))
