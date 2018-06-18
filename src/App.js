@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import 'semantic-ui-css/semantic.min.css'
 import './App.css'
+import SlideDisplay from './container/SlideDisplay.js'
+import { store } from './store.js'
 
 class App extends Component {
-  render () {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    )
+  constructor() {
+    super()
+    this.state = store.getState()
+    store.subscribe(() => {
+      this.setState(store.getState())
+    })
+  }
+
+  render() {
+    if (this.state.currentStep < this.state.sip.length) {
+      return (
+        <SlideDisplay handleNextSip={this.handleNextSip}
+          handlePreviousSip={this.handlePreviousSip}
+          slide={this.state.sip[this.state.currentStep]} />
+      )
+    }
+    return <div><p>END</p></div>
   }
 }
-
 export default App
