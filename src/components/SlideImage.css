@@ -1,0 +1,18 @@
+.SlideImage {
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.SlideImage > .img {
+  height: 33vh;
+  flex: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.SlideImage p {
+  font-size: 2vh;
+  padding-top: 3vh;
+}
