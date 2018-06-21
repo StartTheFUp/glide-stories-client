@@ -8,6 +8,7 @@ const initialState = {
   }
 }
 const reducer = (state, action) => {
+  console.log(state.slide, action)
   if (action.type === 'LOAD_SIPS') {
     return {
       ...state,

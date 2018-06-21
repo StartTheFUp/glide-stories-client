@@ -3,7 +3,8 @@ import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 import SlideDisplay from './container/SlideDisplay.js'
 import { store } from './store.js'
-import EditSlideText from './components/EditSlideText'
+import SlideEditor from './container/SlideEditor'
+import { Router } from '@reach/router'
 
 class App extends Component {
   constructor() {
@@ -15,14 +16,16 @@ class App extends Component {
   }
 
   render() {
-    // if (this.state.currentStep < this.state.sip.length) {
-    //   return (
-    //     <SlideDisplay handleNextSip={this.handleNextSip}
-    //       handlePreviousSip={this.handlePreviousSip}
-    //       slide={this.state.sip[this.state.currentStep]} />
-    //   )
-    // }
-    return <div><EditSlideText /></div>
+    return (
+      <Router>
+        <SlideDisplay
+          path='/'
+          handleNextSip={this.handleNextSip}
+          handlePreviousSip={this.handlePreviousSip}
+          slide={this.state.sip[this.state.currentStep]} />
+        <SlideEditor path='/edit/:id' />
+      </Router>
+    )
   }
 }
 export default App

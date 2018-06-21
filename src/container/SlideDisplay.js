@@ -5,8 +5,8 @@ import SlideImage from '../components/SlideImage'
 import SlideCallToAction from '../components/SlideCallToAction'
 import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
-import './SlideDisplay.css'
 import { actions } from '../store.js'
+import './SlideDisplay.css'
 
 const slideComponents = {
   text: SlideText,
