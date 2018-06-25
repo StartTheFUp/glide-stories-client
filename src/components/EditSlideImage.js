@@ -6,10 +6,9 @@ import '../container/SlideEditor.js'
 const EditSlideImage = ({ slide, onChange }) =>
   <div className="__SlideDisplay">
     <div className="EditImage">
+      <img src = "" alt="" />
       <textarea
         maxLength="120"
-        rows="10"
-        wrap="hard"
         value={slide && slide.text}
         onChange={event => onChange(event, 'text')} />
     </div>
