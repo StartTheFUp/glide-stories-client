@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage'
@@ -14,17 +14,27 @@ const slideComponents = {
   image: SlideImage,
   callToAction: SlideCallToAction,
   tweet: SlideTweet,
-  articleQuote: SlideArticleQuote
+  article: SlideArticleQuote
 }
 
-const SlideDisplay = ({handleNextSip, handlePreviousSip, slide}) => {
-  return (
-    <div className='__SlideDisplay'>
-      <div className='previousBtn' onClick={ () => actions.handlePreviousSip() }></div>
-      <div className='nextBtn' onClick={ () => actions.handleNextSip() }></div>
-      {slideComponents[slide.type](slide)}
-    </div>
-  )
+class SlideDisplay extends Component {
+  componentDidMount() {
+    fetch(`http://localhost:5000/sips/${this.props.id}`)
+      .then(res => res.json())
+      .then(actions.loadSip)
+  }
+  render() {
+    const { sip, currentStep } = this.props
+    const slide = sip.slides[currentStep]
+    if (!slide) return 'loading'
+    return (
+      <div className='__SlideDisplay'>
+        <div className='previousBtn' onClick={actions.handlePreviousSip}></div>
+        <div className='nextBtn' onClick={actions.handleNextSip}></div>
+        {slideComponents[slide.type](slide)}
+      </div>
+    )
+  }
 }
 
 export default SlideDisplay

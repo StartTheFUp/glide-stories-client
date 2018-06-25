@@ -6,12 +6,17 @@ class SlideEditor extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
-      .then(sip => actions.updateSlide(sip.slide[0]))
+      .then(actions.loadSip)
+      .then(() => actions.handleNextSip())
   }
+  // dans le store utiliser le
   render() {
+    console.log(this.props, this.props.sip.slides[this.props.currentStep])
     return (
       <Fragment>
-        <EditSlideText onChange={event => actions.updateSlide({ text: event.target.value })} />
+        <EditSlideText
+          slide={this.props.sip.slides[this.props.currentStep]}
+          onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
       </Fragment>
     )
   }
