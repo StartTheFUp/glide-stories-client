@@ -2,22 +2,21 @@ import { createStore } from 'redux'
 
 const initialState = {
   currentStep: 0,
-  sip: [],
-  slide: {
-    text: 'Write your text here'
+  sip: {
+    slides: []
   }
 }
 const reducer = (state, action) => {
-  console.log(state.slide, action)
-  if (action.type === 'LOAD_SIPS') {
+  console.log(state, state.sip.slides.length, action)
+  if (action.type === 'LOAD_SIP') {
     return {
       ...state,
-      sip: action.sips
+      sip: action.sip
     }
   }
   if (action.type === 'HANDLE_NEXT_SIP') {
     const currentStep = state.currentStep + 1
-    if (currentStep >= state.sip.length) {
+    if (currentStep >= state.sip.slides.length) {
       return state
     }
     return {
@@ -37,9 +36,16 @@ const reducer = (state, action) => {
   if (action.type === 'UPDATE_SLIDE') {
     return {
       ...state,
-      slide: {
-        ...state.slide,
-        ...action.slideContent
+      sip: {
+        ...state.sip,
+        slides: state.sip.slides
+          .map((slide, step) => {
+            if (step !== state.currentStep) return slide
+            return {
+              ...slide,
+              ...action.slideContent
+            }
+          })
       }
     }
   }
@@ -49,16 +55,8 @@ const reducer = (state, action) => {
 export const store = createStore(reducer, initialState)
 
 export const actions = {
-  loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
-  handleNextSip: currentStep => store.dispatch({ type: 'HANDLE_NEXT_SIP', currentStep }),
-  handlePreviousSip: currentStep => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP', currentStep }),
+  loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
+  handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
+  handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent })
 }
-
-export const fetchInitialState = () => fetch('http://localhost:5000/mock')
-  .then(res => res.json())
-  .then(sips => actions.loadSips(sips))
-
-export const fetchEditedSlide = () => fetch('http://localhost:5000/sips')
-  .then(res => res.json())
-  .then(slide => actions.updateSlide(slide))
