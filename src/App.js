@@ -18,12 +18,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <SlideDisplay
-          path='/'
-          handleNextSip={this.handleNextSip}
-          handlePreviousSip={this.handlePreviousSip}
-          slide={this.state.sip[this.state.currentStep]} />
-        <SlideEditor path='/edit/:id' />
+        <SlideDisplay {...this.state} path='/:id' />
+        <SlideEditor {...this.state} path='/edit/:id' />
       </Router>
     )
   }
