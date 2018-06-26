@@ -1,14 +1,14 @@
 import React from 'react'
-import './EditSlideCallToAction.css'
+import './EditSlideIntro.css'
 import '../container/SlideDisplay.css'
 import '../container/SlideEditor.js'
 
-const EditSlideCallToAction = ({ slide, onChange }) => {
+const EditSlideIntro = ({ slide, onChange }) => {
   const { image_url, title, subtitle } = slide || {}
   return (
     <div className="__SlideDisplay">
       <div className="EditText">
-        <h1>Edit Call To Action</h1>
+        <h1>Edit Slide Intro</h1>
         <label>Fake input Placeholder Upload Image</label>
         <input type="file"></input>
         <input
@@ -23,4 +23,4 @@ const EditSlideCallToAction = ({ slide, onChange }) => {
     </div>
   )
 }
-export default EditSlideCallToAction
+export default EditSlideIntro

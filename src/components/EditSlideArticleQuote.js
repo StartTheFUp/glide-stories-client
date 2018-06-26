@@ -8,6 +8,7 @@ const EditSlideArticleQuote = ({ slide, onChange }) => {
   return (
     <div className="__SlideDisplay">
       <div className="EditText">
+        <h1>Edit Article Quote</h1>
         <input
           maxLength="300"
           value={text}

@@ -1,17 +1,19 @@
 import React, { Fragment, Component } from 'react'
 import EditSlideText from '../components/EditSlideText'
+import EditSlideIntro from '../components/EditSlideIntro'
+import EditSlideImage from '../components/EditSlideImage'
+import EditSlideCallToAction from '../components/EditSlideCallToAction'
+import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-// import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-// import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-// import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
+
 import { actions } from '../store.js'
 
 const EditSlideComponents = {
   text: EditSlideText,
-  // intro: SlideIntro,
-  // image: SlideImage,
-  // callToAction: SlideCallToAction,
-  // tweet: SlideTweet,
+  intro: EditSlideIntro,
+  image: EditSlideImage,
+  callToAction: EditSlideCallToAction,
+  tweet: EditSlideTweet,
   article: EditSlideArticleQuote
 }
 
