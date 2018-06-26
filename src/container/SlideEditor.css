@@ -1,0 +1,19 @@
+.SlideBar {
+  flex-direction: row;
+    width: 30vw;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.SlideMiniature {
+  width: 10%;
+  flex-direction: column;
+}
+
+/* .Editor {
+  flex-direction: row;
+}
+
+.EditorContainer {
+  display: flex;
+} */

@@ -6,6 +6,7 @@ import SlideCallToAction from '../components/SlideCallToAction'
 import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
 import EditSlideText from '../components/EditSlideText'
+import './SlideEditor.css'
 import { actions } from '../store.js'
 
 const slideComponents = {
