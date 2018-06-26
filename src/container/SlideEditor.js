@@ -34,6 +34,12 @@ class SlideEditor extends Component {
       <Fragment>
         <EditSlideText
           slide={this.props.sip.slides[this.props.currentStep]}
+        <div className='SlideBar'>
+          {sip.slides
+            .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
+            .slice(0, 10)
+          }
+        </div>
           onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
       </Fragment>
     )
