@@ -1,6 +1,21 @@
 import React, { Fragment, Component } from 'react'
+import SlideText from '../components/SlideText'
+import SlideIntro from '../components/SlideIntro'
+import SlideImage from '../components/SlideImage'
+import SlideCallToAction from '../components/SlideCallToAction'
+import SlideTweet from '../components/SlideTweet'
+import SlideArticleQuote from '../components/SlideArticleQuote'
 import EditSlideText from '../components/EditSlideText'
 import { actions } from '../store.js'
+
+const slideComponents = {
+  text: SlideText,
+  intro: SlideIntro,
+  image: SlideImage,
+  callToAction: SlideCallToAction,
+  tweet: SlideTweet,
+  article: SlideArticleQuote
+}
 
 class SlideEditor extends Component {
   componentDidMount() {
