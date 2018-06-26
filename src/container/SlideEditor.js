@@ -27,6 +27,9 @@ class SlideEditor extends Component {
   // dans le store utiliser le
   render() {
     console.log(this.props, this.props.sip.slides[this.props.currentStep])
+    const { sip, currentStep } = this.props
+    const slide = sip.slides[currentStep]
+    if (!slide) return 'loading'
     return (
       <Fragment>
         <EditSlideText
