@@ -6,11 +6,11 @@ import '../container/SlideEditor.js'
 const EditSlideText = ({ slide, onChange }) =>
   <div className='__SlideDisplay'>
     <div className='EditText'>
-      <h1>Edit Slide Text</h1>
       <textarea
         maxLength='300'
         rows='10'
         wrap='hard'
+        placeholer='Type your text here'
         value={slide && slide.text}
         onChange={event => onChange(event, 'text')} />
     </div>
