@@ -29,8 +29,8 @@ class SlideDisplay extends Component {
     if (!slide) return 'loading'
     return (
       <div className='__SlideDisplay'>
-        <div className='previousBtn' onClick={actions.handlePreviousSip}></div>
-        <div className='nextBtn' onClick={actions.handleNextSip}></div>
+        <div className='previousBtn' onClick={actions.handlePreviousSip} />
+        <div className='nextBtn' onClick={actions.handleNextSip} />
         {slideComponents[slide.type](slide)}
       </div>
     )

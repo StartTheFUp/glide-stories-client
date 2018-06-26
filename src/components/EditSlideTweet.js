@@ -6,25 +6,25 @@ import '../container/SlideEditor.js'
 const EditSlideTweet = ({ slide, onChange }) => {
   const { authorPicture, authorName, authorScreenName, text, publicationDate } = slide || {}
   return (
-    <div className="__SlideDisplay">
-      <div className="EditText">
+    <div className='__SlideDisplay'>
+      <div className='EditText'>
         <h1>Edit SlideT weet</h1>
         <label>Fake input Placeholder Upload Image</label>
-        <input type="file"></input>
+        <input type='file' />
         <input
-          maxLength="300"
+          maxLength='300'
           value={authorName}
           onChange={event => onChange(event, 'authorName')} />
         <input
-          maxLength="300"
+          maxLength='300'
           value={authorScreenName}
           onChange={event => onChange(event, 'authorScreenName')} />
         <input
-          maxLength="300"
+          maxLength='300'
           value={text}
           onChange={event => onChange(event, 'text')} />
         <input
-          maxLength="300"
+          maxLength='300'
           value={publicationDate}
           onChange={event => onChange(event, 'publicationDate')} />
       </div>
