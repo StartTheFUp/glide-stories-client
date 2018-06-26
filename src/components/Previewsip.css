@@ -1,0 +1,27 @@
+.ui.segment {
+    width: 55vh;
+}
+
+h3 {
+    font-size: 3vh;
+    padding: 0.5vh;
+}
+
+.PreviewBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Previewsip {
+    width: 30vh;
+    height: 35vh;
+    background-color: #BAB0BF;
+}
+
+.Btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2vh;
+}
