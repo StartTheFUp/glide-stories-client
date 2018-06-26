@@ -4,21 +4,16 @@ import '../container/SlideDisplay.css'
 import '../container/SlideEditor.js'
 
 const EditSlideImage = ({ slide, onChange }) => {
-  const { image_url, title, subtitle } = slide || {}
+  const { imageUrl, text } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit Slide Image</h1>
-        <label>Fake input Placeholder Upload Image</label>
+      <div className='EditImage'>
+        <div className='img' style={{backgroundImage: `url("${imageUrl}")`}} />
         <input type='file' />
         <input
-          maxLength='300'
-          value={title}
-          onChange={event => onChange(event, 'title')} />
-        <input
-          maxLength='300'
-          value={subtitle}
-          onChange={event => onChange(event, 'subtitle')} />
+          maxLength='120'
+          value={slide && slide.text}
+          onChange={event => onChange(event, 'text')} />
       </div>
     </div>
   )
