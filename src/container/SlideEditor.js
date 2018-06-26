@@ -1,4 +1,10 @@
 import React, { Fragment, Component } from 'react'
+import SlideText from '../components/SlideText'
+import SlideIntro from '../components/SlideIntro'
+import SlideImage from '../components/SlideImage'
+import SlideCallToAction from '../components/SlideCallToAction'
+import SlideTweet from '../components/SlideTweet'
+import SlideArticleQuote from '../components/SlideArticleQuote'
 import EditSlideText from '../components/EditSlideText'
 import EditSlideIntro from '../components/EditSlideIntro'
 import EditSlideImage from '../components/EditSlideImage'
@@ -6,7 +12,17 @@ import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 
+import './SlideEditor.css'
 import { actions } from '../store.js'
+
+const slideComponents = {
+  text: SlideText,
+  intro: SlideIntro,
+  image: SlideImage,
+  callToAction: SlideCallToAction,
+  tweet: SlideTweet,
+  article: SlideArticleQuote
+}
 
 const EditSlideComponents = {
   text: EditSlideText,
@@ -31,6 +47,12 @@ class SlideEditor extends Component {
     if (!slide) return 'loading'
     return (
       <Fragment>
+        <div className='SlideBar'>
+          {sip.slides
+            .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
+            .slice(0, 10)
+          }
+        </div>
         {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
           slide,
           onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
