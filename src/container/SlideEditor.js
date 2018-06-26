@@ -40,30 +40,39 @@ class SlideEditor extends Component {
       .then(() => actions.handleNextSip())
   }
   render() {
-    console.log('heyhey', this.props, this.props.sip.slides[this.props.currentStep])
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
+
     if (!slide) return 'loading'
     return (
       <Fragment>
-        <div className='SlideBar'>
-          {sip.slides
-            .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
-            .slice(0, 10)
-          }
+        <div className='__SlideEditor'>
+          <div className='SlideBar'>
+            {sip.slides
+              .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
+              .slice(0, 10)
+            }
+          </div>
+          <div className='Editor'>
+            <div className='EditorScreen'>
+              {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
+                slide,
+                onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
+              })}
+            </div>
+
+            <div className='EditorNavigation'>
+              <button onClick={actions.handlePreviousSip}>Previous</button>
+              <button onClick={actions.handleNextSip}>Next</button>
+              {/* <EditSlideText
+                slide={this.props.sip.slides[this.props.currentStep]}
+                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
+              <EditSlideArticleQuote
+                slide={this.props.sip.slides[this.props.currentStep]}
+                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} /> */}
+            </div>
+          </div>
         </div>
-        {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-          slide,
-          onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-        })}
-        <button onClick={actions.handlePreviousSip}>Previous</button>
-        <button onClick={actions.handleNextSip}>Next</button>
-        {/* <EditSlideText
-          slide={this.props.sip.slides[this.props.currentStep]}
-          onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-        <EditSlideArticleQuote
-          slide={this.props.sip.slides[this.props.currentStep]}
-          onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} /> */}
       </Fragment>
     )
   }
