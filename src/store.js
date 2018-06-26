@@ -4,7 +4,8 @@ const initialState = {
   currentStep: 0,
   sip: {
     slides: []
-  }
+  },
+  sips: []
 }
 const reducer = (state, action) => {
   console.log(state, state.sip.slides.length, action)
@@ -49,6 +50,14 @@ const reducer = (state, action) => {
       }
     }
   }
+
+  if (action.type === 'DISPLAY_SIPS') {
+    return {
+      ...state,
+      sips: action.sips
+    }
+  }
+
   return state
 }
 
@@ -58,5 +67,7 @@ export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
   handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
   handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
-  updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent })
+  updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
+  displaySips: sips => store.dispatch({ type: 'DISPLAY_SIPS', sips })
+
 }
