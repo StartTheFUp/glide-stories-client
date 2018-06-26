@@ -8,12 +8,16 @@ const EditSlideImage = ({ slide, onChange }) => {
   return (
     <div className='__SlideDisplay'>
       <div className='EditImage'>
-        <div className='img' style={{backgroundImage: `url("${imageUrl}")`}} />
-        <input type='file' />
-        <input
-          maxLength='120'
-          value={slide && slide.text}
-          onChange={event => onChange(event, 'text')} />
+        <div className='SlideImage'>
+          <div className='img' style={{backgroundImage: `url("${imageUrl}")`}} />
+          <input type='file' />
+          <form>
+          <input
+            maxLength='120'
+            value={slide && text}
+            onChange={event => onChange(event, 'text')} />
+          </form>
+        </div>
       </div>
     </div>
   )
