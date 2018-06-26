@@ -4,12 +4,11 @@ import '../container/SlideDisplay.css'
 import '../container/SlideEditor.js'
 
 const EditSlideCallToAction = ({ slide, onChange }) => {
-  const { image_url, title, subtitle } = slide || {}
+  const { imageUrl, title, subtitle } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='EditText'>
-        <h1>Edit Call To Action</h1>
-        <label>Fake input Placeholder Upload Image</label>
+        <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <input type='file' />
         <input
           maxLength='300'
