@@ -11,9 +11,8 @@ import EditSlideImage from '../components/EditSlideImage'
 import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-
-import './SlideEditor.css'
 import { actions } from '../store.js'
+import './SlideEditor.css'
 
 const slideComponents = {
   text: SlideText,
