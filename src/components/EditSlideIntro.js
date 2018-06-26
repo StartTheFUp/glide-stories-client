@@ -9,14 +9,14 @@ const EditSlideIntro = ({ slide, onChange }) => {
     <div className='__SlideDisplay'>
       <div className='EditIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <input type='file' />
-        <input
-          maxLength='300'
+        <h1><input
+          maxLength='60'
           value={title}
-          onChange={event => onChange(event, 'title')} />
-        <input
-          maxLength='300'
+          onChange={event => onChange(event, 'title')} /></h1>
+        <h2><input
+          maxLength='250'
           value={subtitle}
-          onChange={event => onChange(event, 'subtitle')} />
+          onChange={event => onChange(event, 'subtitle')} /></h2>
       </div>
     </div>
   )
