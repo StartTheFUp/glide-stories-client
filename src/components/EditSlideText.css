@@ -1,12 +1,13 @@
 .EditText {
     display:flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     vertical-align: middle;
 }
 
 .EditText textarea {
-    border: none;
+    /* border: none; */
     width: 80vh;
     height: auto;
     padding: 3vh;
@@ -20,7 +21,7 @@
 }
 
 .EditText textarea:focus {
-    outline: 0;
+    /* outline: 0; */
 }
 
 /* .SlideDisplay {
