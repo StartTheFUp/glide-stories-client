@@ -4,12 +4,13 @@ import '../container/SlideDisplay.css'
 import '../container/SlideEditor.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {
-  const { authorPicture, authorName, authorScreenName, text, publicationDate } = slide || {}
+  const { imageUrl, authorName, authorScreenName, text, publicationDate } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='EditText'>
         <h1>Edit SlideT weet</h1>
         <label>Fake input Placeholder Upload Image</label>
+        <img src={imageUrl} alt='Tweet icon' />
         <input type='file' />
         <input
           maxLength='300'
