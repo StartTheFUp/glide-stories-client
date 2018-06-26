@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import EditSlideText from '../components/EditSlideText'
 import { actions } from '../store.js'
+import AddSlideBtn from '../components/AddSlideBtn.js'
 
 class SlideEditor extends Component {
   componentDidMount() {
@@ -9,16 +10,25 @@ class SlideEditor extends Component {
       .then(actions.loadSip)
       .then(() => actions.handleNextSip())
   }
-  // dans le store utiliser le
-  render() {
-    console.log(this.props, this.props.sip.slides[this.props.currentStep])
-    return (
-      <Fragment>
-        <EditSlideText
-          slide={this.props.sip.slides[this.props.currentStep]}
-          onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-      </Fragment>
-    )
-  }
+
+addNewSlide = (type, sipId) => {
+  return fetch('http://localhost:5000/slides', {
+    method: 'POST',
+    body: JSON.stringify({type, sipId}),
+    headers: {'content-type' : 'application/json'}
+  })
+}
+
+render() {
+  // console.log(this.props, this.props.sip.slides[this.props.currentStep])
+  return (
+    <Fragment>
+      <EditSlideText
+        slide={this.props.sip.slides[this.props.currentStep]}
+        onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
+      <AddSlideBtn addSlide={this.addNewSlide} id={this.props.id}/>
+    </Fragment>
+  )
+}
 }
 export default SlideEditor

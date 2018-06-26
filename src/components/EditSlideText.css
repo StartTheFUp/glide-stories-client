@@ -6,7 +6,6 @@
 }
 
 .EditText textarea {
-    border: none;
     width: 80vh;
     height: auto;
     padding: 3vh;
@@ -16,7 +15,8 @@
     resize: none;
     text-decoration: none;
     overflow: hidden;
-
+    margin: 5vh;
+    border-color: lightgray;
 }
 
 .EditText textarea:focus {

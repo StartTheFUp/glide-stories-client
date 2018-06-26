@@ -11,6 +11,7 @@ const EditSlideText = ({ slide, onChange }) =>
         rows="10"
         wrap="hard"
         value={slide && slide.text}
+        placeholder='WRITE HERE'
         onChange={event => onChange(event, 'text')} />
     </div>
   </div>
