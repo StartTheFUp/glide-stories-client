@@ -4,30 +4,23 @@ import '../container/SlideDisplay.css'
 import '../container/SlideEditor.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {
-  const { imageUrl, authorName, authorScreenName, text, publicationDate } = slide || {}
+  const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit SlideT weet</h1>
-        <label>Fake input Placeholder Upload Image</label>
-        <img src={imageUrl} alt='Tweet icon' />
-        <input type='file' />
-        <input
-          maxLength='300'
-          value={authorName}
-          onChange={event => onChange(event, 'authorName')} />
-        <input
-          maxLength='300'
-          value={authorScreenName}
-          onChange={event => onChange(event, 'authorScreenName')} />
-        <input
-          maxLength='300'
-          value={text}
-          onChange={event => onChange(event, 'text')} />
-        <input
-          maxLength='300'
-          value={publicationDate}
-          onChange={event => onChange(event, 'publicationDate')} />
+      <div className='EditTweet'>
+        <div className='quote'>
+          <input
+            maxLength='500'
+            value={tweetUrl}
+            onChange={event => onChange(event, 'tweetUrl')} />
+          <span className='quoteHead'>
+            <img src={imageUrl} alt='Tweet icon' />
+            <p className='authorName'>{authorName}</p>
+            <p className='greyInfo'>{authorScreenName}</p>
+          </span>
+          <p>{text}</p>
+          <p className='greyInfo'>{publicationDate}</p>
+        </div>
       </div>
     </div>
   )
