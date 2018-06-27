@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import { Container, Draggable } from 'react-smooth-dnd';
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage'
