@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Stories path='/stories' />
+        <Stories {...this.state} path='/stories' />
         <SlideDisplay {...this.state} path='/:id' />
         <SlideEditor {...this.state} path='/edit/:id' />
       </Router>

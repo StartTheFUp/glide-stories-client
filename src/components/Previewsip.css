@@ -24,4 +24,9 @@ h3 {
     flex-direction: column;
     justify-content: space-around;
     padding: 2vh;
+    width: 150px;
+}
+
+.ui.button {
+    padding:1.5vh;
 }

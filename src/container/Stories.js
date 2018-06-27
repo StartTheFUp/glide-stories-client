@@ -11,11 +11,12 @@ class Stories extends Component {
       .then(actions.displaySips)
   }
   render() {
+
     return (
       <div className='Stories'>
-        <h1>My stories</h1>
+        <h1>My sips</h1>
         <Previewsip
-          title="Hello je suis un titre un peu long comme titre mais je m'y fais"
+          title="Hello Title"
           slideIntro=""
           embed=""
           publicUrl="http://www.websip.com/1/publicurl3495"
