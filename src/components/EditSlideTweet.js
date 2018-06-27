@@ -8,10 +8,10 @@ const EditSlideTweet = ({ slide, onChange }) => {
   return (
     <div className='__SlideDisplay'>
       <div className='EditTweet' style={{flexDirection: 'column'}}>
-      <input
-        maxLength='500'
-        value={tweetUrl}
-        onChange={event => onChange(event, 'tweetUrl')} />
+        <input
+          maxLength='500'
+          value={tweetUrl}
+          onChange={event => onChange(event, 'tweetUrl')} />
         <div className='quote' style= {{justifyContent: 'center'}}>
 
           <span className='quoteHead'>
