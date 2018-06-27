@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
 
 jest.mock('@reach/router', () => ({
   navigate: jest.fn()
