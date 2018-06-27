@@ -95,12 +95,7 @@ class SipEditor extends Component {
             <div className='EditorNavigation'>
               <button onClick={actions.handlePreviousSip}>Previous</button>
               <button onClick={actions.handleNextSip}>Next</button>
-              {/* <EditSlideText
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-              <EditSlideArticleQuote
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} /> */}
+
             </div>
           </div>
         </div>
