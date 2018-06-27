@@ -1,7 +1,7 @@
 import React from 'react'
 import './EditSlideImage.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 import './SlideImage.css'
 
 const EditSlideImage = ({ slide, onChange }) => {

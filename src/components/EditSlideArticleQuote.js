@@ -1,7 +1,7 @@
 import React from 'react'
 import './EditSlideArticleQuote.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
   const { articleUrl, sourceImage, sourceName, authorName, text, publicationDate } = slide || {}
