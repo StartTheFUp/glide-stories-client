@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd';
+import { actions } from '../store.js'
+
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage'
@@ -12,7 +14,7 @@ import EditSlideImage from '../components/EditSlideImage'
 import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-import { actions } from '../store.js'
+
 import './SlideEditor.css'
 
 const slideComponents = {
