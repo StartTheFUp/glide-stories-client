@@ -1,6 +1,6 @@
 .SlideBar {
   flex-direction: row;
-    width: 30vw;
+    width: 20vw;
     overflow-y: scroll;
     height: 100vh;
 }
@@ -8,6 +8,10 @@
 .SlideMiniature {
   width: 100%;
   flex-direction: column;
+
+  min-height: 200px; /* rm */
+  margin: 5px; /* rm */
+  background-color: white; /* rm */
 }
 
 .__SlideEditor {
