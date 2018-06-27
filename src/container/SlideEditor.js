@@ -105,4 +105,4 @@ class SipEditor extends Component {
     )
   }
 }
-export default SlideEditor
+export default SipEditor
