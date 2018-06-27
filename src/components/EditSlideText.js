@@ -8,7 +8,7 @@ const EditSlideText = ({ slide, onChange }) =>
     <div className='EditText'>
       <textarea
         maxLength='300'
-        rows='10'
+        rows='4'
         wrap='hard'
         placeholer='Type your text here'
         value={slide && slide.text}
