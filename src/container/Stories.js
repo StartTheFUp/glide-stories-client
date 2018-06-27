@@ -11,18 +11,17 @@ class Stories extends Component {
       .then(actions.displaySips)
   }
   render() {
+    const mysips = this.props.sips.map(mysip =>
+      <Previewsip
+        key={mysip.id}
+        title={mysip.title}
+      />
+    )
 
     return (
       <div className='Stories'>
         <h1>My sips</h1>
-        <Previewsip
-          title="Hello Title"
-          slideIntro=""
-          embed=""
-          publicUrl="http://www.websip.com/1/publicurl3495"
-          edit="http://localhost:5000/sips/"
-          delete="http://localhost:5000/sips/"
-        />
+        {mysips}
       </div>
     )
   }
