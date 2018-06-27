@@ -37,7 +37,7 @@ class SlideEditor extends Component {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
       .then(actions.loadSip)
-      .then(() => actions.handleNextSip())
+      // .then(() => actions.handleNextSip())
   }
   render() {
     const { sip, currentStep } = this.props
