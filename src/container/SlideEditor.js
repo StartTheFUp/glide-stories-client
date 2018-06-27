@@ -50,7 +50,6 @@ class SlideEditor extends Component {
           <div className='SlideBar'>
             {sip.slides
               .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
-              .slice(0, 10)
             }
           </div>
           <div className='Editor'>
