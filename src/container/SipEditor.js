@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import { Container, Draggable } from 'react-smooth-dnd';
+import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
 
 import SlideText from '../components/SlideText'
@@ -84,7 +84,6 @@ class SipEditor extends Component {
               }
             </Container>
           </div>
-
 
           <div className='Editor'>
             <div className='EditorScreen'>
