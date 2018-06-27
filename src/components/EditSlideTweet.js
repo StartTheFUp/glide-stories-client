@@ -7,12 +7,13 @@ const EditSlideTweet = ({ slide, onChange }) => {
   const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditTweet'>
-        <div className='quote'>
-          <input
-            maxLength='500'
-            value={tweetUrl}
-            onChange={event => onChange(event, 'tweetUrl')} />
+      <div className='EditTweet' style={{flexDirection: 'column'}}>
+      <input
+        maxLength='500'
+        value={tweetUrl}
+        onChange={event => onChange(event, 'tweetUrl')} />
+        <div className='quote' style= {{justifyContent: 'center'}}>
+
           <span className='quoteHead'>
             <img src={imageUrl} alt='Tweet icon' />
             <p className='authorName'>{authorName}</p>
