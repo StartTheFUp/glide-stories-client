@@ -66,11 +66,24 @@ class SipEditor extends Component {
     return (
       <Fragment>
         <div className='__SlideEditor'>
+
           <div className='SlideBar'>
-            {sip.slides
-              .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
-            }
+            <Container onDrop={e => actions.loadSip({ slides: applyDrag(sip.slides, e) })}>
+              {sip.slides
+                .map(slide => {
+                  return (
+                    <Draggable key={slide.uid}>
+                      <div className='SlideMiniature draggable-item'>
+                        {slideComponents[slide.type](slide)}
+                      </div>
+                    </Draggable>
+                  )
+                })
+              }
+            </Container>
           </div>
+
+
           <div className='Editor'>
             <div className='EditorScreen'>
               {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
