@@ -1,7 +1,26 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import EditSlideText from '../components/EditSlideText'
 import { actions } from '../store.js'
 import AddSlideBtn from '../components/AddSlideBtn.js'
+import ModalInputUrl from '../components/Modal.js'
+
+const addNewSlide = (type, sipId, url) => {
+  return fetch('http://localhost:5000/slides', {
+    method: 'POST',
+    body: JSON.stringify({type, sipId, url}),
+    headers: { 'content-type': 'application/json' }
+  })
+    .then(console.log(type, sipId, url))
+}
+
+const style = {
+  slide: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+}
 
 class SlideEditor extends Component {
   componentDidMount() {
@@ -11,24 +30,21 @@ class SlideEditor extends Component {
       .then(() => actions.handleNextSip())
   }
 
-addNewSlide = (type, sipId) => {
-  return fetch('http://localhost:5000/slides', {
-    method: 'POST',
-    body: JSON.stringify({type, sipId}),
-    headers: {'content-type' : 'application/json'}
-  })
-}
-
-render() {
-  // console.log(this.props, this.props.sip.slides[this.props.currentStep])
-  return (
-    <Fragment>
-      <EditSlideText
-        slide={this.props.sip.slides[this.props.currentStep]}
-        onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-      <AddSlideBtn addSlide={this.addNewSlide} id={this.props.id}/>
-    </Fragment>
-  )
-}
+  render() {
+    return (
+      <div style={style.slide}>
+        <EditSlideText
+          slide={this.props.sip.slides[this.props.currentStep]}
+          onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
+        <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+        <ModalInputUrl
+          addSlide={addNewSlide}
+          id={this.props.id}
+          url={this.props.articleUrlValue}
+          type={this.props.type}
+          modalState={this.props.modalState}/>
+      </div>
+    )
+  }
 }
 export default SlideEditor

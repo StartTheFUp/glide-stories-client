@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <SlideDisplay {...this.state} path='/:id' />
-        <SlideEditor {...this.state} path='/edit/:id' />
+        <SlideEditor {...this.state} path='/edit/:id' articleUrlValue={this.state.articleUrlValue} type={this.state.slideType} modalState={this.state.modalOpen}/>
       </Router>
     )
   }

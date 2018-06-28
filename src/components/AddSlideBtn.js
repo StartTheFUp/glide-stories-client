@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import './AddSlideBtn.css'
+import 'semantic-ui-css/semantic.min.css'
+import { actions } from '../store.js'
 
-class DropdownExampleHeader extends Component {
-  render() {
-    return (
-      <div className='add-slide'>
-        <Dropdown text='ADD A SLIDE' icon={this.props.iconType} floating labeled button className='icon'>
-          <Dropdown.Menu>
-            <Dropdown.Header content='ADD A SLIDE' />
-            <Dropdown.Item onClick={() => this.props.addSlide('intro', this.props.id)}>INTRO</Dropdown.Item>
-            <Dropdown.Item onClick={() => this.props.addSlide('text', this.props.id)}>TEXT</Dropdown.Item>
-            <Dropdown.Item onClick={() => this.props.addSlide('image', this.props.id)}>IMAGE + TEXT</Dropdown.Item>
-            <Dropdown.Item onClick={() => this.props.addSlide('tweet', this.props.id)}>TWEET</Dropdown.Item>
-            <Dropdown.Item onClick={() => this.props.addSlide('article', this.props.id)}>ARTICLE</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-    )
-  }
-}
+const Dropdownbtn = (props) =>
+  <div className='add-slide'>
+    <Dropdown text='ADD A SLIDE' icon={props.iconType} floating labeled button className='icon'>
+      <Dropdown.Menu>
+        <Dropdown.Header content='ADD A SLIDE' />
+        <Dropdown.Item onClick={() => props.addSlide('intro', props.id)}>INTRO</Dropdown.Item>
+        <Dropdown.Item onClick={() => props.addSlide('text', props.id)}>TEXT</Dropdown.Item>
+        <Dropdown.Item onClick={() => props.addSlide('image', props.id)}>IMAGE + TEXT</Dropdown.Item>
+        <Dropdown.Item onClick={() => actions.showModal('tweet') }>TWEET</Dropdown.Item>
+        <Dropdown.Item onClick={() => actions.showModal('article')}>ARTICLE</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </div>
 
-export default DropdownExampleHeader
+export default Dropdownbtn
