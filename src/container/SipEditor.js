@@ -1,4 +1,7 @@
 import React, { Fragment, Component } from 'react'
+import { Container, Draggable } from 'react-smooth-dnd'
+import { actions } from '../store.js'
+
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
 import SlideImage from '../components/SlideImage'
@@ -11,7 +14,7 @@ import EditSlideImage from '../components/EditSlideImage'
 import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
-import { actions } from '../store.js'
+
 import './SlideEditor.css'
 
 const slideComponents = {
@@ -32,7 +35,25 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
-class SlideEditor extends Component {
+const applyDrag = (arr, dragResult) => {
+  const { removedIndex, addedIndex, payload } = dragResult
+  if (removedIndex === null && addedIndex === null) return arr
+
+  const result = [...arr]
+  let itemToAdd = payload
+
+  if (removedIndex !== null) {
+    itemToAdd = result.splice(removedIndex, 1)[0]
+  }
+
+  if (addedIndex !== null) {
+    result.splice(addedIndex, 0, itemToAdd)
+  }
+
+  return result
+}
+
+class SipEditor extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
@@ -47,11 +68,23 @@ class SlideEditor extends Component {
     return (
       <Fragment>
         <div className='__SlideEditor'>
+
           <div className='SlideBar'>
-            {sip.slides
-              .map(slide => <div className='SlideMiniature'>{slideComponents[slide.type](slide)}</div>)
-            }
+            <Container onDrop={e => actions.loadSip({ slides: applyDrag(sip.slides, e) })}>
+              {sip.slides
+                .map(slide => {
+                  return (
+                    <Draggable key={slide.uid}>
+                      <div className='SlideMiniature draggable-item'>
+                        {slideComponents[slide.type](slide)}
+                      </div>
+                    </Draggable>
+                  )
+                })
+              }
+            </Container>
           </div>
+
           <div className='Editor'>
             <div className='EditorScreen'>
               {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
@@ -63,12 +96,7 @@ class SlideEditor extends Component {
             <div className='EditorNavigation'>
               <button onClick={actions.handlePreviousSip}>Previous</button>
               <button onClick={actions.handleNextSip}>Next</button>
-              {/* <EditSlideText
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-              <EditSlideArticleQuote
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} /> */}
+
             </div>
           </div>
         </div>
@@ -76,4 +104,4 @@ class SlideEditor extends Component {
     )
   }
 }
-export default SlideEditor
+export default SipEditor

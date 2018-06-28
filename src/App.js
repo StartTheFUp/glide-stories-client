@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 import SlideDisplay from './container/SlideDisplay.js'
 import { store } from './store.js'
-import SlideEditor from './container/SlideEditor'
+import SipEditor from './container/SipEditor.js'
 import { Router } from '@reach/router'
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <SlideDisplay {...this.state} path='/:id' />
-        <SlideEditor {...this.state} path='/edit/:id' />
+        <SipEditor {...this.state} path='/edit/:id' />
       </Router>
     )
   }

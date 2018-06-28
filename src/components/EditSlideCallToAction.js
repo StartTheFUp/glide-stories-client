@@ -1,7 +1,7 @@
 import React from 'react'
 import './EditSlideCallToAction.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 import './SlideIntro.css'
 
 const EditSlideCallToAction = ({ slide, onChange }) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import './EditSlideText.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideText = ({ slide, onChange }) =>
   <div className='__SlideDisplay'>

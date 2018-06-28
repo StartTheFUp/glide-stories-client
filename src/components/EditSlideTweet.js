@@ -1,7 +1,7 @@
 import React from 'react'
 import './EditSlideTweet.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {
   const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide || {}
