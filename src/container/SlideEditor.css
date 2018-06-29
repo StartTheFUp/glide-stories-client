@@ -1,0 +1,39 @@
+.SlideBar {
+  flex-direction: row;
+    width: 20vw;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.SlideMiniature {
+  width: 100%;
+  flex-direction: column;
+
+  min-height: 200px; /* rm */
+  margin: 5px; /* rm */
+  background-color: white; /* rm */
+}
+
+.__SlideEditor {
+  display: flex;
+}
+
+.Editor {
+  flex-direction: row;
+}
+
+.EditorNavigation {
+  flex-direction: column;
+}
+
+.EditorNavigation button {
+  width: 50%;
+  color: #DBFCFF ;
+  padding: 1vh;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background-color: #00072D;
+}
+
+.test {
+  height: 5vh;
+}

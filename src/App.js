@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 import SlideDisplay from './container/SlideDisplay.js'
 import { store } from './store.js'
-import SipEditor from './container/SlideEditor'
+import SipEditor from './container/SipEditor.js'
 import { Router } from '@reach/router'
 
 class App extends Component {
