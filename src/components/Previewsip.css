@@ -1,5 +1,4 @@
 .ui.segment {
-    width: 55vh;
     margin:0;
 }
 
@@ -32,9 +31,14 @@ textarea {
 }
 
 .Previewsip {
-    width: 48vh;
-    height: 35vh;
-    background-color: #E8ECF1;
+    width: 40vh;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2vh;
 }
 
 .Btn {

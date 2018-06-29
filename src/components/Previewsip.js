@@ -3,8 +3,9 @@ import '../container/Stories.js'
 import './Previewsip.css'
 import { Button, Segment } from 'semantic-ui-react'
 
-const Previewsip = ({ title, slideIntro, embed, publicUrl, editSip, deleteSip }) =>
-  <Segment padded>
+const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImage, embed, publicUrl, editSip, deleteSip }) =>
+<div className="column">
+
     <h3>{title}</h3>
     <div className="SipShare">
 
@@ -20,12 +21,18 @@ const Previewsip = ({ title, slideIntro, embed, publicUrl, editSip, deleteSip })
     </div>
 
     <div className="PreviewBtn">
-      <div className="Previewsip">{slideIntro}</div>
+
+      <div className="Previewsip" style={{backgroundImage: `url(${SlideIntroImage})`}}>
+        <h1>{slideIntroTitle}</h1>
+        <h2>{slideIntroSubtitle}</h2>
+
+
+      </div>
       <div className="Btn">
         <Button basic color='blue' onClick={() => editSip}>Edit</Button>
         <Button basic color='red' onClick={() => deleteSip}>Delete</Button>
       </div>
     </div>
-  </Segment>
+  </div>
 
 export default Previewsip
