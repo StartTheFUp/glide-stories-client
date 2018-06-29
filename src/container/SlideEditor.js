@@ -40,7 +40,7 @@ class SlideEditor extends Component {
         <ModalInputUrl
           addSlide={addNewSlide}
           id={this.props.id}
-          url={this.props.urlValue}
+          url={this.props.inputValue}
           type={this.props.type}
           modalState={this.props.modalState}/>
       </div>

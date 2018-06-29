@@ -82,5 +82,6 @@ export const actions = {
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
   showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
   closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
-  updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url })
+  updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url }),
+  emptyField: () => store.dispatch({ type: 'EMPTY_INPUT_FIELD' })
 }
