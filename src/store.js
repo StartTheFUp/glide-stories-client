@@ -66,7 +66,7 @@ const reducer = (state, action) => {
   if (action.type === 'UPDATE_URL') {
     return {
       ...state,
-      articleUrlValue: action.url
+      inputValue: action.url
     }
   }
 
