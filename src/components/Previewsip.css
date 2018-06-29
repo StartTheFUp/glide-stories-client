@@ -1,5 +1,11 @@
+.Previewsip {
+    display: flex;
+    flex-direction: column;
+}
+
 .ui.segment {
     margin:0;
+    width: 55vh;
 }
 
 

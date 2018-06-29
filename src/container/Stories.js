@@ -21,9 +21,9 @@ class Stories extends Component {
         embed='je suis un morceau de code'
         publicUrl='http://websips.com/view/453789' />)
     return (
-      <div className="ui grid container">
+      <div className="Stories">
         <h1>My sips</h1>
-        <div className="ui stackable four column grid">
+        <div className="SipContainer">
           {mysips}
         </div>
       </div>

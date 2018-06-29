@@ -4,7 +4,7 @@ import './Previewsip.css'
 import { Button, Segment } from 'semantic-ui-react'
 
 const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImage, embed, publicUrl, editSip, deleteSip }) =>
-<div className="column">
+<Segment padded>
 
     <h3>{title}</h3>
     <div className="SipShare">
@@ -33,6 +33,6 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
         <Button basic color='red' onClick={() => deleteSip}>Delete</Button>
       </div>
     </div>
-  </div>
+  </Segment>
 
 export default Previewsip
