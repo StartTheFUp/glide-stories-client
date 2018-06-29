@@ -32,13 +32,55 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
+
+
 class SlideEditor extends Component {
+
+  saveChange = () => {
+    if (this.prevSip === this.props.sip) return
+    this.props.sip.slides
+      .filter((slide, i) => slide === this.prevSip.slides[i])
+      .map(slide => fetch('http://localhost:5000/test', {
+        method : 'post',
+        body : JSON.stringify(slide),
+        headers : {'Content-Type': 'application/json'}
+      }))
+    this.prevSip = this.props.sip
+  }
+
+  onPrevious = () => {
+    //this.updateCurrentSlide()
+    actions.handlePreviousSip()
+  }
+
+  onNext = () => {
+    //this.updateCurrentSlide()
+    actions.handleNextSip()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.prevSip && this.prevSip.id === this.props.sip.id) {
+      return
+    }
+    this.prevSip = this.props.sip
+  }
+
   componentDidMount() {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
       .then(actions.loadSip)
-      .then(() => actions.handleNextSip())
   }
+
+  requestSave = (event, key) => {
+    actions.updateSlide({ [key]: event.target.value })
+    clearTimeout(this.timeoutId)
+    this.timeoutId = setTimeout(this.saveChange, 2000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intevalId)
+  }
+
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
@@ -55,15 +97,12 @@ class SlideEditor extends Component {
           </div>
           <div className='Editor'>
             <div className='EditorScreen'>
-              {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-                slide,
-                onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-              })}
+              {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
             </div>
 
             <div className='EditorNavigation'>
-              <button onClick={actions.handlePreviousSip}>Previous</button>
-              <button onClick={actions.handleNextSip}>Next</button>
+              <button onClick={this.onPrevious}>Previous</button>
+              <button onClick={this.onNext}>Next</button>
               {/* <EditSlideText
                 slide={this.props.sip.slides[this.props.currentStep]}
                 onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
