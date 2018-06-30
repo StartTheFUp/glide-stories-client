@@ -71,3 +71,7 @@ export const actions = {
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips })
 }
+
+export const fetchInitialState = () => fetch('http://localhost:5000/mock')
+  .then(res => res.json())
+  .then(sips => actions.loadSips(sips))

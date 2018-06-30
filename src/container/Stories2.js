@@ -3,9 +3,10 @@ import './Stories.css'
 import Previewsip from '../components/Previewsip.js'
 import { actions } from '../store.js'
 
+
 class Stories extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/preview`)
+    fetch(`http://localhost:5000/sips`)
       .then(sips => sips.json())
       .then(actions.loadSips)
   }
@@ -15,19 +16,13 @@ class Stories extends Component {
       <Previewsip
         key={mysip.id}
         title={mysip.title}
-        slideIntroTitle={mysip.slidesIntroTitle}
-        slideIntroSubtitle={mysip.subtitle}
-        SlideIntroImage={mysip.image_url}
-        embed='je suis un morceau de code'
-        publicUrl='http://websips.com/view/453789' />)
+        slideIntro={this.props.sip.slides[0]} />)
     return (
-      <div className="Stories">
-        <h1>My sips</h1>
-        <div className="SipContainer">
-          {mysips}
-        </div>
-      </div>
 
+      <div className='Stories'>
+        <h1>My sips</h1>
+        {mysips}
+      </div>
     )
   }
 }
