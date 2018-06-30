@@ -65,7 +65,7 @@ class SipEditor extends Component {
     const slide = sip.slides[currentStep]
 
     const updateSipOrder = sipOrder => {
-      console.log(sipOrder);
+      console.log(sipOrder)
       return fetch(`http://localhost:5000/sips/${this.props.id}`, {
         method: 'post',
         headers: {
@@ -88,7 +88,8 @@ class SipEditor extends Component {
                 .join(' ')
 
               updateSipOrder(sipOrder)
-              actions.loadSip({ slides: applyDrag(sip.slides, e) })}
+              actions.loadSip({ slides: applyDrag(sip.slides, e) })
+            }
             }>
               {sip.slides
                 .map(slide => {
