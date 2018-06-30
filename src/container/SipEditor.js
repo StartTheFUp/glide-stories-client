@@ -58,11 +58,23 @@ class SipEditor extends Component {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
       .then(actions.loadSip)
-      // .then(() => actions.handleNextSip())
   }
+
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
+
+    const updateSipOrder = sipOrder => {
+      console.log(sipOrder);
+      return fetch(`http://localhost:5000/sips/${this.props.id}`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({order: sipOrder})
+      })
+        .then(res => res.json())
+    }
 
     if (!slide) return 'loading'
     return (
@@ -70,7 +82,14 @@ class SipEditor extends Component {
         <div className='__SlideEditor'>
 
           <div className='SlideBar'>
-            <Container onDrop={e => actions.loadSip({ slides: applyDrag(sip.slides, e) })}>
+            <Container onDrop={e => {
+              const sipOrder = sip.slides
+                .map(slide => slide.uid)
+                .join(' ')
+
+              updateSipOrder(sipOrder)
+              actions.loadSip({ slides: applyDrag(sip.slides, e) })}
+            }>
               {sip.slides
                 .map(slide => {
                   return (
@@ -104,4 +123,5 @@ class SipEditor extends Component {
     )
   }
 }
+
 export default SipEditor
