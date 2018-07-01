@@ -3,11 +3,15 @@
     flex-direction: column;
 }
 
+
 .ui.segment {
-    margin:0;
-    width: 55vh;
+    margin: 0;
+    
 }
 
+.ui[class*="four column"].doubling.grid>.row>.column {
+    min-width: 55vh;
+}
 
 h3 {
     font-size: 3vh;
@@ -16,7 +20,7 @@ h3 {
 
 .SipShare {
     display: flex;
-    width: 50vh;
+    width: 40vh;
     flex-direction: column;
 }
 

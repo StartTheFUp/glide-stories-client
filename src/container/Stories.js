@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './Stories.css'
 import Previewsip from '../components/Previewsip.js'
+import Newsip from '../components/Newsip.js'
 import { actions } from '../store.js'
+import { Grid, Container } from 'semantic-ui-react'
 
 class Stories extends Component {
   componentDidMount() {
@@ -20,14 +22,18 @@ class Stories extends Component {
         SlideIntroImage={mysip.image_url}
         embed='je suis un morceau de code'
         publicUrl='http://websips.com/view/453789' />)
-    return (
-      <div className="Stories">
-        <h1>My sips</h1>
-        <div className="SipContainer">
-          {mysips}
-        </div>
-      </div>
 
+    return (
+      <Container>
+        <h1>My sips</h1>
+        <Grid doubling columns={4}>
+          <Grid.Row>
+          <Newsip />
+          {mysips}
+          </Grid.Row>
+        </Grid>
+
+      </Container>
     )
   }
 }
