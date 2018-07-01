@@ -39,22 +39,22 @@ class SlideEditor extends Component {
   saveChange = () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
-      .filter((slide, i) => slide === this.prevSip.slides[i])
-      .map(slide => fetch('http://localhost:5000/test', {
+      .filter((slide, i) => slide !== this.prevSip.slides[i])
+      .map(slide => {
+        console.log(slide)
+        fetch('http://localhost:5000/updateSip', {
         method : 'post',
         body : JSON.stringify(slide),
         headers : {'Content-Type': 'application/json'}
-      }))
+      })})
     this.prevSip = this.props.sip
   }
 
   onPrevious = () => {
-    //this.updateCurrentSlide()
     actions.handlePreviousSip()
   }
 
   onNext = () => {
-    //this.updateCurrentSlide()
     actions.handleNextSip()
   }
 
