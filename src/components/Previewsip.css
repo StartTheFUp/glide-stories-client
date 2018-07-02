@@ -9,7 +9,7 @@
     
 }
 
-.ui[class*="four column"].doubling.grid>.row>.column {
+.ui[class*="three column"].doubling.grid>.row>.column {
     min-width: 55vh;
 }
 
