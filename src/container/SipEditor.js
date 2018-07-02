@@ -37,6 +37,14 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
+const SlideMiniature = ({ slide, currentSlide }) =>
+  <div className={`SlideMiniature draggable-item${
+    slide === currentSlide ? ' selected' : ''
+  }`}
+    onClick={() => actions.handleSlideSelection(slide)}>
+    {slideComponents[slide.type](slide)}
+  </div>
+
 const updateSipOrder = (order, id) =>
   fetch(`http://localhost:5000/sips/${id}`, {
     method: 'post',
