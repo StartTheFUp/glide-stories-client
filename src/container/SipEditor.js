@@ -78,8 +78,60 @@ class SipEditor extends Component {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
       .then(actions.loadSip)
-      // .then(() => actions.handleNextSip())
   }
+
+  saveChange = () => {
+    if (this.prevSip === this.props.sip) return
+    this.props.sip.slides
+      .filter((slide, i) => slide !== this.prevSip.slides[i])
+      .map(slide => {
+        fetch(`http://localhost:5000/slides/${slide.id}`, {
+        method : 'post',
+        body : JSON.stringify(slide),
+        headers : {'Content-Type': 'application/json'}
+      })})
+    this.prevSip = this.props.sip
+  }
+
+  onPrevious = () => {
+    actions.handlePreviousSip()
+  }
+
+  onNext = () => {
+    actions.handleNextSip()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.prevSip && this.prevSip.id === this.props.sip.id) {
+      return
+    }
+    this.prevSip = this.props.sip
+  }
+
+
+  requestSave = (event, key) => {
+    const { value, files } = event.target
+    if (files) {
+      const slide = this.props.sip.slides[this.props.currentStep]
+      const body = new FormData()
+      body.append('image', files[0])
+      fetch(`http://localhost:5000/slide/${slide.type}/${slide.id}`, {
+        method: 'POST',
+        body
+      })
+        .then(res => res.json())
+        .then(res => actions.updateSlide({ [key]: res.url }))
+    } else {
+      actions.updateSlide({ [key]: event.target.value })
+      clearTimeout(this.timeoutId)
+      this.timeoutId = setTimeout(this.saveChange, 2000)
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intevalId)
+  }
+
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
@@ -107,16 +159,12 @@ class SipEditor extends Component {
 
           <div className='Editor'>
             <div className='EditorScreen'>
-              {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-                slide,
-                onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-              })}
+              {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
             </div>
 
             <div className='EditorNavigation'>
-              <button onClick={actions.handlePreviousSip}>Previous</button>
-              <button onClick={actions.handleNextSip}>Next</button>
-
+              <button onClick={this.onPrevious}>Previous</button>
+              <button onClick={this.onNext}>Next</button>
             </div>
 
             <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
