@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
 
@@ -85,9 +85,7 @@ class SipEditor extends Component {
 
     if (!slide) return 'loading'
     return (
-      <Fragment>
         <div className='__SlideEditor'>
-
           <div className='SlideBar'>
             <Container onDrop={this.onDrop}>
               {
@@ -115,7 +113,6 @@ class SipEditor extends Component {
               }
             </Container>
           </div>
-
           <div className='Editor'>
             <div className='EditorScreen'>
               {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
@@ -123,15 +120,12 @@ class SipEditor extends Component {
                 onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
               })}
             </div>
-
             <div className='EditorNavigation'>
               <button onClick={actions.handlePreviousSip}>Previous</button>
               <button onClick={actions.handleNextSip}>Next</button>
-
             </div>
           </div>
         </div>
-      </Fragment>
     )
   }
 }
