@@ -62,11 +62,11 @@ const applyDrag = (arr, dragResult) => {
   let itemToAdd = payload
 
   if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0]
+    itemToAdd = result.splice(removedIndex + 1, 1)[0]
   }
 
   if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd)
+    result.splice(addedIndex + 1, 0, itemToAdd)
   }
 
   return result
