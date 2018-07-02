@@ -7,7 +7,8 @@ const initialState = {
   },
   modalOpen: false,
   slideType: '',
-  inputValue: ''
+  inputValue: '',
+  warningMessage: false
 }
 const reducer = (state, action) => {
   if (action.type === 'LOAD_SIP') {
@@ -69,7 +70,6 @@ const reducer = (state, action) => {
       inputValue: action.url
     }
   }
-
   return state
 }
 
@@ -83,5 +83,4 @@ export const actions = {
   showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
   closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
   updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url }),
-  emptyField: () => store.dispatch({ type: 'EMPTY_INPUT_FIELD' })
 }

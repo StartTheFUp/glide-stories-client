@@ -118,14 +118,14 @@ class SipEditor extends Component {
               <button onClick={actions.handleNextSip}>Next</button>
 
             </div>
-            
+
             <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
             <ModalInputUrl
               addSlide={addNewSlide}
               id={this.props.id}
               url={this.props.inputValue}
               type={this.props.type}
-              modalState={this.props.modalState}/>
+              modalState={this.props.modalState} />
           </div>
         </div>
       </Fragment>
