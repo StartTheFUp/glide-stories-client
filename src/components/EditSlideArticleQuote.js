@@ -4,7 +4,6 @@ import '../container/SipEditor.js'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
   const { sourceImage, sourceName, authorName, text, publicationDate } = slide || {}
-  console.log(slide)
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>

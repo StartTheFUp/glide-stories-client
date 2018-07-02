@@ -1,10 +1,11 @@
 import React from 'react'
 import './SlideScrapping.css'
 
-const SlideArticleQuote = ({source, authorName, text}) =>
+const SlideArticleQuote = ({sourceImage, sourceName, authorName, text}) =>
   <div className='quote'>
     <span className='quoteHead'>
-      <p className='authorName'>{ source }</p>
+      <img src={sourceImage} alt='Article source icon' />
+      <p className='authorName'>{ sourceName }</p>
       <p className='greyInfo'>{ authorName }</p>
     </span>
     <p>{ text }</p>
