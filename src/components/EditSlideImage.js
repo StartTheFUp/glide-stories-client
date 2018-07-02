@@ -10,7 +10,7 @@ const EditSlideImage = ({ slide, onChange }) => {
       <div className='EditText'>
         <h1>Edit Slide Image</h1>
         <label>Fake input Placeholder Upload Image</label>
-        <input type='file' />
+        <input type='file' onChange={event => onChange(event, 'imageUrl')}/>
         <input
           maxLength='300'
           value={title}

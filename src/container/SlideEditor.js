@@ -32,17 +32,13 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
-
-
 class SlideEditor extends Component {
-
   saveChange = () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
       .map(slide => {
-        console.log(slide)
-        fetch('http://localhost:5000/updateSip', {
+        fetch(`http://localhost:5000/slides/${slide.id}`, {
         method : 'post',
         body : JSON.stringify(slide),
         headers : {'Content-Type': 'application/json'}
@@ -72,9 +68,22 @@ class SlideEditor extends Component {
   }
 
   requestSave = (event, key) => {
-    actions.updateSlide({ [key]: event.target.value })
-    clearTimeout(this.timeoutId)
-    this.timeoutId = setTimeout(this.saveChange, 2000)
+    const { value, files } = event.target
+    if (files) {
+      const slide = this.props.sip.slides[this.props.currentStep]
+      const body = new FormData()
+      body.append('image', files[0])
+      fetch(`http://localhost:5000/slide/${slide.type}/${slide.id}`, {
+        method: 'POST',
+        body
+      })
+        .then(res => res.json())
+        .then(res => actions.updateSlide({ [key]: res.url }))
+    } else {
+      actions.updateSlide({ [key]: event.target.value })
+      clearTimeout(this.timeoutId)
+      this.timeoutId = setTimeout(this.saveChange, 2000)
+    }
   }
 
   componentWillUnmount() {
@@ -103,12 +112,6 @@ class SlideEditor extends Component {
             <div className='EditorNavigation'>
               <button onClick={this.onPrevious}>Previous</button>
               <button onClick={this.onNext}>Next</button>
-              {/* <EditSlideText
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} />
-              <EditSlideArticleQuote
-                slide={this.props.sip.slides[this.props.currentStep]}
-                onChange={(event, key) => actions.updateSlide({ [key]: event.target.value })} /> */}
             </div>
           </div>
         </div>
