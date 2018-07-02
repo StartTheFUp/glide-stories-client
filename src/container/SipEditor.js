@@ -41,7 +41,7 @@ const SlideMiniature = ({ slide, currentSlide }) =>
   <div className={`SlideMiniature draggable-item${
     slide === currentSlide ? ' selected' : ''
   }`}
-    onClick={() => actions.handleSlideSelection(slide)}>
+  onClick={() => actions.handleSlideSelection(slide)}>
     {slideComponents[slide.type](slide)}
   </div>
 
