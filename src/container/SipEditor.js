@@ -14,6 +14,8 @@ import EditSlideImage from '../components/EditSlideImage'
 import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
+import AddSlideBtn from '../components/AddSlideBtn.js'
+import ModalInputUrl from '../components/Modal.js'
 
 import './SlideEditor.css'
 
@@ -53,11 +55,81 @@ const applyDrag = (arr, dragResult) => {
   return result
 }
 
+const addNewSlide = (type, sipId, url) => {
+  return fetch('http://localhost:5000/slides', {
+    method: 'POST',
+    body: JSON.stringify({type, sipId, url}),
+    headers: { 'content-type': 'application/json' }
+  })
+    .then(console.log(type, sipId, url))
+}
+
+const style = {
+  slide: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+}
+
 class SipEditor extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
       .then(res => res.json())
       .then(actions.loadSip)
+  }
+
+  saveChange = () => {
+    if (this.prevSip === this.props.sip) return
+    this.props.sip.slides
+      .filter((slide, i) => slide !== this.prevSip.slides[i])
+      .map(slide => {
+        return fetch(`http://localhost:5000/slides/${slide.id}`, {
+          method: 'post',
+          body: JSON.stringify(slide),
+          headers: {'Content-Type': 'application/json'}
+        })
+      })
+    this.prevSip = this.props.sip
+  }
+
+  onPrevious = () => {
+    actions.handlePreviousSip()
+  }
+
+  onNext = () => {
+    actions.handleNextSip()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.prevSip && this.prevSip.id === this.props.sip.id) {
+      return
+    }
+    this.prevSip = this.props.sip
+  }
+
+  requestSave = (event, key) => {
+    const { files } = event.target // value argument deleted (lint)
+    if (files) {
+      const slide = this.props.sip.slides[this.props.currentStep]
+      const body = new FormData()
+      body.append('image', files[0])
+      fetch(`http://localhost:5000/slide/${slide.type}/${slide.id}`, {
+        method: 'POST',
+        body
+      })
+        .then(res => res.json())
+        .then(res => actions.updateSlide({ [key]: res.url }))
+    } else {
+      actions.updateSlide({ [key]: event.target.value })
+      clearTimeout(this.timeoutId)
+      this.timeoutId = setTimeout(this.saveChange, 2000)
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intevalId)
   }
 
   render() {
@@ -106,17 +178,21 @@ class SipEditor extends Component {
 
           <div className='Editor'>
             <div className='EditorScreen'>
-              {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-                slide,
-                onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-              })}
+              {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
             </div>
 
             <div className='EditorNavigation'>
-              <button onClick={actions.handlePreviousSip}>Previous</button>
-              <button onClick={actions.handleNextSip}>Next</button>
-
+              <button onClick={this.onPrevious}>Previous</button>
+              <button onClick={this.onNext}>Next</button>
             </div>
+
+            <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+            <ModalInputUrl
+              addSlide={addNewSlide}
+              id={this.props.id}
+              url={this.props.inputValue}
+              type={this.props.type}
+              modalState={this.props.modalState} />
           </div>
         </div>
       </Fragment>

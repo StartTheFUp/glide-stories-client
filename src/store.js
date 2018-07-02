@@ -4,10 +4,13 @@ const initialState = {
   currentStep: 0,
   sip: {
     slides: []
-  }
+  },
+  modalOpen: false,
+  slideType: '',
+  inputValue: '',
+  warningMessage: false
 }
 const reducer = (state, action) => {
-  console.log(state, state.sip.slides.length, action)
   if (action.type === 'LOAD_SIP') {
     return {
       ...state,
@@ -32,7 +35,6 @@ const reducer = (state, action) => {
       currentStep
     }
   }
-
   if (action.type === 'UPDATE_SLIDE') {
     return {
       ...state,
@@ -49,6 +51,25 @@ const reducer = (state, action) => {
       }
     }
   }
+  if (action.type === 'SHOW_MODAL') {
+    return {
+      ...state,
+      modalOpen: true,
+      slideType: action.slideType
+    }
+  }
+  if (action.type === 'CLOSE_MODAL') {
+    return {
+      ...state,
+      modalOpen: false
+    }
+  }
+  if (action.type === 'UPDATE_URL') {
+    return {
+      ...state,
+      inputValue: action.url
+    }
+  }
   return state
 }
 
@@ -58,5 +79,8 @@ export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
   handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
   handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
-  updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent })
+  updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
+  showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
+  closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
+  updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url })
 }
