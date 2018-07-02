@@ -17,7 +17,7 @@ import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/Modal.js'
 
-import './SlideEditor.css'
+import './SipEditor.css'
 
 const slideComponents = {
   text: SlideText,
