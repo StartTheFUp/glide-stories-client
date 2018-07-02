@@ -161,9 +161,9 @@ class SipEditor extends Component {
 
   render() {
     const { sip, currentStep } = this.props
-    const slide = sip.slides[currentStep]
+    const currentSlide = sip.slides[currentStep]
 
-    if (!slide) return 'loading'
+    if (!currentSlide) return 'loading'
     return (
       <div className='__SlideEditor'>
         <div className='SlideBar'>
@@ -195,8 +195,8 @@ class SipEditor extends Component {
         </div>
         <div className='Editor'>
           <div className='EditorScreen'>
-            {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-              slide,
+            {EditSlideComponents[currentSlide.type]({
+              slide: currentSlide,
               onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
             })}
           </div>
