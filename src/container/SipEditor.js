@@ -141,7 +141,7 @@ class SipEditor extends Component {
         .then(res => res.json())
         .then(res => actions.updateSlide({ [key]: res.url }))
     } else {
-      actions.updateSlide({ [key]: event.target.value })
+      actions.updateSlide({ [key]: value })
       clearTimeout(this.timeoutId)
       this.timeoutId = setTimeout(this.saveChange, 2000)
     }
@@ -185,15 +185,15 @@ class SipEditor extends Component {
             }
           </Container>
         </div>
-         <div className='Editor'>
-            <div className='EditorScreen'>
-              {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
-            </div>
+        <div className='Editor'>
+          <div className='EditorScreen'>
+            {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
+          </div>
 
-            <div className='EditorNavigation'>
-              <button onClick={this.onPrevious}>Previous</button>
-              <button onClick={this.onNext}>Next</button>
-            </div>
+          <div className='EditorNavigation'>
+            <button onClick={this.onPrevious}>Previous</button>
+            <button onClick={this.onNext}>Next</button>
+          </div>
 
           <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
           <ModalInputUrl
