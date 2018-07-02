@@ -10,6 +10,7 @@ import SlideImage from '../components/SlideImage.js'
 import SlideCallToAction from '../components/SlideCallToAction.js'
 import SlideTweet from '../components/SlideTweet.js'
 import SlideArticleQuote from '../components/SlideArticleQuote.js'
+import AddSlideBtn from '../components/AddSlideBtn.js'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
@@ -75,3 +76,11 @@ storiesOf('SlideArticleQuote', module)
       authorName='Jacob Milza'
       text='« La supernature pose la question de notre place d’humain dans un monde de machines », commente la commissaire. Si on parle trop fort, les fleurs de la roseraie électronique, conçue par l’artiste sud-africaine Miranda Moss, vont se refermer.'
     />))
+
+storiesOf('AddSlideBtn', module)
+  .add('Display AddSlide btn - logo', () =>
+    <AddSlideBtn iconType='plus icon' />)
+  .add('AddSlide btn - logo upload', () =>
+    <AddSlideBtn iconType='upload icon' />)
+  .add('AddSlide btn - logo edit', () =>
+    <AddSlideBtn iconType='edit outline' />)

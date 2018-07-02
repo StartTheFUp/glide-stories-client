@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <SlideDisplay {...this.state} path='/:id' />
-        <SipEditor {...this.state} path='/edit/:id' />
+        <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType} modalState={this.state.modalOpen}/>
       </Router>
     )
   }
