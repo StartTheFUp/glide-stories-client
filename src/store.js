@@ -66,6 +66,6 @@ export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
   handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
   handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
-  handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide}),
+  handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent })
 }

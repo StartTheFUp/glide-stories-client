@@ -85,47 +85,47 @@ class SipEditor extends Component {
 
     if (!slide) return 'loading'
     return (
-        <div className='__SlideEditor'>
-          <div className='SlideBar'>
-            <Container onDrop={this.onDrop}>
-              {
-                sip.slides.map(slide => {
-                  if (slide === sip.slides[currentStep]) {
-                    return (
-                      <Draggable key={slide.uid}>
-                        <div className='SlideMiniature draggable-item selected'
+      <div className='__SlideEditor'>
+        <div className='SlideBar'>
+          <Container onDrop={this.onDrop}>
+            {
+              sip.slides.map(slide => {
+                if (slide === sip.slides[currentStep]) {
+                  return (
+                    <Draggable key={slide.uid}>
+                      <div className='SlideMiniature draggable-item selected'
                         onClick={() => actions.handleSlideSelection(slide)}>
-                          {slideComponents[slide.type](slide)}
-                        </div>
-                      </Draggable>
-                    )
-                  } else {
-                    return (
-                      <Draggable key={slide.uid}>
-                        <div className='SlideMiniature draggable-item'
+                        {slideComponents[slide.type](slide)}
+                      </div>
+                    </Draggable>
+                  )
+                } else {
+                  return (
+                    <Draggable key={slide.uid}>
+                      <div className='SlideMiniature draggable-item'
                         onClick={() => actions.handleSlideSelection(slide)}>
-                          {slideComponents[slide.type](slide)}
-                        </div>
-                      </Draggable>
-                    )
-                  }
-                })
-              }
-            </Container>
+                        {slideComponents[slide.type](slide)}
+                      </div>
+                    </Draggable>
+                  )
+                }
+              })
+            }
+          </Container>
+        </div>
+        <div className='Editor'>
+          <div className='EditorScreen'>
+            {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
+              slide,
+              onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
+            })}
           </div>
-          <div className='Editor'>
-            <div className='EditorScreen'>
-              {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-                slide,
-                onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-              })}
-            </div>
-            <div className='EditorNavigation'>
-              <button onClick={actions.handlePreviousSip}>Previous</button>
-              <button onClick={actions.handleNextSip}>Next</button>
-            </div>
+          <div className='EditorNavigation'>
+            <button onClick={actions.handlePreviousSip}>Previous</button>
+            <button onClick={actions.handleNextSip}>Next</button>
           </div>
         </div>
+      </div>
     )
   }
 }
