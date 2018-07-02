@@ -85,11 +85,12 @@ class SipEditor extends Component {
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
       .map(slide => {
-        fetch(`http://localhost:5000/slides/${slide.id}`, {
-        method : 'post',
-        body : JSON.stringify(slide),
-        headers : {'Content-Type': 'application/json'}
-      })})
+        return fetch(`http://localhost:5000/slides/${slide.id}`, {
+          method: 'post',
+          body: JSON.stringify(slide),
+          headers: {'Content-Type': 'application/json'}
+        })
+      })
     this.prevSip = this.props.sip
   }
 
@@ -108,9 +109,8 @@ class SipEditor extends Component {
     this.prevSip = this.props.sip
   }
 
-
   requestSave = (event, key) => {
-    const { value, files } = event.target
+    const { files } = event.target // value argument deleted (lint)
     if (files) {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
