@@ -35,8 +35,17 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
+const updateSipOrder = (order, id) =>
+  fetch(`http://localhost:5000/sips/${id}`, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ order })
+  })
+    .then(res => res.json())
+
 const applyDrag = (arr, dragResult) => {
   const { removedIndex, addedIndex, payload } = dragResult
+
   if (removedIndex === null && addedIndex === null) return arr
 
   const result = [...arr]
@@ -63,18 +72,6 @@ class SipEditor extends Component {
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
-
-    const updateSipOrder = sipOrder => {
-      console.log(sipOrder)
-      return fetch(`http://localhost:5000/sips/${this.props.id}`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({order: sipOrder})
-      })
-        .then(res => res.json())
-    }
 
     if (!slide) return 'loading'
     return (
