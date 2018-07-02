@@ -137,7 +137,7 @@ class SipEditor extends Component {
   }
 
   requestSave = (event, key) => {
-    const { files } = event.target // value argument deleted (lint)
+    const { value, files } = event.target // value argument deleted (lint)
     if (files) {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
@@ -149,7 +149,7 @@ class SipEditor extends Component {
         .then(res => res.json())
         .then(res => actions.updateSlide({ [key]: res.url }))
     } else {
-      actions.updateSlide({ [key]: event.target.value })
+      actions.updateSlide({ [key]: value })
       clearTimeout(this.timeoutId)
       this.timeoutId = setTimeout(this.saveChange, 2000)
     }
@@ -181,9 +181,10 @@ class SipEditor extends Component {
           <div className='EditorScreen'>
             {EditSlideComponents[currentSlide.type]({
               slide: currentSlide,
-              onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
+              onChange: this.requestSave
             })}
           </div>
+
           <div className='EditorNavigation'>
             <button onClick={this.onPrevious}>Previous</button>
             <button onClick={this.onNext}>Next</button>
