@@ -167,6 +167,9 @@ class SipEditor extends Component {
     return (
       <div className='__SlideEditor'>
         <div className='SlideBar'>
+          <div>
+            {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+          </div>
           <Container onDrop={this.onDrop}>
             {sip.slides.slice(1).map(slide =>
               <Draggable key={slide.uid}>
