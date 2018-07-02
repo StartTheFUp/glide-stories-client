@@ -69,6 +69,16 @@ class SipEditor extends Component {
       .then(actions.loadSip)
   }
 
+  onDrop = e => {
+    const slides = applyDrag(this.props.sip.slides, e)
+    actions.loadSip({ slides })
+    const sipOrder = slides
+      .map(slide => slide.uid)
+      .join(' ')
+
+    updateSipOrder(sipOrder, this.props.id)
+  }
+
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
@@ -79,15 +89,6 @@ class SipEditor extends Component {
         <div className='__SlideEditor'>
 
           <div className='SlideBar'>
-            <Container onDrop={e => {
-              const sipOrder = sip.slides
-                .map(slide => slide.uid)
-                .join(' ')
-
-              updateSipOrder(sipOrder)
-              actions.loadSip({ slides: applyDrag(sip.slides, e) })
-            }
-            }>
               {sip.slides
                 .map(slide => {
                   return (
@@ -97,6 +98,7 @@ class SipEditor extends Component {
                       </div>
                     </Draggable>
                   )
+            <Container onDrop={this.onDrop}>
                 })
               }
             </Container>
