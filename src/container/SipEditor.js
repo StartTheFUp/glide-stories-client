@@ -99,7 +99,6 @@ class SipEditor extends Component {
     updateSipOrder(sipOrder, this.props.id)
   }
 
-  
   saveChange = () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
