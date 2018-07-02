@@ -37,3 +37,7 @@
 .test {
   height: 5vh;
 }
+
+.selected {
+  border: 1px solid blue;
+}

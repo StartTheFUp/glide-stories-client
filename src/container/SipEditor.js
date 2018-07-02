@@ -89,16 +89,28 @@ class SipEditor extends Component {
         <div className='__SlideEditor'>
 
           <div className='SlideBar'>
-              {sip.slides
-                .map(slide => {
-                  return (
-                    <Draggable key={slide.uid}>
-                      <div className='SlideMiniature draggable-item'>
-                        {slideComponents[slide.type](slide)}
-                      </div>
-                    </Draggable>
-                  )
             <Container onDrop={this.onDrop}>
+              {
+                sip.slides.map(slide => {
+                  if (slide === sip.slides[currentStep]) {
+                    return (
+                      <Draggable key={slide.uid}>
+                        <div className='SlideMiniature draggable-item selected'
+                        onClick={() => actions.handleSlideSelection(slide)}>
+                          {slideComponents[slide.type](slide)}
+                        </div>
+                      </Draggable>
+                    )
+                  } else {
+                    return (
+                      <Draggable key={slide.uid}>
+                        <div className='SlideMiniature draggable-item'
+                        onClick={() => actions.handleSlideSelection(slide)}>
+                          {slideComponents[slide.type](slide)}
+                        </div>
+                      </Draggable>
+                    )
+                  }
                 })
               }
             </Container>
