@@ -33,6 +33,14 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'HANDLE_SLIDE_SELECTION') {
+    const currentStep = state.sip.slides.indexOf(action.slide)
+    return {
+      ...state,
+      currentStep
+    }
+  }
+
   if (action.type === 'UPDATE_SLIDE') {
     return {
       ...state,
