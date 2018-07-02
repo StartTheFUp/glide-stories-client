@@ -1,26 +1,34 @@
 import React from 'react'
 import './EditSlideArticleQuote.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
-  const { source, authorName, text } = slide || {}
+  const { articleUrl, sourceImage, sourceName, authorName, text, publicationDate } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit Article Quote</h1>
+      <div className='EditArticle' style={{flexDirection: 'column'}}>
         <input
-          maxLength='300'
-          value={text}
-          onChange={event => onChange(event, 'text')} />
-        <input
-          maxLength='300'
-          value={authorName}
-          onChange={event => onChange(event, 'authorName')} />
-        <input
-          maxLength='300'
-          value={source}
-          onChange={event => onChange(event, 'source')} />
+          maxLength='500'
+          value={articleUrl}
+          onChange={event => onChange(event, 'articleUrl')} />
+        <div className='quote' style= {{justifyContent: 'center'}}>
+          <span className='quoteHead'>
+            <img src={sourceImage} alt='Article source icon' />
+            <p className='authorName'>{sourceName}</p>
+            <p className='greyInfo'>{authorName}</p>
+          </span>
+          <div className='EditText'>
+            <textarea
+              maxLength='300'
+              rows='4'
+              wrap='hard'
+              placeholer='Type your text here'
+              value={slide && text}
+              onChange={event => onChange(event, 'text')} />
+          </div>
+          <p className='greyInfo'>{publicationDate}</p>
+        </div>
       </div>
     </div>
   )

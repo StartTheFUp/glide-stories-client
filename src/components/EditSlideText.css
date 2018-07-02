@@ -7,8 +7,8 @@
 }
 
 .EditText textarea {
-    /* border: none; */
-    width: 80vh;
+    border: dotted 1.5px #ced0d5;
+    width: 75vh;
     height: auto;
     padding: 3vh;
     vertical-align: middle;
@@ -17,7 +17,7 @@
     resize: none;
     text-decoration: none;
     overflow: hidden;
-
+    font-size: 2vh;
 }
 
 .EditText textarea:focus {

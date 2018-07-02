@@ -19,3 +19,23 @@
 .SlideIntro h2 {
   font-size: 2.5vh;
 }
+
+.SlideIntro textarea {
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border: dotted 1.5px white;
+  padding: 2vh;
+  width: 100%;
+}
+
+.SlideIntro .editButton {
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #3470B9;
+  padding: 10px;
+  text-align: center;
+  margin: auto;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  font-weight: 600;
+}

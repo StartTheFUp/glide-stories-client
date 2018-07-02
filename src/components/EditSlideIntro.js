@@ -1,24 +1,29 @@
 import React from 'react'
 import './EditSlideIntro.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import './SlideIntro.css'
+import '../container/SipEditor.js'
 
 const EditSlideIntro = ({ slide, onChange }) => {
-  const { image_url, title, subtitle } = slide || {}
+  const { imageUrl, title, subtitle } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit Slide Intro</h1>
-        <label>Fake input Placeholder Upload Image</label>
-        <input type='file' onChange={event => onChange(event, 'imageUrl')}/>
-        <input
-          maxLength='300'
-          value={title}
-          onChange={event => onChange(event, 'title')} />
-        <input
-          maxLength='300'
-          value={subtitle}
-          onChange={event => onChange(event, 'subtitle')} />
+      <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
+        <div>
+          <input style={{flexGrow: 0.5}} type='file' onChange={event => onChange(event, 'imageUrl')}/>
+          <h1><textarea
+            maxLength='60'
+            rows='2'
+            wrap='hard'
+            value={title}
+            onChange={event => onChange(event, 'title')} /></h1>
+          <h2 style={{flex: 0.7}}><textarea
+            maxLength='250'
+            rows='2'
+            wrap='hard'
+            value={subtitle}
+            onChange={event => onChange(event, 'subtitle')} /></h2>
+        </div>
       </div>
     </div>
   )

@@ -1,16 +1,16 @@
 import React from 'react'
 import './EditSlideText.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideText = ({ slide, onChange }) =>
   <div className='__SlideDisplay'>
     <div className='EditText'>
-      <h1>Edit Slide Text</h1>
       <textarea
         maxLength='300'
-        rows='10'
+        rows='4'
         wrap='hard'
+        placeholer='Type your text here'
         value={slide && slide.text}
         onChange={event => onChange(event, 'text')} />
     </div>

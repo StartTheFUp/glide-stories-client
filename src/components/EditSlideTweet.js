@@ -1,32 +1,27 @@
 import React from 'react'
 import './EditSlideTweet.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {
-  const { authorPicture, authorName, authorScreenName, text, publicationDate } = slide || {}
+  const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit SlideT weet</h1>
-        <label>Fake input Placeholder Upload Image</label>
-        <input type='file' />
+      <div className='EditTweet' style={{flexDirection: 'column'}}>
         <input
-          maxLength='300'
-          value={authorName}
-          onChange={event => onChange(event, 'authorName')} />
-        <input
-          maxLength='300'
-          value={authorScreenName}
-          onChange={event => onChange(event, 'authorScreenName')} />
-        <input
-          maxLength='300'
-          value={text}
-          onChange={event => onChange(event, 'text')} />
-        <input
-          maxLength='300'
-          value={publicationDate}
-          onChange={event => onChange(event, 'publicationDate')} />
+          maxLength='500'
+          value={tweetUrl}
+          onChange={event => onChange(event, 'tweetUrl')} />
+        <div className='quote' style= {{justifyContent: 'center'}}>
+
+          <span className='quoteHead'>
+            <img src={imageUrl} alt='Tweet icon' />
+            <p className='authorName'>{authorName}</p>
+            <p className='greyInfo'>{authorScreenName}</p>
+          </span>
+          <p>{text}</p>
+          <p className='greyInfo'>{publicationDate}</p>
+        </div>
       </div>
     </div>
   )

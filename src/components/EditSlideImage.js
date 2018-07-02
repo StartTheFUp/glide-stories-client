@@ -1,26 +1,32 @@
 import React from 'react'
 import './EditSlideImage.css'
 import '../container/SlideDisplay.css'
-import '../container/SlideEditor.js'
+import '../container/SipEditor.js'
+import './SlideImage.css'
 
 const EditSlideImage = ({ slide, onChange }) => {
-  const { image_url, title, subtitle } = slide || {}
+  const { imageUrl, text } = slide || {}
   return (
     <div className='__SlideDisplay'>
-      <div className='EditText'>
-        <h1>Edit Slide Image</h1>
-        <label>Fake input Placeholder Upload Image</label>
-        <input type='file' onChange={event => onChange(event, 'imageUrl')}/>
-        <input
-          maxLength='300'
-          value={title}
-          onChange={event => onChange(event, 'title')} />
-        <input
-          maxLength='300'
-          value={subtitle}
-          onChange={event => onChange(event, 'subtitle')} />
+      <div className='EditImage'>
+        <div className='SlideImage' style={{display: 'flex'}}>
+        <input type='file' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
+        <div className='img' style={{
+            backgroundImage: `url("${imageUrl}")`,
+            margin: '10px 0'}} />
+          <div className='EditText'>
+            <textarea
+              maxLength='120'
+              rows='2'
+              wrap='hard'
+              placeholer='Type your text here'
+              value={slide && text}
+              onChange={event => onChange(event, 'text')} />
+          </div>
+        </div>
       </div>
     </div>
   )
 }
+
 export default EditSlideImage
