@@ -129,7 +129,7 @@ class SipEditor extends Component {
   }
 
   requestSave = (event, key) => {
-    const { files } = event.target // value argument deleted (lint)
+    const { value, files } = event.target // value argument deleted (lint)
     if (files) {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
@@ -185,17 +185,15 @@ class SipEditor extends Component {
             }
           </Container>
         </div>
-        <div className='Editor'>
-          <div className='EditorScreen'>
-            {EditSlideComponents[slide.type] && EditSlideComponents[slide.type]({
-              slide,
-              onChange: (event, key) => actions.updateSlide({ [key]: event.target.value })
-            })}
-          </div>
-          <div className='EditorNavigation'>
-            <button onClick={this.onPrevious}>Previous</button>
-            <button onClick={this.onNext}>Next</button>
-          </div>
+         <div className='Editor'>
+            <div className='EditorScreen'>
+              {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
+            </div>
+
+            <div className='EditorNavigation'>
+              <button onClick={this.onPrevious}>Previous</button>
+              <button onClick={this.onNext}>Next</button>
+            </div>
 
           <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
           <ModalInputUrl
