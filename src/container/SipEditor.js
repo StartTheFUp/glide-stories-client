@@ -17,7 +17,7 @@ import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/Modal.js'
 
-import './SlideEditor.css'
+import './SipEditor.css'
 
 const slideComponents = {
   text: SlideText,
@@ -37,6 +37,14 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
+const SlideMiniature = ({ slide, currentSlide }) =>
+  <div className={`SlideMiniature draggable-item${
+    slide === currentSlide ? ' selected' : ''
+  }`}
+  onClick={() => actions.handleSlideSelection(slide)}>
+    {slideComponents[slide.type](slide)}
+  </div>
+
 const updateSipOrder = (order, id) =>
   fetch(`http://localhost:5000/sips/${id}`, {
     method: 'post',
@@ -54,11 +62,11 @@ const applyDrag = (arr, dragResult) => {
   let itemToAdd = payload
 
   if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0]
+    itemToAdd = result.splice(removedIndex + 1, 1)[0]
   }
 
   if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd)
+    result.splice(addedIndex + 1, 0, itemToAdd)
   }
 
   return result
@@ -153,41 +161,28 @@ class SipEditor extends Component {
 
   render() {
     const { sip, currentStep } = this.props
-    const slide = sip.slides[currentStep]
+    const currentSlide = sip.slides[currentStep]
 
-    if (!slide) return 'loading'
+    if (!currentSlide) return 'loading'
     return (
       <div className='__SlideEditor'>
         <div className='SlideBar'>
+          <div>
+            {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+          </div>
           <Container onDrop={this.onDrop}>
-            {
-              sip.slides.map(slide => {
-                if (slide === sip.slides[currentStep]) {
-                  return (
-                    <Draggable key={slide.uid}>
-                      <div className='SlideMiniature draggable-item selected'
-                        onClick={() => actions.handleSlideSelection(slide)}>
-                        {slideComponents[slide.type](slide)}
-                      </div>
-                    </Draggable>
-                  )
-                } else {
-                  return (
-                    <Draggable key={slide.uid}>
-                      <div className='SlideMiniature draggable-item'
-                        onClick={() => actions.handleSlideSelection(slide)}>
-                        {slideComponents[slide.type](slide)}
-                      </div>
-                    </Draggable>
-                  )
-                }
-              })
-            }
+            {sip.slides.slice(1).map(slide =>
+              <Draggable key={slide.uid}>
+                {SlideMiniature({ slide, currentSlide })}
+              </Draggable>)}
           </Container>
         </div>
         <div className='Editor'>
           <div className='EditorScreen'>
-            {EditSlideComponents[slide.type]({ slide, onChange: this.requestSave })}
+            {EditSlideComponents[currentSlide.type]({
+              slide: currentSlide,
+              onChange: this.requestSave
+            })}
           </div>
 
           <div className='EditorNavigation'>

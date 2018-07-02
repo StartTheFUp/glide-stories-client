@@ -1,5 +1,4 @@
 import React from 'react'
-import './EditSlideImage.css'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
 import './SlideImage.css'
