@@ -5,8 +5,10 @@ const monthNames = [
 
 const hour = hour => {
   if (hour === 0 || hour === 12) return 12
-  return String(hour % 12).padStart(2, '0')
+  return hour % 12
 }
+
+const minPad = min => String(min).padStart(2, '0')
 
 const suffix = hour => {
   if (hour === 0) return 'am'
@@ -22,5 +24,5 @@ export const formatedDate = date => {
   const hh = d.getHours()
   const min = d.getMinutes()
 
-  return `${hour(hh)}:${min} ${suffix(hh)} - ${monthNames[mm]} ${jj}, ${yyyy}`
+  return `${hour(hh)}:${minPad(min)} ${suffix(hh)} - ${monthNames[mm]} ${jj}, ${yyyy}`
 }
