@@ -11,7 +11,9 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
 
         <div className="BoxShare">
           <h4>Embed</h4>
-          <textarea>{embed}</textarea>
+          <textarea readonly="readonly" rows='3'>
+          {embed}
+          </textarea>
         </div>
 
         <div className="BoxShare">
@@ -22,7 +24,7 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
 
       <div className="PreviewBtn">
 
-        <div className="Previewsip" style={{backgroundImage: `url(${SlideIntroImage})`}}>
+        <div className="Previewsip" style={{background: `url(${SlideIntroImage}) contain`}}>
           <h1>{slideIntroTitle}</h1>
           <h2>{slideIntroSubtitle}</h2>
 

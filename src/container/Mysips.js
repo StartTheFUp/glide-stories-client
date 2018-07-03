@@ -22,15 +22,16 @@ class Mysips extends Component {
         slideIntroTitle={mysip.slidesIntroTitle}
         slideIntroSubtitle={mysip.subtitle}
         SlideIntroImage={mysip.image_url}
-        embed='je suis un morceau de code'
-        publicUrl='http://websips.com/view/453789' />)
+        sipId={mysip.id}
+        embed= {`<iframe width='400' height='600' src=http://localhost:3001/${mysip.id} style='width: 100%;'></iframe>`}
+        />)
 
     return (
       <React.Fragment>
         <Container fluid>
           <Navbar />
-          </Container>
-          <Container>
+        </Container>
+        <Container>
           <h1>My sips</h1>
           <Grid centered doubling columns={3}>
             <Grid.Row>
@@ -44,7 +45,7 @@ class Mysips extends Component {
               {mysips}
             </Grid.Row>
           </Grid>
-          </Container>
+        </Container>
       </React.Fragment>
     )
   }
