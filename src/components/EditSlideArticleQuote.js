@@ -1,6 +1,7 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
+import { formatedDate } from '../formatedDate.js'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
   const { sourceImage, sourceName, authorName, text, publicationDate } = slide || {}
@@ -37,7 +38,7 @@ const EditSlideArticleQuote = ({ slide, onChange }) => {
               value={slide && text}
               onChange={event => onChange(event, 'text')} />
           </div>
-          <p className='greyInfo'>{publicationDate}</p>
+          <p className='greyInfo'>{formatedDate(publicationDate)}</p>
         </div>
       </div>
     </div>
