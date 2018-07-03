@@ -1,32 +1,84 @@
+.ContainerEditor {
+  max-height: 100vh;
+  display: flex;
+  background-color: #DDD;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .SlideBar {
   flex-direction: row;
-    width: 20vw;
-    overflow-y: scroll;
-    height: 100vh;
+  width: 20vw; /* 11vw; */
+  overflow-y: scroll;
+  /* height: 100vh; */
+  background-color: #DDD;
+  /* margin-right: 15%; */
 }
 
 .SlideMiniature {
   flex-direction: column;
-
-  min-height: 200px; /* rm */
+  height: 200px;  /* rm */
+  width: 200px;
   margin: 5px; /* rm */
   background-color: white; /* rm */
 }
 
 .SlideMiniature .SlideText p {
-  padding: 10px;
+  padding: 7vh 1vh;
+  font-size: 10px;
+}
+
+.SlideMiniature h1 {
+  font-size: 20px;
+  padding: 1vh;
+}
+
+.SlideMiniature SlideIntro {
+  font-size: 20px;
+  padding: 1vh;
+}
+
+.SlideMiniature .quoteHead {
+  padding: 0 1vh;
+}
+
+.SlideMiniature h2, a {
+  font-size: 15px;
+}
+
+.SlideMiniature button {
+  height: 10px;
+  width: 110px;
+}
+
+.SlideMiniature p {
+  font-size: 10px;
+  padding: 0 1vh;
+  /* margin: 1vh; */
+}
+
+.SlideMiniature img {
+  width: 2rem;
+  height: 2rem;
 }
 
 .__SlideEditor {
   display: flex;
 }
 
-.Editor {
-  flex-direction: row;
+.editorScreen {
+  height: 80vh;
 }
 
-.EditorNavigation {
-  flex-direction: column;
+.Editor {
+  display: flex;
+  flex-direction: row;
 }
 
 .EditorNavigation button {
@@ -47,4 +99,15 @@
     outline-offset: -10px;
     box-shadow: inset 0 0 0px 2px #7d00ff, inset 0 0 20px 4px #39d76b;
      */
+}
+
+.button {
+  flex-flow: 0;
+  display: flex;
+  align-items: center;
+}
+
+.smooth-dnd-draggable-wrapper {
+  /* height: 200px;
+  width: 200px; */
 }

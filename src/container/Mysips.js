@@ -29,8 +29,8 @@ class Mysips extends Component {
       <React.Fragment>
         <Container fluid>
           <Navbar />
-          </Container>
-          <Container>
+        </Container>
+        <Container>
           <h1>My sips</h1>
           <Grid centered doubling columns={3}>
             <Grid.Row>
@@ -44,7 +44,7 @@ class Mysips extends Component {
               {mysips}
             </Grid.Row>
           </Grid>
-          </Container>
+        </Container>
       </React.Fragment>
     )
   }

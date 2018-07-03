@@ -16,6 +16,8 @@ import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/Modal.js'
+import Navbar from './Navbar.js'
+import addSlideBtn from './before.png'
 
 import './SipEditor.css'
 
@@ -165,38 +167,43 @@ class SipEditor extends Component {
 
     if (!currentSlide) return 'loading'
     return (
-      <div className='__SlideEditor'>
-        <div className='SlideBar'>
-          <div>
-            {SlideMiniature({ slide: sip.slides[0], currentSlide })}
-          </div>
-          <Container onDrop={this.onDrop}>
-            {sip.slides.slice(1).map(slide =>
-              <Draggable key={slide.uid}>
-                {SlideMiniature({ slide, currentSlide })}
-              </Draggable>)}
-          </Container>
-        </div>
+      <div className='ContainerEditor'>
+        <Navbar className='navbarContainer'/>
         <div className='Editor'>
-          <div className='EditorScreen'>
-            {EditSlideComponents[currentSlide.type]({
-              slide: currentSlide,
-              onChange: this.requestSave
-            })}
+          <div className='SlideBar'>
+            <div>
+              {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+            </div>
+            <Container onDrop={this.onDrop}>
+              {sip.slides.slice(1).map(slide =>
+                <Draggable key={slide.uid}>
+                  {SlideMiniature({ slide, currentSlide })}
+                </Draggable>)}
+            </Container>
           </div>
-
-          <div className='EditorNavigation'>
-            <button onClick={this.onPrevious}>Previous</button>
-            <button onClick={this.onNext}>Next</button>
+          <div className='__SlideEditor'>
+            <button class="ui icon button" onClick={this.onPrevious}>
+              <i class="angle left icon"></i>
+            </button>
+            <div className='EditorScreen'>
+              {EditSlideComponents[currentSlide.type]({
+                slide: currentSlide,
+                onChange: this.requestSave
+              })}
+            </div>
+            <ModalInputUrl
+              addSlide={addNewSlide}
+              id={this.props.id}
+              url={this.props.inputValue}
+              type={this.props.type}
+              modalState={this.props.modalState} />
+            <button class="ui icon button" onClick={this.onNext}>
+              <i class="angle right icon"></i>
+            </button>
+            <div className='button'>
+              <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+            </div>
           </div>
-
-          <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
-          <ModalInputUrl
-            addSlide={addNewSlide}
-            id={this.props.id}
-            url={this.props.inputValue}
-            type={this.props.type}
-            modalState={this.props.modalState} />
         </div>
       </div>
     )

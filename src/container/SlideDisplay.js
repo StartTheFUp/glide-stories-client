@@ -28,10 +28,12 @@ class SlideDisplay extends Component {
     const slide = sip.slides[currentStep]
     if (!slide) return 'loading'
     return (
-      <div className='__SlideDisplay'>
-        <div className='previousBtn' onClick={actions.handlePreviousSip} />
-        <div className='nextBtn' onClick={actions.handleNextSip} />
-        {slideComponents[slide.type](slide)}
+      <div className='Container'>
+        <div className='__SlideDisplay'>
+          <div className='previousBtn' onClick={actions.handlePreviousSip} />
+          <div className='nextBtn' onClick={actions.handleNextSip} />
+          {slideComponents[slide.type](slide)}
+        </div>
       </div>
     )
   }
