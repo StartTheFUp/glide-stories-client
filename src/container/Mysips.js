@@ -24,7 +24,8 @@ class Mysips extends Component {
         SlideIntroImage={mysip.image_url}
         sipId={mysip.id}
         embed= {`<iframe width='400' height='600' src=http://localhost:3001/${mysip.id} style='width: 100%;'></iframe>`}
-        />)
+        publicUrl={<a href={`/${mysip.id}`} target="_blank">{`localhost/3000/${mysip.id}`}</a>}
+      />)
 
     return (
       <React.Fragment>

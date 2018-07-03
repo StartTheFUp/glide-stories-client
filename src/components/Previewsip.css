@@ -37,6 +37,10 @@ textarea {
     height: auto;
 }
 
+textarea:focus {
+    outline: none;
+}
+
 .PreviewBtn {
     display: flex;
     flex-direction: column;
