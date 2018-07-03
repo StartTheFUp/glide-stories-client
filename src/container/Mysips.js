@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import './Stories.css'
+import './Mysips.css'
 import Previewsip from '../components/Previewsip.js'
 import Newsip from '../components/Newsip.js'
+import Sip from '../components/Sip.js'
+import Navbar from './Navbar.js'
 import { actions } from '../store.js'
-import { Grid, Container, Row } from 'semantic-ui-react'
+import { Grid, Container } from 'semantic-ui-react'
 
-class Stories extends Component {
+class Mysips extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/preview`)
       .then(sips => sips.json())
@@ -24,21 +26,28 @@ class Stories extends Component {
         publicUrl='http://websips.com/view/453789' />)
 
     return (
-    <div>
+      <React.Fragment>
+        <Container fluid>
+          <Navbar />
+          </Container>
+          <Container>
+          <h1>My sips</h1>
+          <Grid centered doubling columns={3}>
+            <Grid.Row>
+              <Newsip />
+            </Grid.Row>
+          </Grid>
 
-        <h1>My sips</h1>
-                 <Container fluid>
-         <Grid centered doubling columns={3}>
-          <Grid.Row>
-          <Newsip />
-          {mysips}
-          </Grid.Row>
-        </Grid>
-
-      </Container>
-      </div>
+          <Grid centered doubling columns={3}>
+            <Grid.Row>
+              <Sip />
+              {mysips}
+            </Grid.Row>
+          </Grid>
+          </Container>
+      </React.Fragment>
     )
   }
 }
 
-export default Stories
+export default Mysips

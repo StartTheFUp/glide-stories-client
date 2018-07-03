@@ -1,34 +1,15 @@
 import React from 'react'
-import '../container/Stories.js'
-import './Previewsip.css'
+import '../container/Mysips.js'
+import './Newsip.css'
+import Addsip from './Addsip.png'
 import { Segment, Grid } from 'semantic-ui-react'
 
 const Newsip = () =>
-<Grid.Column>
+  <Grid.Column>
     <Segment>
-      <h3>New sip</h3>
-      <div className="SipShare">
-
-        <div className="BoxShare">
-          <h4>Embed</h4>
-          <textarea></textarea>
-        </div>
-
-        <div className="BoxShare">
-          <h4>Public URL</h4>
-          <div className="url"></div>
-        </div>
-      </div>
-
-      <div className="PreviewBtn">
-
-        <div className="Previewsip">
-          <h1></h1>
-          <h2></h2>
-
-        </div>
-
-
+      <div className="BtnNewsip">
+        <img src={Addsip} width="100" alt="add sip icon" />
+        <h3>Add a new sip</h3>
       </div>
     </Segment>
   </Grid.Column>

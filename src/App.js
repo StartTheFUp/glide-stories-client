@@ -4,7 +4,7 @@ import './App.css'
 import SlideDisplay from './container/SlideDisplay.js'
 import { store } from './store.js'
 import SlideEditor from './container/SlideEditor'
-import Stories from './container/Stories.js'
+import Mysips from './container/Mysips.js'
 import { Router } from '@reach/router'
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Stories {...this.state} path='/stories' />
+        <Mysips {...this.state} path='/mysips' />
         <SlideDisplay {...this.state} path='/:id' />
         <SlideEditor {...this.state} path='/edit/:id' />
       </Router>
