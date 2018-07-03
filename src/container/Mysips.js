@@ -6,11 +6,11 @@ import Sip from '../components/Sip.js'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
 import { Grid, Container } from 'semantic-ui-react'
+import { getSipsMiniature } from '../api.js'
 
 class Mysips extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/preview`)
-      .then(sips => sips.json())
+    getSipsMiniature()
       .then(actions.loadSips)
   }
 

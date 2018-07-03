@@ -6,6 +6,7 @@ import SlideCallToAction from '../components/SlideCallToAction'
 import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
 import { actions } from '../store.js'
+import { getSipBySipId } from '../api.js'
 import './SlideDisplay.css'
 
 const slideComponents = {
@@ -19,8 +20,7 @@ const slideComponents = {
 
 class SlideDisplay extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips/${this.props.id}`)
-      .then(res => res.json())
+    getSipBySipId(this.props.id)
       .then(actions.loadSip)
   }
   render() {

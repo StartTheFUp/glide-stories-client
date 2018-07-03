@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
+import { sendUpdatedSipOrder, sendNewSlide, getSipBySipId, sendUpdatedSlide, sendNewImage } from '../api.js'
 
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
@@ -45,14 +46,6 @@ const SlideMiniature = ({ slide, currentSlide }) =>
     {slideComponents[slide.type](slide)}
   </div>
 
-const updateSipOrder = (order, id) =>
-  fetch(`http://localhost:5000/sips/${id}`, {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ order })
-  })
-    .then(res => res.json())
-
 const applyDrag = (arr, dragResult) => {
   const { removedIndex, addedIndex, payload } = dragResult
 
@@ -72,15 +65,6 @@ const applyDrag = (arr, dragResult) => {
   return result
 }
 
-const addNewSlide = (type, sipId, url) => {
-  return fetch('http://localhost:5000/slides', {
-    method: 'POST',
-    body: JSON.stringify({type, sipId, url}),
-    headers: { 'content-type': 'application/json' }
-  })
-    .then(console.log(type, sipId, url))
-}
-
 const style = {
   slide: {
     display: 'flex',
@@ -92,8 +76,7 @@ const style = {
 
 class SipEditor extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips/${this.props.id}`)
-      .then(res => res.json())
+    getSipBySipId(this.props.id)
       .then(actions.loadSip)
   }
 
@@ -104,20 +87,14 @@ class SipEditor extends Component {
       .map(slide => slide.uid)
       .join(' ')
 
-    updateSipOrder(sipOrder, this.props.id)
+    sendUpdatedSipOrder(sipOrder, this.props.id)
   }
 
   saveChange = () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
-      .map(slide => {
-        return fetch(`http://localhost:5000/slides/${slide.id}`, {
-          method: 'post',
-          body: JSON.stringify(slide),
-          headers: {'Content-Type': 'application/json'}
-        })
-      })
+      .map(slide => sendUpdatedSlide(slide))
     this.prevSip = this.props.sip
   }
 
@@ -142,11 +119,7 @@ class SipEditor extends Component {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
       body.append('image', files[0])
-      fetch(`http://localhost:5000/slide/${slide.type}/${slide.id}`, {
-        method: 'POST',
-        body
-      })
-        .then(res => res.json())
+      sendNewImage(slide, body)
         .then(res => actions.updateSlide({ [key]: res.url }))
     } else {
       actions.updateSlide({ [key]: value })
@@ -190,9 +163,9 @@ class SipEditor extends Component {
             <button onClick={this.onNext}>Next</button>
           </div>
 
-          <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+          <AddSlideBtn addSlide={sendNewSlide} id={this.props.id} style={style.btnDropDown}/>
           <ModalInputUrl
-            addSlide={addNewSlide}
+            addSlide={sendNewSlide}
             id={this.props.id}
             url={this.props.inputValue}
             type={this.props.type}
