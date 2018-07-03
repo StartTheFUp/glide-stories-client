@@ -8,7 +8,9 @@ const initialState = {
   modalOpen: false,
   slideType: '',
   inputValue: '',
-  warningMessage: false
+  warningMessage: false,
+  sips: []
+
 }
 const reducer = (state, action) => {
   if (action.type === 'LOAD_SIP') {
@@ -17,6 +19,7 @@ const reducer = (state, action) => {
       sip: action.sip
     }
   }
+
   if (action.type === 'HANDLE_NEXT_SIP') {
     const currentStep = state.currentStep + 1
     if (currentStep >= state.sip.slides.length) {
@@ -79,6 +82,14 @@ const reducer = (state, action) => {
       inputValue: action.url
     }
   }
+
+  if (action.type === 'LOAD_SIPS') {
+    return {
+      ...state,
+      sips: action.sips
+    }
+  }
+
   return state
 }
 
@@ -88,9 +99,11 @@ export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
   handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
   handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
+
   handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
   showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
   closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
-  updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url })
+  updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url }),
+  loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips })
 }
