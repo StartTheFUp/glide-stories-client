@@ -1,5 +1,5 @@
 import React from 'react'
-import '../container/Stories.js'
+import '../container/Mysips.js'
 import './Previewsip.css'
 import { Button, Segment, Grid } from 'semantic-ui-react'
 
