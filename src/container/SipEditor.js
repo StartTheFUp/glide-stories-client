@@ -16,12 +16,8 @@ import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
-<<<<<<< HEAD
 import ModalInputUrl from '../components/ModalInputUrl.js'
-=======
-import ModalInputUrl from '../components/Modal.js'
 import Navbar from './Navbar.js'
->>>>>>> 975ae31bd735399b12ab91530adb416febcb925a
 
 import './SipEditor.css'
 
@@ -43,18 +39,20 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
-const SlideMiniature = ({ slide, currentSlide }) =>
-  <div className={`SlideMiniature draggable-item${
-    slide === currentSlide ? ' selected' : ''
-  }`}
-  onClick={() => actions.handleSlideSelection(slide)}>
+const SlideMiniature = ({ slide, currentSlide }) => (
+  <div
+    className={`SlideMiniature draggable-item${
+      slide === currentSlide ? ' selected' : ''
+    }`}
+    onClick={() => actions.handleSlideSelection(slide)}
+  >
     {slideComponents[slide.type](slide)}
   </div>
+)
 
 class SipEditor extends Component {
   componentDidMount() {
-    getSipBySipId(this.props.id)
-      .then(actions.loadSip)
+    getSipBySipId(this.props.id).then(actions.loadSip)
   }
 
   onDrop = e => {
@@ -90,8 +88,9 @@ class SipEditor extends Component {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
       body.append('image', files[0])
-      sendNewImage(slide, body)
-        .then(res => actions.updateSlide({ [key]: res.url }))
+      sendNewImage(slide, body).then(res =>
+        actions.updateSlide({ [key]: res.url })
+      )
     } else {
       actions.updateSlide({ [key]: value })
       clearTimeout(this.timeoutId)
@@ -111,63 +110,49 @@ class SipEditor extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className='Container'>
-          <div className='__SlideEditor'>
-            <div className='SlideBar'>
+        <div className="Container">
+          <div className="__SlideEditor">
+            <div className="SlideBar">
               <div>
                 {SlideMiniature({ slide: sip.slides[0], currentSlide })}
               </div>
               <Container onDrop={this.onDrop}>
-                {sip.slides.slice(1).map(slide =>
-                  <Draggable key={slide.uid}>
-                    {SlideMiniature({ slide, currentSlide })}
-                  </Draggable>)}
+                {sip.slides
+                  .slice(1)
+                  .map(slide => (
+                    <Draggable key={slide.uid}>
+                      {SlideMiniature({ slide, currentSlide })}
+                    </Draggable>
+                  ))}
               </Container>
             </div>
-            <div className='Editor'>
-              <div className='EditorScreen'>
+            <div className="Editor">
+              <div className="EditorScreen">
                 {EditSlideComponents[currentSlide.type]({
                   slide: currentSlide,
                   onChange: this.requestSave
                 })}
               </div>
 
-              <div className='EditorNavigation'>
+              <div className="EditorNavigation">
                 <button onClick={this.onPrevious}>Previous</button>
                 <button onClick={this.onNext}>Next</button>
               </div>
 
-              <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+              <AddSlideBtn
+                addSlide={actions.addSlide}
+                showModal={actions.showModal}
+              />
               <ModalInputUrl
-                addSlide={addNewSlide}
-                id={this.props.id}
+                onClose={actions.closeModal}
+                onChange={e => actions.updateUrl(e.target.value)}
+                onSubmit={() => actions.addSlide(this.props.type)}
+                open={this.props.modalState}
                 url={this.props.inputValue}
                 type={this.props.type}
-                modalState={this.props.modalState} />
+              />
             </div>
           </div>
-        </div>
-        <div className='Editor'>
-          <div className='EditorScreen'>
-            {EditSlideComponents[currentSlide.type]({
-              slide: currentSlide,
-              onChange: this.requestSave
-            })}
-          </div>
-
-          <div className='EditorNavigation'>
-            <button onClick={this.onPrevious}>Previous</button>
-            <button onClick={this.onNext}>Next</button>
-          </div>
-
-          <AddSlideBtn addSlide={actions.addSlide} showModal={actions.showModal} />
-          <ModalInputUrl
-            onClose={actions.closeModal}
-            onChange={e => actions.updateUrl(e.target.value)}
-            onSubmit={() => actions.addSlide(this.props.type)}
-            open={this.props.modalState}
-            url={this.props.inputValue}
-            type={this.props.type} />
         </div>
       </React.Fragment>
     )
