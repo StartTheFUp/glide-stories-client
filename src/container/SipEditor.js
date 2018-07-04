@@ -82,15 +82,6 @@ const addNewSlide = (type, sipId, url) => {
     .then(console.log(type, sipId, url))
 }
 
-const style = {
-  slide: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
-
 class SipEditor extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/sips/${this.props.id}`)
@@ -171,7 +162,7 @@ class SipEditor extends Component {
         <div className='Editor'>
           <div className='navbarContainer'>
             <div className='button'>
-              <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+              <AddSlideBtn addSlide={addNewSlide} id={this.props.id} icon='plus icon' />
             </div>
             <div className='SlideBar'>
               <div>
@@ -186,8 +177,8 @@ class SipEditor extends Component {
             </div>
           </div>
           <div className='__SlideEditor'>
-            <button class="ui icon button" onClick={this.onPrevious}>
-              <i class="angle left icon"></i>
+            <button className="ui icon button" onClick={this.onPrevious}>
+              <i className="angle left icon"></i>
             </button>
             <div className='EditorScreen'>
               {EditSlideComponents[currentSlide.type]({
@@ -201,8 +192,8 @@ class SipEditor extends Component {
               url={this.props.inputValue}
               type={this.props.type}
               modalState={this.props.modalState} />
-            <button class="ui icon button" onClick={this.onNext}>
-              <i class="angle right icon"></i>
+            <button className="ui icon button" onClick={this.onNext}>
+              <i className="angle right icon"></i>
             </button>
           </div>
         </div>

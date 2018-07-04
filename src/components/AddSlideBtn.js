@@ -6,7 +6,7 @@ import { actions } from '../store.js'
 
 const Dropdownbtn = (props) =>
   <div className='add-slide'>
-    <Dropdown text='ADD A SLIDE' icon={props.iconType} floating labeled button className='icon'>
+    <Dropdown text='ADD A SLIDE' icon={props.icon} floating labeled button className='icon'>
       <Dropdown.Menu>
         <Dropdown.Header content='ADD A SLIDE' />
         <Dropdown.Item onClick={() => props.addSlide('intro', props.id)}>INTRO</Dropdown.Item>

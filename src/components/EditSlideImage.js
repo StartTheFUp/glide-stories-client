@@ -10,7 +10,6 @@ const EditSlideImage = ({ slide, onChange }) => {
       <div className='EditImage'>
         <div className='SlideImage' style={{display: 'flex'}}>
           <div className='uploadImageInput' >
-            <label for='image_uploads'>Upload a picture (PNG, JPG)</label>
             <input type='file' style={{ padding: '0 10px' }} name='image_uploads' onChange={event => onChange(event, 'imageUrl')}/>
           </div>
           <div className='img' style={{
