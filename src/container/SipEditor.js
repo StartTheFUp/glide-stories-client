@@ -39,14 +39,16 @@ const EditSlideComponents = {
   article: EditSlideArticleQuote
 }
 
-const SlideMiniature = ({ slide, currentSlide }) => (
+const SlideMiniature = ({ slide, currentSlide, index }) => (
   <div
     className={`SlideMiniature draggable-item${
       slide === currentSlide ? ' selected' : ''
     }`}
     onClick={() => actions.handleSlideSelection(slide)}
   >
+    {index}
     {slideComponents[slide.type](slide)}
+
   </div>
 )
 
@@ -120,14 +122,14 @@ class SipEditor extends Component {
           <div className="__SlideEditor">
             <div className="SlideBar">
               <div>
-                {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+                {SlideMiniature({ slide: sip.slides[0], currentSlide, index: 1 })}
               </div>
               <Container onDrop={this.onDrop}>
                 {sip.slides
                   .slice(1)
                   .map(slide => (
                     <Draggable key={slide.uid}>
-                      {SlideMiniature({ slide, currentSlide })}
+                      {SlideMiniature({ slide, currentSlide, index: sip.slides.indexOf(slide) + 1 })}
                     </Draggable>
                   ))}
               </Container>
