@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
-import { sendUpdatedSipOrder, sendNewSlide, getSipBySipId, sendUpdatedSlide, sendNewImage } from '../api.js'
+import { sendUpdatedSlide, sendNewSlide, getSipBySipId, sendNewImage } from '../api.js'
 
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
@@ -69,7 +69,7 @@ class SipEditor extends Component {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
-      .map(slide => sendUpdatedSlide(slide))
+      .map(sendUpdatedSlide)
     this.prevSip = this.props.sip
   }
 
