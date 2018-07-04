@@ -15,10 +15,10 @@
 
 .SlideBar {
   flex-direction: row;
-  width: 15vw;
+  width: 14vw;
   overflow-y: scroll;
   background-color: #f6f9fc;
-  padding-left: 1vh;
+  padding-left: 2vh;
 }
 
 .SlideMiniature {
@@ -131,4 +131,8 @@
 
 textarea {
   border: dotted 1.5px #ced0d5;
+}
+
+.navigationBtn {
+  width: 8vh;
 }

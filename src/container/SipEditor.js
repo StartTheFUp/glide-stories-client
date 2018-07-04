@@ -177,7 +177,7 @@ class SipEditor extends Component {
             </div>
           </div>
           <div className='__SlideEditor'>
-            <button className="ui icon button" onClick={this.onPrevious}>
+            <button className="ui icon button navigationBtn" onClick={this.onPrevious}>
               <i className="angle left icon"></i>
             </button>
             <div className='EditorScreen'>
@@ -192,7 +192,7 @@ class SipEditor extends Component {
               url={this.props.inputValue}
               type={this.props.type}
               modalState={this.props.modalState} />
-            <button className="ui icon button" onClick={this.onNext}>
+            <button className="ui icon button navigationBtn" onClick={this.onNext}>
               <i className="angle right icon"></i>
             </button>
           </div>
