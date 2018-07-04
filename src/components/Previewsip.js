@@ -22,15 +22,15 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
       </div>
 
       <div className="PreviewBtn">
-      <Link to={`/edit/${sipId}`} >
-        <div className="Previewsip" style={
-          {backgroundImage: `url(${SlideIntroImage})`,
-          backgroundSize: 'cover'}
-        }>
-          <h1>{slideIntroTitle}</h1>
-          <h2>{slideIntroSubtitle}</h2>
+        <Link to={`/edit/${sipId}`} >
+          <div className="Previewsip" style={
+            {backgroundImage: `url(${SlideIntroImage})`,
+              backgroundSize: 'cover'}
+          }>
+            <h1>{slideIntroTitle}</h1>
+            <h2>{slideIntroSubtitle}</h2>
 
-        </div>
+          </div>
         </Link>
         <div className="Btn">
           <Button basic color='blue'><Link to={`/edit/${sipId}`} >Edit</Link></Button>

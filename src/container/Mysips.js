@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './Mysips.css'
 import Previewsip from '../components/Previewsip.js'
 import Newsip from '../components/Newsip.js'
-import Sip from '../components/Sip.js'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
 import { navigate, Redirect } from '@reach/router'
@@ -50,28 +49,27 @@ class Mysips extends Component {
 
           <Grid centered doubling columns={3}>
             <Grid.Row>
-              <Sip />
               {mysips}
             </Grid.Row>
           </Grid>
         </Container>
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
-          <Modal.Description>
-            Create a new sip
+          <Modal.Header>Create a new sip</Modal.Header>
+          <Modal.Content>
             <Form onSubmit={() => {
               createSip(this.sipTitle)
                 .then(res => (navigate(`/edit/${res.id}`)))
             }} >
               <Form.Field required>
                 <label>Sip title : </label>
-                <input type="text" onChange={ (e) => {
-                  this.sipTitle = e.target.value
-                }} />
-                <input type="submit" className="ui button" value="Create" />
+                  <input type="text" required onChange={ (e) => {
+                    this.sipTitle = e.target.value
+                  }} />
+                  <input type="submit" className="ui button" value="Create" />
+
               </Form.Field>
             </Form>
-          </Modal.Description>
-
+          </Modal.Content>
         </Modal>
       </React.Fragment>
     )
