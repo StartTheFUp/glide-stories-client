@@ -1,7 +1,7 @@
 .ContainerEditor {
   max-height: 100vh;
   display: flex;
-  background-color: #DDD;
+  background-color: #f6f9fc;
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
@@ -10,15 +10,15 @@
 .navbarContainer {
   display: flex;
   flex-direction: column;
+  margin-right: 15%;
 }
 
 .SlideBar {
   flex-direction: row;
-  width: 20vw; /* 11vw; */
+  width: 15vw;
   overflow-y: scroll;
-  /* height: 100vh; */
-  background-color: #DDD;
-  /* margin-right: 15%; */
+  background-color: #f6f9fc;
+  padding-left: 1vh;
 }
 
 .SlideMiniature {
@@ -94,7 +94,7 @@
 }
 
 .EditorNavigation button {
-  width: 50%;
+  width: 15vh;
   color: #DBFCFF ;
   padding: 1vh;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -108,9 +108,11 @@
 .selected {
   /* outline: 2px solid blue; */
     outline: 10px solid #f200ff4f;
+    /* background-color: yellow; */
+    /* outline: 10px solid yellow; */
     outline-offset: -10px;
+    /* box-shadow: inset 0 0 0px 2px #EAC9C1; */
     box-shadow: inset 0 0 0px 2px #7d00ff, inset 0 0 20px 4px #39d76b;
-    
 }
 
 .button {
@@ -125,4 +127,8 @@
   justify-content: center;
   color: #89909F;
   padding-bottom: 5vh;
+}
+
+textarea {
+  border: dotted 1.5px #ced0d5;
 }
