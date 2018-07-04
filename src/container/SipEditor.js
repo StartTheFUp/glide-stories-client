@@ -16,7 +16,7 @@ import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
-import ModalInputUrl from '../components/Modal.js'
+import ModalInputUrl from '../components/ModalInputUrl.js'
 
 import './SipEditor.css'
 
@@ -165,11 +165,12 @@ class SipEditor extends Component {
 
           <AddSlideBtn addSlide={sendNewSlide} id={this.props.id} style={style.btnDropDown}/>
           <ModalInputUrl
-            addSlide={sendNewSlide}
-            id={this.props.id}
+            onClose={actions.closeModal}
+            onChange={e => actions.updateUrl(e.target.value)}
+            onSubmit={() => actions.addSlide(this.props.type)}
+            open={this.props.modalState}
             url={this.props.inputValue}
-            type={this.props.type}
-            modalState={this.props.modalState} />
+            type={this.props.type} />
         </div>
       </div>
     )
