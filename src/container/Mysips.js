@@ -5,7 +5,7 @@ import Newsip from '../components/Newsip.js'
 import Sip from '../components/Sip.js'
 import Navbar from '../components/Navbar.js'
 import { actions } from '../store.js'
-import { navigate, Redirect } from '@reach/router'
+import { navigate, Redirect } from '@reach/router'
 import { Grid, Container, Modal } from 'semantic-ui-react'
 
 class Mysips extends Component {

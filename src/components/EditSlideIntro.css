@@ -1,5 +1,4 @@
 .SlideIntro {
-  flex-direction: column;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,12 +8,6 @@
   padding: 2vh;
 }
 
-.SlideIntro {
-  background-color: aqua;
-}
-.uploadBtn {
-
-}
 .SlideIntro  .title {
   font-size: 4.5vh;
   margin: 3vh;
