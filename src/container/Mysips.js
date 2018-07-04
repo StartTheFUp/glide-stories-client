@@ -5,7 +5,7 @@ import Newsip from '../components/Newsip.js'
 import Sip from '../components/Sip.js'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
-import { navigate } from '@reach/router'
+import { navigate, Redirect } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
 
 class Mysips extends Component {
@@ -16,6 +16,7 @@ class Mysips extends Component {
   }
 
   render() {
+    if (!localStorage.token) return <Redirect noThrow to='/' />
     const mysips = this.props.sips.map(mysip =>
       <Previewsip
         key={mysip.id}
@@ -31,7 +32,10 @@ class Mysips extends Component {
     return (
       <React.Fragment>
         <Container fluid>
-          <Navbar />
+          <Navbar logout={() => {
+            localStorage.clear()
+            navigate('/')
+          }} />
         </Container>
         <Container>
           <h1>My sips</h1>

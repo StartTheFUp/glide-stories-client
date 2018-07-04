@@ -6,6 +6,7 @@ import { store } from './store.js'
 import SipEditor from './container/SipEditor'
 import Mysips from './container/Mysips.js'
 import { Router } from '@reach/router'
+import Home from './container/Home'
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,8 @@ class App extends Component {
         <Mysips {...this.state} edit path='/mysips/new' />
         <SlideDisplay {...this.state} path='/:id' />
         <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType} modalState={this.state.modalOpen}/>
+        <Home {...this.state} path='/' />
+        <Home {...this.state} signUp path='/signup' />
       </Router>
     )
   }
