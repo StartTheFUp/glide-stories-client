@@ -136,7 +136,8 @@ class SipEditor extends Component {
               <div className="EditorScreen">
                 {EditSlideComponents[currentSlide.type]({
                   slide: currentSlide,
-                  onChange: this.requestSave
+                  onChange: this.requestSave,
+                  errors: this.props.errors
                 })}
               </div>
 
