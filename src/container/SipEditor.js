@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
 import { sendUpdatedSlide, getSipBySipId, sendNewImage } from '../api.js'
+import { Redirect } from '@reach/router'
 
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
@@ -103,6 +104,7 @@ class SipEditor extends Component {
   }
 
   render() {
+    if (!localStorage.token) return <Redirect noThrow to='/' />    
     const { sip, currentStep } = this.props
     const currentSlide = sip.slides[currentStep]
 

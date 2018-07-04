@@ -1,5 +1,5 @@
 /*CSS*/
 
-a.item::before{
+.item::before{
 display: none;
 }
