@@ -1,6 +1,8 @@
 .ui.segment {
     margin: 0;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .ui[class*="three column"].doubling.grid>.row>.column {
@@ -26,6 +28,11 @@ h3 {
 
 textarea {
     resize: none;
+    height: auto;
+}
+
+textarea:focus {
+    outline: none;
 }
 
 .PreviewBtn {

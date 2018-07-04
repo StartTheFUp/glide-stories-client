@@ -16,7 +16,12 @@ import EditSlideCallToAction from '../components/EditSlideCallToAction'
 import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
+<<<<<<< HEAD
 import ModalInputUrl from '../components/ModalInputUrl.js'
+=======
+import ModalInputUrl from '../components/Modal.js'
+import Navbar from './Navbar.js'
+>>>>>>> 975ae31bd735399b12ab91530adb416febcb925a
 
 import './SipEditor.css'
 
@@ -104,17 +109,43 @@ class SipEditor extends Component {
 
     if (!currentSlide) return 'loading'
     return (
-      <div className='__SlideEditor'>
-        <div className='SlideBar'>
-          <div>
-            {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+      <React.Fragment>
+        <Navbar />
+        <div className='Container'>
+          <div className='__SlideEditor'>
+            <div className='SlideBar'>
+              <div>
+                {SlideMiniature({ slide: sip.slides[0], currentSlide })}
+              </div>
+              <Container onDrop={this.onDrop}>
+                {sip.slides.slice(1).map(slide =>
+                  <Draggable key={slide.uid}>
+                    {SlideMiniature({ slide, currentSlide })}
+                  </Draggable>)}
+              </Container>
+            </div>
+            <div className='Editor'>
+              <div className='EditorScreen'>
+                {EditSlideComponents[currentSlide.type]({
+                  slide: currentSlide,
+                  onChange: this.requestSave
+                })}
+              </div>
+
+              <div className='EditorNavigation'>
+                <button onClick={this.onPrevious}>Previous</button>
+                <button onClick={this.onNext}>Next</button>
+              </div>
+
+              <AddSlideBtn addSlide={addNewSlide} id={this.props.id} style={style.btnDropDown}/>
+              <ModalInputUrl
+                addSlide={addNewSlide}
+                id={this.props.id}
+                url={this.props.inputValue}
+                type={this.props.type}
+                modalState={this.props.modalState} />
+            </div>
           </div>
-          <Container onDrop={this.onDrop}>
-            {sip.slides.slice(1).map(slide =>
-              <Draggable key={slide.uid}>
-                {SlideMiniature({ slide, currentSlide })}
-              </Draggable>)}
-          </Container>
         </div>
         <div className='Editor'>
           <div className='EditorScreen'>
@@ -138,7 +169,7 @@ class SipEditor extends Component {
             url={this.props.inputValue}
             type={this.props.type} />
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
