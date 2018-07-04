@@ -4,8 +4,3 @@ html > body {
   font-family: sans-serif;
   min-width: 0;
 } 
-body > div,
-body > div > div,
-body > div > div > div {
-  height: 100%;
-}
