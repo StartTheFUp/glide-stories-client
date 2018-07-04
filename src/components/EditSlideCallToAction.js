@@ -9,7 +9,10 @@ const EditSlideCallToAction = ({ slide, onChange }) => {
     <div className='__SlideDisplay'>
       <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <div>
-          <input style={{flexGrow: 0.5}} type='file' />
+          <div className='uploadImageInput' >
+            <label for='image_uploads'>Sélectionnez une image (PNG, JPG)</label>
+            <input style={{flexGrow: 0.5}} type='file' />
+          </div>
           <h1><textarea
             maxLength='60'
             rows='2'
