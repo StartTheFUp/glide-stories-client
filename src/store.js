@@ -21,7 +21,7 @@ const reducer = (state, action) => {
     }
   }
 
-  if (action.type === 'HANDLE_NEXT_SIP') {
+  if (action.type === 'HANDLE_NEXT_SLIDE') {
     const currentStep = state.currentStep + 1
     if (currentStep >= state.sip.slides.length) {
       return state
@@ -32,7 +32,7 @@ const reducer = (state, action) => {
     }
   }
 
-  if (action.type === 'HANDLE_PREVIOUS_SIP') {
+  if (action.type === 'HANDLE_PREVIOUS_SLIDE') {
     const currentStep = state.currentStep - 1
     if (currentStep < 0) return state
     return {
@@ -170,8 +170,8 @@ export const store = createStore(reducer, initialState, applyMiddleware(updateOr
 
 export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
-  handleNextSip: () => store.dispatch({ type: 'HANDLE_NEXT_SIP' }),
-  handlePreviousSip: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SIP' }),
+  handleNextSlide: () => store.dispatch({ type: 'HANDLE_NEXT_SLIDE' }),
+  handlePreviousSlide: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SLIDE' }),
 
   handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),

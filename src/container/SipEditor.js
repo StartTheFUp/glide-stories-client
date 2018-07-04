@@ -65,11 +65,11 @@ class SipEditor extends Component {
   }
 
   onPrevious = () => {
-    actions.handlePreviousSip()
+    actions.handlePreviousSlide()
   }
 
   onNext = () => {
-    actions.handleNextSip()
+    actions.handleNextSlide()
   }
 
   componentDidUpdate(prevProps) {
