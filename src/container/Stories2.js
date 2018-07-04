@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import './Stories.css'
 import Previewsip from '../components/Previewsip.js'
 import { actions } from '../store.js'
+<<<<<<< HEAD
+=======
+import { getAllSips } from '../api.js'
+>>>>>>> EditSlideArticleQuote
 
 class Stories extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips`)
-      .then(sips => sips.json())
+    getAllSips()
       .then(actions.loadSips)
   }
 

@@ -15,10 +15,11 @@
 
 .SlideBar {
   flex-direction: row;
-  width: 14vw;
+  width: 15vw;
   overflow-y: scroll;
   background-color: #f6f9fc;
   padding-left: 2vh;
+  margin-right: 15vh;
 }
 
 .SlideMiniature {

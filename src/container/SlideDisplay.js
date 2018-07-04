@@ -7,6 +7,7 @@ import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
 import { actions } from '../store.js'
 import { Line } from 'rc-progress'
+import { getSipBySipId } from '../api.js'
 import './SlideDisplay.css'
 
 const slideComponents = {
@@ -20,9 +21,7 @@ const slideComponents = {
 
 class SlideDisplay extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips/${this.props.id}`)
-      .then(res => res.json())
-      .then(actions.loadSip)
+    getSipBySipId(this.props.id).then(actions.loadSip)
   }
   render() {
     const progressBarValue = (this.props.currentStep * 100) / (this.props.sip.slides.length - 1)
@@ -36,8 +35,8 @@ class SlideDisplay extends Component {
             <Line percent={progressBarValue} strokeWidth='1' strokeColor='pink'/>
           </div>
           <div className='__SlideDisplay'>
-            <div className='previousBtn' onClick={actions.handlePreviousSip} />
-            <div className='nextBtn' onClick={actions.handleNextSip} />
+            <div className='previousBtn' onClick={actions.handlePreviousSlide} />
+            <div className='nextBtn' onClick={actions.handleNextSlide} />
             {slideComponents[slide.type](slide)}
           </div>
         </div>
