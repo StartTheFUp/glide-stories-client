@@ -90,6 +90,25 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'APPLY_DRAG') {
+    const { removedIndex, addedIndex, payload } = action.event
+
+    if (removedIndex === null && addedIndex === null) return state
+
+    const slides = [...state.sip.slides]
+    let itemToAdd = payload
+
+    if (removedIndex !== null) {
+      itemToAdd = slides.splice(removedIndex + 1, 1)[0]
+    }
+
+    if (addedIndex !== null) {
+      slides.splice(addedIndex + 1, 0, itemToAdd)
+    }
+
+    return { ...state, sip: { ...state.sip, slides } }
+  }
+
   return state
 }
 
@@ -106,4 +125,5 @@ export const actions = {
   closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
   updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url }),
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips })
+  applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
 }

@@ -46,25 +46,6 @@ const SlideMiniature = ({ slide, currentSlide }) =>
     {slideComponents[slide.type](slide)}
   </div>
 
-const applyDrag = (arr, dragResult) => {
-  const { removedIndex, addedIndex, payload } = dragResult
-
-  if (removedIndex === null && addedIndex === null) return arr
-
-  const result = [...arr]
-  let itemToAdd = payload
-
-  if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex + 1, 1)[0]
-  }
-
-  if (addedIndex !== null) {
-    result.splice(addedIndex + 1, 0, itemToAdd)
-  }
-
-  return result
-}
-
 const style = {
   slide: {
     display: 'flex',
@@ -81,13 +62,7 @@ class SipEditor extends Component {
   }
 
   onDrop = e => {
-    const slides = applyDrag(this.props.sip.slides, e)
-    actions.loadSip({ slides })
-    const sipOrder = slides
-      .map(slide => slide.uid)
-      .join(' ')
-
-    sendUpdatedSipOrder(sipOrder, this.props.id)
+    actions.applyDrag(e)
   }
 
   saveChange = () => {
