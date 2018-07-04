@@ -4,7 +4,7 @@ const api = {
 }
 
 const postJson = (url, content) => {
-  return fetch(url , {
+  return fetch(url, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(content)
