@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import LoginForm from '../components/LoginForm'
 import { Redirect, navigate } from '@reach/router'
 import SignUpForm from '../components/SignUpForm'
