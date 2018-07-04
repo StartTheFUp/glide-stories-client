@@ -7,15 +7,15 @@ import { Link } from '@reach/router'
 
 const Newsip = () =>
   <Grid.Column>
-      <Link to={`/newsip`} >
+    <Link to={`/mysips/new`} >
 
-    <Segment>
+      <Segment>
         <div className="BtnNewsip">
           <img src={Addsip} width="100" alt="add sip icon" />
           <h3>Add a new sip</h3>
         </div>
 
-    </Segment>
+      </Segment>
     </Link>
 
   </Grid.Column>

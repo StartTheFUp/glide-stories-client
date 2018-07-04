@@ -5,11 +5,12 @@ import Newsip from '../components/Newsip.js'
 import Sip from '../components/Sip.js'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
-import { Grid, Container } from 'semantic-ui-react'
+import { navigate } from '@reach/router'
+import { Grid, Container, Modal } from 'semantic-ui-react'
 
 class Mysips extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/preview`)
+    fetch(`http://localhost:5000/sips`)
       .then(sips => sips.json())
       .then(actions.loadSips)
   }
@@ -23,7 +24,7 @@ class Mysips extends Component {
         slideIntroSubtitle={mysip.subtitle}
         SlideIntroImage={mysip.image_url}
         sipId={mysip.id}
-        embed= {`<iframe width='400' height='600' src=http://localhost:3001/${mysip.id} style='width: 100%;'></iframe>`}
+        embed= {`<iframe width='400' height='600' src=http://localhost:3000/${mysip.id} style='width: 100%;'></iframe>`}
         publicUrl={<a href={`/${mysip.id}`} target="_blank">{`localhost/3000/${mysip.id}`}</a>}
       />)
 
@@ -47,6 +48,10 @@ class Mysips extends Component {
             </Grid.Row>
           </Grid>
         </Container>
+        <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
+          <form onSubmit >
+          </form>
+        </Modal>
       </React.Fragment>
     )
   }
