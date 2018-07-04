@@ -19,7 +19,7 @@ const EditSlideImage = ({ slide, onChange }) => {
               rows='2'
               wrap='hard'
               placeholer='Type your text here'
-              value={slide && text}
+              value={text || ''}
               onChange={event => onChange(event, 'text')} />
           </div>
         </div>

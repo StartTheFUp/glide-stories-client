@@ -1,0 +1,5 @@
+/*CSS*/
+
+a.item::before{
+display: none;
+}

@@ -6,6 +6,7 @@ import SlideCallToAction from '../components/SlideCallToAction'
 import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
 import { actions } from '../store.js'
+import { getSipBySipId } from '../api.js'
 import './SlideDisplay.css'
 
 const slideComponents = {
@@ -19,19 +20,19 @@ const slideComponents = {
 
 class SlideDisplay extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips/${this.props.id}`)
-      .then(res => res.json())
-      .then(actions.loadSip)
+    getSipBySipId(this.props.id).then(actions.loadSip)
   }
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
     if (!slide) return 'loading'
     return (
-      <div className='__SlideDisplay'>
-        <div className='previousBtn' onClick={actions.handlePreviousSip} />
-        <div className='nextBtn' onClick={actions.handleNextSip} />
-        {slideComponents[slide.type](slide)}
+      <div className="Container">
+        <div className="__SlideDisplay">
+          <div className="previousBtn" onClick={actions.handlePreviousSip} />
+          <div className="nextBtn" onClick={actions.handleNextSip} />
+          {slideComponents[slide.type](slide)}
+        </div>
       </div>
     )
   }

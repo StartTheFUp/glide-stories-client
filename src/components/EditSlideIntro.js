@@ -14,13 +14,13 @@ const EditSlideIntro = ({ slide, onChange }) => {
             maxLength='60'
             rows='2'
             wrap='hard'
-            value={title}
+            value={title || ''}
             onChange={event => onChange(event, 'title')} /></h1>
           <h2 style={{flex: 0.7}}><textarea
             maxLength='250'
             rows='2'
             wrap='hard'
-            value={subtitle}
+            value={subtitle || ''}
             onChange={event => onChange(event, 'subtitle')} /></h2>
         </div>
       </div>
