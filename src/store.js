@@ -162,7 +162,7 @@ const updateOrderInDatabase = store => next => async action => {
 
       return sendUpdatedSipOrder(sipOrder, state.sip.id)
     }
-    default:
+    default: return
   }
 }
 

@@ -11,6 +11,7 @@ const AddSlideBtn = props =>
         <Dropdown.Item onClick={() => props.addSlide('intro')}>INTRO</Dropdown.Item>
         <Dropdown.Item onClick={() => props.addSlide('text')}>TEXT</Dropdown.Item>
         <Dropdown.Item onClick={() => props.addSlide('image')}>IMAGE + TEXT</Dropdown.Item>
+        <Dropdown.Item onClick={() => props.addSlide('callToAction')}>CALL TO ACTION</Dropdown.Item>
         <Dropdown.Item onClick={() => props.showModal('tweet') }>TWEET</Dropdown.Item>
         <Dropdown.Item onClick={() => props.showModal('article')}>ARTICLE</Dropdown.Item>
       </Dropdown.Menu>
