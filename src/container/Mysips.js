@@ -58,12 +58,14 @@ class Mysips extends Component {
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
           <Modal.Description>
             Create a new sip
-            <Form onSubmit={() => createSip(this.sipTitle)} >
+            <Form onSubmit={() => {
+              createSip(this.sipTitle)
+                .then(res => (navigate(`/edit/${res.id}`)))
+            }} >
               <Form.Field required>
                 <label>Sip title : </label>
                 <input type="text" onChange={ (e) => {
                   this.sipTitle = e.target.value
-                  console.log(this.sipTitle)
                 }} />
                 <input type="submit" className="ui button" value="Create" />
               </Form.Field>
