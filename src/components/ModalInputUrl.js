@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button, Form, Message } from 'semantic-ui-react'
+import { Modal, Form, Message } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 const messages = {

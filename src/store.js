@@ -154,7 +154,7 @@ const updateOrderInDatabase = store => next => async action => {
       slide.uid = `${action.slide.type}-${slide.id}`
       store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
       state.sip.slides[state.currentStep] = slide
-    }
+    } // eslint-disable-next-line
     case 'APPLY_DRAG': {
       const sipOrder = state.sip.slides
         .map(slide => slide.uid)
@@ -162,6 +162,7 @@ const updateOrderInDatabase = store => next => async action => {
 
       return sendUpdatedSipOrder(sipOrder, state.sip.id)
     }
+    default: return
   }
 }
 

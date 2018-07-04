@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
-import { sendUpdatedSlide, sendNewSlide, getSipBySipId, sendNewImage } from '../api.js'
+import { sendUpdatedSlide, getSipBySipId, sendNewImage } from '../api.js'
 
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
@@ -45,15 +45,6 @@ const SlideMiniature = ({ slide, currentSlide }) =>
   onClick={() => actions.handleSlideSelection(slide)}>
     {slideComponents[slide.type](slide)}
   </div>
-
-const style = {
-  slide: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
 
 class SipEditor extends Component {
   componentDidMount() {
