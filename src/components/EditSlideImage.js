@@ -1,15 +1,19 @@
 import React from 'react'
+import { Message } from 'semantic-ui-react'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
 import './SlideImage.css'
 
-const EditSlideImage = ({ slide, onChange }) => {
+const EditSlideImage = ({ slide, onChange, errors }) => {
   const { imageUrl, text } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='EditImage'>
         <div className='SlideImage' style={{display: 'flex'}}>
           <input type='file' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
+          <div className='errors'>
+            {errors.upload ? errors.upload : ''}
+          </div>
           <div className='img' style={{
             backgroundImage: `url("${imageUrl}")`,
             margin: '10px 0'}} />
