@@ -4,13 +4,14 @@ import '../container/SipEditor.js'
 import { formatedDate } from '../formatedDate.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {
-  const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide || {}
+  const { imageUrl, authorName, authorScreenName, text, publicationDate, tweetUrl } = slide
+
   return (
     <div className='__SlideDisplay'>
       <div className='EditTweet' style={{flexDirection: 'column'}}>
         <input
           maxLength='500'
-          value={tweetUrl}
+          value={tweetUrl || ''}
           onChange={event => onChange(event, 'tweetUrl')} />
         <div className='quote' style= {{justifyContent: 'center'}}>
 
