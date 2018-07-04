@@ -88,9 +88,15 @@ class SipEditor extends Component {
       const slide = this.props.sip.slides[this.props.currentStep]
       const body = new FormData()
       body.append('image', files[0])
-      sendNewImage(slide, body).then(res =>
-        actions.updateSlide({ [key]: res.url })
-      )
+      sendNewImage(slide, body)
+        .then(res => {
+          if (res.error) {
+            console.log(res)
+            actions.showError('upload', res.error)
+          } else {
+            actions.updateSlide({ [key]: res.url })
+          }
+        })
     } else {
       actions.updateSlide({ [key]: value })
       clearTimeout(this.timeoutId)
