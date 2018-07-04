@@ -2,7 +2,6 @@
   max-height: 100vh;
   display: flex;
   background-color: #f6f9fc;
-  justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
 }
@@ -15,11 +14,11 @@
 
 .SlideBar {
   flex-direction: row;
-  width: 15vw;
+  width: 13.5vw;
   overflow-y: scroll;
   background-color: #f6f9fc;
   padding-left: 2vh;
-  margin-right: 15vh;
+  overflow-x: hidden;
 }
 
 .SlideMiniature {
@@ -83,6 +82,7 @@
 
 .__SlideEditor {
   display: flex;
+  margin: auto;
 }
 
 .editorScreen {

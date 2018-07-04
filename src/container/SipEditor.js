@@ -105,6 +105,7 @@ class SipEditor extends Component {
   render() {
     const { sip, currentStep } = this.props
     const currentSlide = sip.slides[currentStep]
+
     if (!currentSlide) return 'loading'
     return (
       <div className='ContainerEditor'>
@@ -115,8 +116,8 @@ class SipEditor extends Component {
               <AddSlideBtn
                 addSlide={actions.addSlide}
                 showModal={actions.showModal}
-                id={this.props.id}
-                icon='plus' />
+                id={this.props.id} 
+                icon='plus icon' />
             </div>
             <div className='SlideBar'>
               <div>
