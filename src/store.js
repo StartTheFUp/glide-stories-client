@@ -63,6 +63,29 @@ const reducer = (state, action) => {
       }
     }
   }
+
+  if (action.type === 'ADD_SLIDE') {
+    const nextStep = state.currentStep + 1
+    const id = Math.random()
+    return {
+      ...state,
+      currentStep: nextStep,
+      sip: {
+        ...state.sip,
+        slides: [
+          ...state.sip.slides.slice(0, nextStep),
+          {
+            sipId: state.sip.id,
+            id,
+            uid: `${action.slide.type}-${id}`,
+            ...action.slide
+          },
+          ...state.sip.slides.slice(nextStep)
+        ]
+      }
+    }
+  }
+
   if (action.type === 'SHOW_MODAL') {
     return {
       ...state,
@@ -126,4 +149,5 @@ export const actions = {
   updateUrl: (url) => store.dispatch({ type: 'UPDATE_URL', url }),
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips })
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
+  addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } })
 }

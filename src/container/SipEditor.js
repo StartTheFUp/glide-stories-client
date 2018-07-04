@@ -138,7 +138,7 @@ class SipEditor extends Component {
             <button onClick={this.onNext}>Next</button>
           </div>
 
-          <AddSlideBtn addSlide={sendNewSlide} id={this.props.id} style={style.btnDropDown}/>
+          <AddSlideBtn addSlide={actions.addSlide} showModal={actions.showModal} />
           <ModalInputUrl
             onClose={actions.closeModal}
             onChange={e => actions.updateUrl(e.target.value)}
