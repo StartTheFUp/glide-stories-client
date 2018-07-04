@@ -6,7 +6,7 @@ import Sip from '../components/Sip.js'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
 import { navigate } from '@reach/router'
-import { Grid, Container, Modal } from 'semantic-ui-react'
+import { Grid, Container, Modal, Form } from 'semantic-ui-react'
 
 class Mysips extends Component {
   componentDidMount() {
@@ -49,8 +49,18 @@ class Mysips extends Component {
           </Grid>
         </Container>
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
-          <form onSubmit >
-          </form>
+          <Modal.Description>
+            Create a new sip
+
+            <Form onSubmit>
+              <Form.Field required>
+                <label>Sip title : </label>
+                <input type="text" />
+                <input type="submit" className="ui button" value="Create" />
+              </Form.Field>
+            </Form>
+          </Modal.Description>
+
         </Modal>
       </React.Fragment>
     )
