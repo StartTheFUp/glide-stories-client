@@ -109,7 +109,6 @@ class SipEditor extends Component {
     if (!currentSlide) return 'loading'
     return (
       <React.Fragment>
-        <Navbar />
         <div className="Container">
           <div className="__SlideEditor">
             <div className="SlideBar">

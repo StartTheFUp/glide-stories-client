@@ -7,6 +7,7 @@ import Navbar from './Navbar.js'
 import { actions } from '../store.js'
 import { navigate, Redirect } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
+import  { createSip } from '../api.js'
 
 class Mysips extends Component {
   componentDidMount() {
@@ -14,6 +15,8 @@ class Mysips extends Component {
       .then(sips => sips.json())
       .then(actions.loadSips)
   }
+
+  sipTitle = ''
 
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
@@ -55,11 +58,13 @@ class Mysips extends Component {
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
           <Modal.Description>
             Create a new sip
-
-            <Form onSubmit>
+            <Form onSubmit={() => createSip(this.sipTitle)} >
               <Form.Field required>
                 <label>Sip title : </label>
-                <input type="text" />
+                <input type="text" onChange={ (e) => {
+                  this.sipTitle = e.target.value
+                  console.log(this.sipTitle)
+                }} />
                 <input type="submit" className="ui button" value="Create" />
               </Form.Field>
             </Form>
