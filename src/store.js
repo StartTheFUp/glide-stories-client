@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import { sendUpdatedSipOrder, sendNewSlide } from './api.js'
 
 const initialState = {
   currentStep: 0,
@@ -135,7 +136,33 @@ const reducer = (state, action) => {
   return state
 }
 
-export const store = createStore(reducer, initialState)
+const updateOrderInDatabase = store => next => async action => {
+  /// CHECKS
+  next(action)
+  /// SIDE EFFECTS
+  const state = store.getState()
+  switch (action.type) {
+    case 'ADD_SLIDE': {
+      const slide = await sendNewSlide({
+        type: action.slide.type,
+        sipId: state.sip.id,
+        url: state.inputValue
+      })
+      slide.uid = `${action.slide.type}-${slide.id}`
+      store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
+      state.sip.slides[state.currentStep] = slide
+    }
+    case 'APPLY_DRAG': {
+      const sipOrder = state.sip.slides
+        .map(slide => slide.uid)
+        .join(' ')
+
+      return sendUpdatedSipOrder(sipOrder, state.sip.id)
+    }
+  }
+}
+
+export const store = createStore(reducer, initialState, applyMiddleware(updateOrderInDatabase))
 
 export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
