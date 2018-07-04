@@ -1,3 +1,9 @@
 .AuthForm .ui.form .field {
   width: 100%;
 }
+
+body > div,
+body > div > div,
+body > div > div > div.AuthForm {
+  height: 100%;
+}

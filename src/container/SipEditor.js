@@ -17,7 +17,7 @@ import EditSlideTweet from '../components/EditSlideTweet'
 import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/ModalInputUrl.js'
-import Navbar from './Navbar.js'
+import Navbar from '../components/Navbar.js'
 
 import './SipEditor.css'
 
