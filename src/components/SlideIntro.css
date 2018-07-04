@@ -1,7 +1,3 @@
-.SlideIntro {
-  flex-direction: column;
-}
-
 .SlideIntro > div {
   position: relative;
   display: flex;

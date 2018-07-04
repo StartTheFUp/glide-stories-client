@@ -2,8 +2,9 @@ import React from 'react'
 import '../container/Mysips.js'
 import './Previewsip.css'
 import { Button, Segment, Grid } from 'semantic-ui-react'
+import { Link } from '@reach/router'
 
-const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImage, embed, publicUrl, editSip, deleteSip }) =>
+const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImage, embed, publicUrl, sipId, deleteSip }) =>
   <Grid.Column>
     <Segment>
       <h3>{title}</h3>
@@ -11,7 +12,7 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
 
         <div className="BoxShare">
           <h4>Embed</h4>
-          <textarea>{embed}</textarea>
+          <textarea readonly="readonly" rows='3'>{embed}</textarea>
         </div>
 
         <div className="BoxShare">
@@ -21,14 +22,18 @@ const Previewsip = ({ title, slideIntroTitle, slideIntroSubtitle, SlideIntroImag
       </div>
 
       <div className="PreviewBtn">
+        <Link to={`/edit/${sipId}`} >
+          <div className="Previewsip" style={
+            {backgroundImage: `url(${SlideIntroImage})`,
+              backgroundSize: 'cover'}
+          }>
+            <h1>{slideIntroTitle}</h1>
+            <h2>{slideIntroSubtitle}</h2>
 
-        <div className="Previewsip" style={{backgroundImage: `url(${SlideIntroImage})`}}>
-          <h1>{slideIntroTitle}</h1>
-          <h2>{slideIntroSubtitle}</h2>
-
-        </div>
+          </div>
+        </Link>
         <div className="Btn">
-          <Button basic color='blue' onClick={() => editSip}>Edit</Button>
+          <Button basic color='blue'><Link to={`/edit/${sipId}`} >Edit</Link></Button>
           <Button basic color='red' onClick={() => deleteSip}>Delete</Button>
         </div>
       </div>

@@ -1,0 +1,24 @@
+.SlideIntro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2vh;
+}
+
+.SlideIntro  .title {
+  font-size: 4.5vh;
+  margin: 3vh;
+  vertical-align: middle;
+  line-height: 4.5vh;
+  text-align: justify;
+}
+.SlideIntro .subtitle {
+  font-size: 2.5vh;
+  margin: 3vh;
+  vertical-align: middle;
+  line-height: 4.5vh;
+  text-align: justify;
+}

@@ -10,7 +10,8 @@ const initialState = {
   slideType: '',
   inputValue: '',
   warningMessage: false,
-  sips: []
+  sips: [],
+  errors: {}
 
 }
 const reducer = (state, action) => {
@@ -136,6 +137,16 @@ const reducer = (state, action) => {
     return { ...state, sip: { ...state.sip, slides } }
   }
 
+  if (action.type === 'UPDATE_ERROR') {
+    return {
+      ...state,
+      errors: {
+        ...state.errors,
+        [action.error.type]: action.error.message
+      }
+    }
+  }
+
   return state
 }
 
@@ -179,5 +190,6 @@ export const actions = {
   updateUrl: url => store.dispatch({ type: 'UPDATE_URL', url }),
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
-  addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } })
+  addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
+  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
 }

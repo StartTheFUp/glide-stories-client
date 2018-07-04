@@ -6,7 +6,10 @@ const api = {
 const postJson = (url, content) => {
   return fetch(url, {
     method: 'post',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'X-Access-Token': localStorage.token,
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(content)
   })
 }
@@ -48,3 +51,11 @@ export const sendNewImage = (slide, body) => {
   })
     .then(res => res.json())
 }
+
+export const sendSignUp = (params) =>
+  postJson(`${api.host}:${api.port}/users`, params)
+    .then(res => res.json())
+
+export const sendLogin = (params) =>
+  postJson(`${api.host}:${api.port}/auth/local`, params)
+    .then(res => res.json())

@@ -20,18 +20,19 @@ const slideComponents = {
 
 class SlideDisplay extends Component {
   componentDidMount() {
-    getSipBySipId(this.props.id)
-      .then(actions.loadSip)
+    getSipBySipId(this.props.id).then(actions.loadSip)
   }
   render() {
     const { sip, currentStep } = this.props
     const slide = sip.slides[currentStep]
     if (!slide) return 'loading'
     return (
-      <div className='__SlideDisplay'>
-        <div className='previousBtn' onClick={actions.handlePreviousSlide} />
-        <div className='nextBtn' onClick={actions.handleNextSlide} />
-        {slideComponents[slide.type](slide)}
+      <div className="Container">
+        <div className="__SlideDisplay">
+          <div className="previousBtn" onClick={actions.handlePreviousSip} />
+          <div className="nextBtn" onClick={actions.handleNextSip} />
+          {slideComponents[slide.type](slide)}
+        </div>
       </div>
     )
   }
