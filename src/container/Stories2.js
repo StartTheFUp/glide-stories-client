@@ -3,7 +3,6 @@ import './Stories.css'
 import Previewsip from '../components/Previewsip.js'
 import { actions } from '../store.js'
 
-
 class Stories extends Component {
   componentDidMount() {
     fetch(`http://localhost:5000/sips`)
