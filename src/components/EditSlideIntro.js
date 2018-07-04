@@ -3,12 +3,15 @@ import '../container/SlideDisplay.css'
 import './SlideIntro.css'
 import '../container/SipEditor.js'
 
-const EditSlideIntro = ({ slide, onChange }) => {
+const EditSlideIntro = ({ slide, onChange, errors }) => {
   const { imageUrl, title, subtitle } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <div>
+          <div className='errors'>
+            {errors.upload ? errors.upload : ''}
+          </div>
           <input style={{flexGrow: 0.5}} type='file' onChange={event => onChange(event, 'imageUrl')}/>
           <h1><textarea
             maxLength='60'
