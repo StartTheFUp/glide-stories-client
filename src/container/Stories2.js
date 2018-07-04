@@ -4,7 +4,6 @@ import Previewsip from '../components/Previewsip.js'
 import { actions } from '../store.js'
 import { getAllSips } from '../api.js'
 
-
 class Stories extends Component {
   componentDidMount() {
     getAllSips()

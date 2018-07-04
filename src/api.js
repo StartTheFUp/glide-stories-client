@@ -36,7 +36,7 @@ export const sendUpdatedSipOrder = (order, id) => {
     .then(res => res.json())
 }
 
-export const sendNewSlide = (params) => { //{ type, sipId, url }
+export const sendNewSlide = (params) => { // { type, sipId, url }
   return postJson(`${api.host}:${api.port}/slides`, params)
     .then(res => res.json())
 }

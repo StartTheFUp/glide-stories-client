@@ -13,7 +13,7 @@ const minPad = min => String(min).padStart(2, '0')
 const suffix = hour => {
   if (hour === 0) return 'am'
   if (hour === 12) return 'pm'
-  return hour < 12 ? "am" : "pm"
+  return hour < 12 ? 'am' : 'pm'
 }
 
 export const formatedDate = date => {

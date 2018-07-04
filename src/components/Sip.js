@@ -4,7 +4,7 @@ import './Previewsip.css'
 import { Segment, Grid } from 'semantic-ui-react'
 
 const Sip = () =>
-<Grid.Column>
+  <Grid.Column>
     <Segment>
       <h3>New sip</h3>
       <div className="SipShare">
@@ -27,7 +27,6 @@ const Sip = () =>
           <h2>hey</h2>
 
         </div>
-
 
       </div>
     </Segment>

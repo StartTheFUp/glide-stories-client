@@ -162,7 +162,7 @@ const updateOrderInDatabase = store => next => async action => {
 
       return sendUpdatedSipOrder(sipOrder, state.sip.id)
     }
-    default: return
+    default:
   }
 }
 
@@ -172,7 +172,6 @@ export const actions = {
   loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
   handleNextSlide: () => store.dispatch({ type: 'HANDLE_NEXT_SLIDE' }),
   handlePreviousSlide: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SLIDE' }),
-
   handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
   showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
