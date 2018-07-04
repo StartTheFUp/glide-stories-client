@@ -8,19 +8,19 @@ class Navbar extends Component {
 
       <Menu>
 
-        <Menu.Item name='editorials'>
+        <Menu.Item name='title'>
           <h3>Websips</h3>
         </Menu.Item>
 
-        <Menu.Item name='reviews'>
+        <Menu.Item name='sips'>
           <a className="item" href="/mysips">My Sips</a>
         </Menu.Item>
 
-        <Menu.Item name='upcomingEvents'>
+        <Menu.Item name='account'>
           <a className="item"><Icon name='user' /> My account</a>
         </Menu.Item>
 
-        <Menu.Item name='upcomingEvents'>
+        <Menu.Item name='logout'>
           <a className="item" onClick={this.props.logout}><Icon name='user times' /> Log out</a>
         </Menu.Item>
 
