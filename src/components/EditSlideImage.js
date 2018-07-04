@@ -1,5 +1,4 @@
 import React from 'react'
-import { Message } from 'semantic-ui-react'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
 import './SlideImage.css'
