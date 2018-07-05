@@ -22,6 +22,7 @@ class App extends Component {
       <Router>
         <Mysips {...this.state} path='/mysips' />
         <Mysips {...this.state} edit path='/mysips/new' />
+        <Mysips {...this.state} remove path='/mysips/remove' />
         <SlideDisplay {...this.state} path='/:id' />
         <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType} modalState={this.state.modalOpen}/>
         <SipEditor {...this.state} remove path='/edit/:id/remove' />
