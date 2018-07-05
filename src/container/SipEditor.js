@@ -190,6 +190,7 @@ class SipEditor extends Component {
                       onClick={() => {
                         actions.deleteSlide(currentSlide)
                         navigate(`/edit/${sip.id}`)
+                        window.location.reload()
                       }}>
                       <Icon name='checkmark' /> Confirm Delete Slide
                     </Button>
