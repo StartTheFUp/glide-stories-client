@@ -50,6 +50,14 @@ export const deleteSlideDB = (params) => {
   })
     .then(res => res.json())
 }
+
+export const deleteSipDB = (params) => {
+  return fetch(`${api.host}:${api.port}/sips/${params.id}`, {
+    method: 'delete'
+  })
+    .then(res => res.json())
+}
+
 export const sendNewImage = (slide, body) => {
   return fetch(`${api.host}:${api.port}/slide/${slide.type}/${slide.id}`, {
     method: 'post',
