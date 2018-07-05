@@ -148,7 +148,6 @@ class SipEditor extends Component {
               open= {this.props.insertUrl}
               onClose={() => navigate(`/edit/${sip.id}`)}
               onChange={e => actions.updateUrl(e.target.value)}
-              // onSubmit={() => actions.addSlide(this.props.type)}
               onSubmit={() => actions.addSlide(this.props.type)}
               url={this.props.inputValue}
               type={this.props.type}
