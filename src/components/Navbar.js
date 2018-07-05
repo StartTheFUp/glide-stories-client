@@ -5,8 +5,8 @@ import { Icon, Menu } from 'semantic-ui-react'
 class Navbar extends Component {
   render() {
     return (
-
-      <Menu>
+       
+      <Menu width={16}>
 
         <Menu.Item name='title'>
           <h3>Websips</h3>
@@ -16,7 +16,7 @@ class Navbar extends Component {
           <a className="item" href="/mysips">My Sips</a>
         </Menu.Item>
 
-        <Menu.Item name='account'>
+        <Menu.Item position="right" name='account'>
           <a className="item"><Icon name='user' /> My account</a>
         </Menu.Item>
 
