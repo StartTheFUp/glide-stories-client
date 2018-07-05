@@ -25,7 +25,7 @@ class App extends Component {
         <Mysips {...this.state} remove path='/mysips/remove' />
         <SlideDisplay {...this.state} path='/:id' />
         <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType}/>
-        <SipEditor {...this.state} insertUrl path={`/edit/${this.state.sip.id}/url`} inputValue={this.state.inputValue} type={this.state.slideType} />
+        <SipEditor {...this.state} insertUrl path='/edit/:id/:type' inputValue={this.state.inputValue} type={this.state.slideType} />
         <SipEditor {...this.state} remove path='/edit/:id/remove' />
         <Home {...this.state} path='/' />
         <Home {...this.state} signUp path='/signup' />

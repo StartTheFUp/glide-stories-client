@@ -6,8 +6,6 @@ const initialState = {
   sip: {
     slides: []
   },
-  modalOpen: false,
-  slideType: '',
   inputValue: '',
   warningMessage: false,
   sips: [],
@@ -90,14 +88,16 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'DELETE_SLIDE') {
+    const slides = [
+      ...state.sip.slides.slice(0, state.currentStep),
+      ...state.sip.slides.slice(state.currentStep + 1)
+    ]
     return {
       ...state,
+      currentStep: Math.min(state.currentStep, slides.length - 1),
       sip: {
         ...state.sip,
-        slides: [
-          ...state.sip.slides.slice(0, state.currentStep),
-          ...state.sip.slides.slice(state.currentStep + 1)
-        ]
+        slides
       }
     }
   }
@@ -109,21 +109,6 @@ const reducer = (state, action) => {
         ...state.sips.slice(0, state.sips.indexOf(action.sipContent)),
         ...state.sips.slice(state.sips.indexOf(action.sipContent) + 1)
       ]
-    }
-  }
-
-  if (action.type === 'SHOW_MODAL') {
-    return {
-      ...state,
-      modalOpen: true,
-      slideType: action.slideType
-    }
-  }
-
-  if (action.type === 'CLOSE_MODAL') {
-    return {
-      ...state,
-      modalOpen: false
     }
   }
 
@@ -170,20 +155,6 @@ const reducer = (state, action) => {
     }
   }
 
-  if (action.type === 'FIND_TYPE_TWEET') {
-    return {
-      ...state,
-      slideType: 'tweet'
-    }
-  }
-
-  if (action.type === 'FIND_TYPE_ARTICLE') {
-    return {
-      ...state,
-      slideType: 'article'
-    }
-  }
-
   return state
 }
 
@@ -191,7 +162,7 @@ const saveOrder = state => {
   const sipOrder = state.sip.slides
     .map(slide => slide.uid)
     .join(' ')
-  console.log('sipOrder :', sipOrder)
+  console.log('jupdate lorder sipOrder :', sipOrder)
   return sendUpdatedSipOrder(sipOrder, state.sip.id)
 }
 
@@ -234,8 +205,6 @@ export const actions = {
   handlePreviousSlide: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SLIDE' }),
   handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
-  showModal: (slideType) => store.dispatch({ type: 'SHOW_MODAL', slideType: slideType }),
-  closeModal: () => store.dispatch({ type: 'CLOSE_MODAL' }),
   updateUrl: url => store.dispatch({ type: 'UPDATE_URL', url }),
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
@@ -243,6 +212,4 @@ export const actions = {
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
   deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
-  tweetType: () => store.dispatch({ type: 'FIND_TYPE_TWEET' }),
-  articleType: () => store.dispatch({ type: 'FIND_TYPE_ARTICLE' })
 }

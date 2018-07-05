@@ -64,4 +64,5 @@ textarea:focus {
 
 .ui.button {
     padding:1.5vh;
+    z-index: 100;
 }

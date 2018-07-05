@@ -12,7 +12,7 @@ const Previewsip = ({ title, remove, slideIntroTitle, slideIntroSubtitle, SlideI
 
         <div className="BoxShare">
           <h4>Embed</h4>
-          <textarea readonly="readonly" rows='3'>{embed}</textarea>
+          <textarea readOnly rows='3' value={embed} />
         </div>
 
         <div className="BoxShare">

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import './Navbar.css'
+import { Link, navigate } from '@reach/router'
 import { Icon, Menu } from 'semantic-ui-react'
+
+const logout = () => {
+  localStorage.clear()
+  navigate('/')
+}
 
 class Navbar extends Component {
   render() {
@@ -13,15 +19,15 @@ class Navbar extends Component {
         </Menu.Item>
 
         <Menu.Item name='sips'>
-          <a className="item" href="/mysips">My Sips</a>
+          <Link to="/mysips">My Sips</Link>
         </Menu.Item>
 
         <Menu.Item position="right" name='account'>
-          <a className="item"><Icon name='user' /> My account</a>
+          <Link to='/myaccount' ><Icon name='user' /> My account</Link>
         </Menu.Item>
 
         <Menu.Item name='logout'>
-          <a className="item" onClick={this.props.logout}><Icon name='user times' /> Log out</a>
+          <a href='#' onClick={logout}><Icon name='user times' /> Log out</a>
         </Menu.Item>
 
       </Menu>

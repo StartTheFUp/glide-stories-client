@@ -5,6 +5,9 @@
   flex-direction: column;
   overflow: hidden;
 }
+.ContainerEditor .__SlideDisplay {
+  height: calc(100vh - 75px);
+}
 
 .navbarContainer {
   display: flex;
@@ -14,7 +17,7 @@
 
 .SlideBar {
   flex-direction: row;
-  width: 13.5vw;
+  width: 250px;
   overflow-y: scroll;
   background-color: #f6f9fc;
   padding-left: 2vh;

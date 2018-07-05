@@ -60,24 +60,12 @@ class SipEditor extends Component {
     getSipBySipId(this.props.id).then(actions.loadSip)
   }
 
-  onDrop = e => {
-    actions.applyDrag(e)
-  }
-
   saveChange = () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
       .map(sendUpdatedSlide)
     this.prevSip = this.props.sip
-  }
-
-  onPrevious = () => {
-    actions.handlePreviousSlide()
-  }
-
-  onNext = () => {
-    actions.handleNextSlide()
   }
 
   componentDidUpdate(prevProps) {
@@ -133,7 +121,7 @@ class SipEditor extends Component {
               <div>
                 {SlideMiniature({ slide: sip.slides[0], currentSlide, index: 1 })}
               </div>
-              <Container onDrop={this.onDrop}>
+              <Container onDrop={actions.applyDrag}>
                 {sip.slides
                   .slice(1)
                   .map(slide => (
@@ -145,7 +133,7 @@ class SipEditor extends Component {
             </div>
           </div>
           <div className="__SlideEditor">
-            <button className="ui icon button navigationBtn" onClick={this.onPrevious}>
+            <button className="ui icon button navigationBtn" onClick={actions.handlePreviousSlide}>
               <i className="angle left icon"></i>
             </button>
             <div className='EditorScreen'>
@@ -156,14 +144,14 @@ class SipEditor extends Component {
               })}
             </div>
             <ModalInputUrl
-              open= {this.props.insertUrl}
+              open={this.props.insertUrl}
               onClose={() => navigate(`/edit/${sip.id}`)}
               onChange={e => actions.updateUrl(e.target.value)}
               onSubmit={() => actions.addSlide(this.props.type)}
               url={this.props.inputValue}
               type={this.props.type}
             />
-            <button className="ui icon button navigationBtn" onClick={this.onNext}>
+            <button className="ui icon button navigationBtn" onClick={actions.handleNextSlide}>
               <i className="angle right icon"></i>
             </button>
             {currentStep !== 0 && (
@@ -187,10 +175,9 @@ class SipEditor extends Component {
                     </Button>
                     <Button inverted
                       color='red'
-                      onClick={() => {
+                      onClick={e => {
                         actions.deleteSlide(currentSlide)
                         navigate(`/edit/${sip.id}`)
-                        window.location.reload()
                       }}>
                       <Icon name='checkmark' /> Confirm Delete Slide
                     </Button>

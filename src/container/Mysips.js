@@ -36,10 +36,7 @@ class Mysips extends Component {
     return (
       <React.Fragment>
         <Container fluid>
-          <Navbar logout={() => {
-            localStorage.clear()
-            navigate('/')
-          }} />
+          <Navbar />
         </Container>
         <Container>
           <h1>My sips</h1>
