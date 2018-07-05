@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
 import { sendUpdatedSlide, getSipBySipId, sendNewImage } from '../api.js'
+import { Redirect, navigate, Link } from '@reach/router'
 
 import SlideText from '../components/SlideText'
 import SlideIntro from '../components/SlideIntro'
@@ -19,7 +20,6 @@ import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/ModalInputUrl.js'
 import Navbar from '../components/Navbar.js'
 
-import { navigate, Link } from '@reach/router'
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
 
 import './SipEditor.css'
@@ -112,16 +112,24 @@ class SipEditor extends Component {
   }
 
   render() {
+    if (!localStorage.token) return <Redirect noThrow to='/' />
     const { sip, currentStep } = this.props
     const currentSlide = sip.slides[currentStep]
 
     if (!currentSlide) return 'loading'
     return (
-      <React.Fragment>
-        <Navbar />
-        <div className="Container">
-          <div className="__SlideEditor">
-            <div className="SlideBar">
+
+      <div className='ContainerEditor'>
+        <Navbar className='navbarContainer'/>
+        <div className='Editor'>
+          <div className='ContainerEditor'>
+            <div className='button'>
+              <AddSlideBtn
+                addSlide={actions.addSlide}
+                id={this.props.id}
+                icon='plus' />
+            </div>
+            <div className='SlideBar'>
               <div>
                 {SlideMiniature({ slide: sip.slides[0], currentSlide, index: 1 })}
               </div>
@@ -135,21 +143,30 @@ class SipEditor extends Component {
                   ))}
               </Container>
             </div>
-            <div className="Editor">
-              <div className="EditorScreen">
-                {EditSlideComponents[currentSlide.type]({
-                  slide: currentSlide,
-                  onChange: this.requestSave,
-                  errors: this.props.errors
-                })}
-              </div>
-
-              <div className="EditorNavigation">
-                <button onClick={this.onPrevious}>Previous</button>
-                <button onClick={this.onNext}>Next</button>
-              </div>
-
-              {currentStep !== 0 && (
+          </div>
+          <div className="__SlideEditor">
+            <button className="ui icon button navigationBtn" onClick={this.onPrevious}>
+              <i className="angle left icon"></i>
+            </button>
+            <div className='EditorScreen'>
+              {EditSlideComponents[currentSlide.type]({
+                slide: currentSlide,
+                onChange: this.requestSave,
+                errors: this.props.errors
+              })}
+            </div>
+            <ModalInputUrl
+              open= {this.props.insertUrl}
+              onClose={() => navigate(`/edit/${sip.id}`)}
+              onChange={e => actions.updateUrl(e.target.value)}
+              onSubmit={() => actions.addSlide(this.props.type)}
+              url={this.props.inputValue}
+              type={this.props.type}
+            />
+            <button className="ui icon button navigationBtn" onClick={this.onNext}>
+              <i className="angle right icon"></i>
+            </button>
+            {currentStep !== 0 && (
                 <React.Fragment>
                   <Link to={`/edit/${sip.id}/remove`}>
                     <Button color='teal' fluid size='large'>Delete Slide</Button>
@@ -180,23 +197,9 @@ class SipEditor extends Component {
                   </Modal>
                 </React.Fragment>
               )}
-
-              <AddSlideBtn
-                addSlide={actions.addSlide}
-                showModal={actions.showModal}
-              />
-              <ModalInputUrl
-                onClose={actions.closeModal}
-                onChange={e => actions.updateUrl(e.target.value)}
-                onSubmit={() => actions.addSlide(this.props.type)}
-                open={this.props.modalState}
-                url={this.props.inputValue}
-                type={this.props.type}
-              />
-            </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

@@ -23,8 +23,8 @@ const Sip = () =>
       <div className="PreviewBtn">
 
         <div className="Previewsip">
-          <h1>hey</h1>
-          <h2>hey</h2>
+          <h1>Hey</h1>
+          <h2>Hey</h2>
 
         </div>
 

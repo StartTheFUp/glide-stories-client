@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import './Mysips.css'
 import Previewsip from '../components/Previewsip.js'
 import Newsip from '../components/Newsip.js'
+import { actions } from '../store.js'
+import { navigate, Redirect } from '@reach/router'
+import { Grid, Container, Modal, Form } from 'semantic-ui-react'
+import { createSip } from '../api.js'
 import Sip from '../components/Sip.js'
 import Navbar from '../components/Navbar.js'
-import { actions } from '../store.js'
-import { navigate, Redirect } from '@reach/router'
-import { Grid, Container, Modal } from 'semantic-ui-react'
 
 class Mysips extends Component {
   componentDidMount() {
@@ -14,6 +15,8 @@ class Mysips extends Component {
       .then(sips => sips.json())
       .then(actions.loadSips)
   }
+
+  sipTitle = ''
 
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
@@ -50,14 +53,27 @@ class Mysips extends Component {
 
           <Grid centered doubling columns={3}>
             <Grid.Row>
-              <Sip />
               {mysips}
             </Grid.Row>
           </Grid>
         </Container>
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
-          <form onSubmit >
-          </form>
+          <Modal.Header>Create a new sip</Modal.Header>
+          <Modal.Content>
+            <Form onSubmit={() => {
+              createSip(this.sipTitle)
+                .then(res => (navigate(`/edit/${res.id}`)))
+            }} >
+              <Form.Field required>
+                <label>Sip title : </label>
+                  <input type="text" required onChange={ (e) => {
+                    this.sipTitle = e.target.value
+                  }} />
+                  <input type="submit" className="ui button" value="Create" />
+
+              </Form.Field>
+            </Form>
+          </Modal.Content>
         </Modal>
       </React.Fragment>
     )

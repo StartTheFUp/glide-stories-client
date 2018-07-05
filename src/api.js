@@ -14,6 +14,7 @@ const postJson = (url, content) => {
   })
 }
 
+
 export const getAllSips = () => {
   return fetch(`${api.host}:${api.port}/sips`)
     .then(sips => sips.json())
@@ -28,6 +29,13 @@ export const getSipBySipId = id => {
   return fetch(`${api.host}:${api.port}/sips/${id}`)
     .then(res => res.json())
 }
+
+export const createSip = title => {
+  console.log({ title })
+  return postJson(`${api.host}:${api.port}/sips`, { title })
+    .then(res => res.json())
+}
+
 
 export const sendUpdatedSlide = slide => {
   return postJson(`${api.host}:${api.port}/slides/${slide.id}`, slide)

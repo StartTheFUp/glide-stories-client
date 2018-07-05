@@ -9,6 +9,10 @@
     min-width: 55vh;
 }
 
+.ui.grid>.row>.column {
+    padding-bottom: 5vh;
+}
+
 h3 {
     font-size: 3vh;
     padding: 0.5vh;
