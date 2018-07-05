@@ -7,6 +7,7 @@ import SipEditor from './container/SipEditor'
 import Mysips from './container/Mysips.js'
 import { Router } from '@reach/router'
 import Home from './container/Home'
+import MyAccount from './components/MyAccount.js'
 
 class App extends Component {
   constructor() {
@@ -29,6 +30,8 @@ class App extends Component {
         <SipEditor {...this.state} remove path='/edit/:id/remove' />
         <Home {...this.state} path='/' />
         <Home {...this.state} signUp path='/signup' />
+        <MyAccount {... this.state} path='/myaccount'/>
+
       </Router>
     )
   }

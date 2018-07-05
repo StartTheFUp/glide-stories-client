@@ -27,7 +27,7 @@ class Navbar extends Component {
         </Menu.Item>
 
         <Menu.Item name='logout'>
-          <a href='#' onClick={logout}><Icon name='user times' /> Log out</a>
+          <Link to='/' onClick={logout}><Icon name='user times' /> Log out</Link>
         </Menu.Item>
 
       </Menu>
