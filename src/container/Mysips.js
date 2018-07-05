@@ -5,13 +5,12 @@ import Newsip from '../components/Newsip.js'
 import { actions } from '../store.js'
 import { Redirect, navigate } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
-import { createSip } from '../api.js'
+import { createSip, getAllSips } from '../api.js'
 import Navbar from '../components/Navbar.js'
 
 class Mysips extends Component {
   componentDidMount() {
-    fetch(`http://localhost:5000/sips`)
-      .then(sips => sips.json())
+    getAllSips()
       .then(actions.loadSips)
   }
 
