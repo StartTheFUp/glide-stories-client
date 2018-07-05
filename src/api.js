@@ -21,11 +21,6 @@ export const getAllSips = () => {
     .then(sips => sips.json())
 }
 
-export const getSipsMiniature = () => {
-  return fetch(`${api.host}:${api.port}/preview`)
-    .then(sips => sips.json())
-}
-
 export const getSipBySipId = id => {
   return fetch(`${api.host}:${api.port}/sips/${id}`)
     .then(res => res.json())
@@ -69,6 +64,7 @@ export const deleteSipDB = (params) => {
 export const sendNewImage = (slide, body) => {
   return fetch(`${api.host}:${api.port}/slide/${slide.type}/${slide.id}`, {
     method: 'post',
+    headers: { 'X-Access-Token': localStorage.token },
     body
   })
     .then(res => res.json())
