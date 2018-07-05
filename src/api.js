@@ -15,7 +15,9 @@ const postJson = (url, content) => {
 }
 
 export const getAllSips = () => {
-  return fetch(`${api.host}:${api.port}/sips`)
+  return fetch(`${api.host}:${api.port}/sips`,
+    {headers: { 'X-Access-Token': localStorage.token },
+  })
     .then(sips => sips.json())
 }
 
