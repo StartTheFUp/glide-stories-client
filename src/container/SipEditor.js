@@ -145,7 +145,7 @@ class SipEditor extends Component {
               })}
             </div>
             <ModalInputUrl
-              open= {this.props.insertUrl}git 
+              open= {this.props.insertUrl}
               onClose={() => navigate(`/edit/${sip.id}`)}
               onChange={e => actions.updateUrl(e.target.value)}
               onSubmit={() => actions.addSlide(this.props.type)}
