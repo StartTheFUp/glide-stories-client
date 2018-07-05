@@ -167,36 +167,36 @@ class SipEditor extends Component {
               <i className="angle right icon"></i>
             </button>
             {currentStep !== 0 && (
-                <React.Fragment>
-                  <Link to={`/edit/${sip.id}/remove`}>
-                    <Button color='teal' fluid size='large'>Delete Slide</Button>
-                  </Link>
-                  <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
+              <React.Fragment>
+                <Link to={`/edit/${sip.id}/remove`}>
+                  <Button color='teal' fluid size='large'>Delete Slide</Button>
+                </Link>
+                <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
 
-                    <Header icon='archive' content='Are you sure you want to delete this slide ?' />
-                    <Modal.Content>
-                      <p>
+                  <Header icon='archive' content='Are you sure you want to delete this slide ?' />
+                  <Modal.Content>
+                    <p>
                           This is forever dude, becarefull, we won't care if you cry later...
-                        <br />
+                      <br />
                           Please, think twice, we can talk about it...
-                      </p>
-                    </Modal.Content>
-                    <Modal.Actions>
-                      <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
-                        <Icon name='remove' /> Cancel
-                      </Button>
-                      <Button inverted
-                        color='red'
-                        onClick={() => {
-                          actions.deleteSlide(currentSlide)
-                          navigate(`/edit/${sip.id}`)
-                        }}>
-                        <Icon name='checkmark' /> Confirm Delete Slide
-                      </Button>
-                    </Modal.Actions>
-                  </Modal>
-                </React.Fragment>
-              )}
+                    </p>
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
+                      <Icon name='remove' /> Cancel
+                    </Button>
+                    <Button inverted
+                      color='red'
+                      onClick={() => {
+                        actions.deleteSlide(currentSlide)
+                        navigate(`/edit/${sip.id}`)
+                      }}>
+                      <Icon name='checkmark' /> Confirm Delete Slide
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>

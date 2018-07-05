@@ -5,12 +5,12 @@
     align-items: center;
 }
 
-.ui[class*="three column"].doubling.grid>.row>.column {
-    min-width: 55vh;
-}
-
 .ui.grid>.row>.column {
     padding-bottom: 5vh;
+}
+
+.ui[class*="three column"].doubling.grid>.row>.column {
+    min-width: 55vh;
 }
 
 h3 {

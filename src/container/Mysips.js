@@ -3,10 +3,9 @@ import './Mysips.css'
 import Previewsip from '../components/Previewsip.js'
 import Newsip from '../components/Newsip.js'
 import { actions } from '../store.js'
-import { navigate, Redirect } from '@reach/router'
+import { Redirect, navigate } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
 import { createSip } from '../api.js'
-import Sip from '../components/Sip.js'
 import Navbar from '../components/Navbar.js'
 
 class Mysips extends Component {
@@ -66,10 +65,10 @@ class Mysips extends Component {
             }} >
               <Form.Field required>
                 <label>Sip title : </label>
-                  <input type="text" required onChange={ (e) => {
-                    this.sipTitle = e.target.value
-                  }} />
-                  <input type="submit" className="ui button" value="Create" />
+                <input type="text" required onChange={ (e) => {
+                  this.sipTitle = e.target.value
+                }} />
+                <input type="submit" className="ui button" value="Create" />
 
               </Form.Field>
             </Form>
