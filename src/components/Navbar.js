@@ -5,7 +5,7 @@ import { Icon, Menu } from 'semantic-ui-react'
 class Navbar extends Component {
   render() {
     return (
-       
+
       <Menu width={16}>
 
         <Menu.Item name='title'>
