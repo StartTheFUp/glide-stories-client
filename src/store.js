@@ -90,9 +90,6 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'DELETE_SLIDE') {
-    console.log('sip avant le delete : ', state.sip.slides)
-    console.log(state.currentStep)
-    console.log(state.sip.slides.slice(0, state.currentStep), state.sip.slides.slice(state.currentStep + 1))
     return {
       ...state,
       sip: {
