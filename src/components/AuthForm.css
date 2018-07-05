@@ -2,8 +2,6 @@
   width: 100%;
 }
 
-body > div,
-body > div > div,
-body > div > div > div.AuthForm {
-  height: 100%;
+.AuthForm {
+  padding-top: 12vh;
 }
