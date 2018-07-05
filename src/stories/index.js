@@ -79,8 +79,8 @@ storiesOf('SlideArticleQuote', module)
 
 storiesOf('AddSlideBtn', module)
   .add('Display AddSlide btn - logo', () =>
-    <AddSlideBtn iconType='plus icon' />)
+    <AddSlideBtn icon='plus icon' />)
   .add('AddSlide btn - logo upload', () =>
-    <AddSlideBtn iconType='upload icon' />)
+    <AddSlideBtn icon='upload icon' />)
   .add('AddSlide btn - logo edit', () =>
-    <AddSlideBtn iconType='edit outline' />)
+    <AddSlideBtn icon='edit outline' />)

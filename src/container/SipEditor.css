@@ -1,36 +1,101 @@
+.ContainerEditor {
+  max-height: 100vh;
+  display: flex;
+  background-color: #f6f9fc;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+}
+
 .SlideBar {
   flex-direction: row;
-    width: 20vw;
-    overflow-y: scroll;
-    height: 100vh;
+  width: 13.5vw;
+  overflow-y: scroll;
+  background-color: #f6f9fc;
+  padding-left: 2vh;
+  overflow-x: hidden;
 }
 
 .SlideMiniature {
   flex-direction: column;
-
-  min-height: 200px; /* rm */
+  height: 200px;  /* rm */
+  width: 200px;
   margin: 5px; /* rm */
   background-color: white; /* rm */
 }
 
 .SlideMiniature .SlideText p {
-  padding: 10px;
+  padding: 7vh 1vh;
+  font-size: 10px;
 }
+
+.SlideMiniature h1 {
+  font-size: 20px;
+  padding: 1vh;
+}
+
+.SlideMiniature SlideIntro {
+  font-size: 20px;
+  padding: 1vh;
+}
+
+.SlideMiniature .quoteHead {
+  padding: 0 1vh;
+}
+
+.SlideMiniature h2, a {
+  font-size: 15px;
+}
+
+.SlideMiniature button {
+  height: 10px;
+  width: 110px;
+}
+
+.SlideMiniature p {
+  font-size: 10px;
+  padding: 0 1vh;
+  /* margin: 1vh; */
+}
+
+.SlideMiniature img {
+  width: 2rem;
+}
+
+.SlideMiniature .img {
+  max-width: 14.4rem;
+  height: 5rem;
+}
+
+.SlideImage {
+  padding-top: 5vh;
+}
+
+/* SlideMiniature .SlideImage {
+  padding-top: 5vh;
+} */
 
 .__SlideEditor {
   display: flex;
+  margin: auto;
+}
+
+.editorScreen {
+  height: 80vh;
 }
 
 .Editor {
+  display: flex;
   flex-direction: row;
 }
 
-.EditorNavigation {
-  flex-direction: column;
-}
-
 .EditorNavigation button {
-  width: 50%;
+  width: 15vh;
   color: #DBFCFF ;
   padding: 1vh;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -42,9 +107,37 @@
 }
 
 .selected {
-  outline: 2px solid blue;
-      /* outline: 10px solid #f200ff4f;
+  /* outline: 2px solid blue; */
+    outline: 10px solid #f200ff4f;
+    /* background-color: yellow; */
+    /* outline: 10px solid yellow; */
     outline-offset: -10px;
+    /* box-shadow: inset 0 0 0px 2px #EAC9C1; */
     box-shadow: inset 0 0 0px 2px #7d00ff, inset 0 0 20px 4px #39d76b;
-     */
+}
+
+.button {
+  flex-flow: 0;
+  display: flex;
+  align-items: center;
+  margin: 3vh;
+}
+
+.uploadImageInput {
+  display: flex;
+  justify-content: center;
+  color: #89909F;
+  padding-bottom: 5vh;
+}
+
+textarea {
+  border: dotted 1.5px #ced0d5;
+}
+
+.navigationBtn {
+  width: 8vh;
+}
+
+.ui.small.modal {
+  height: 20vh;
 }

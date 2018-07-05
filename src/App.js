@@ -23,7 +23,8 @@ class App extends Component {
         <Mysips {...this.state} path='/mysips' />
         <Mysips {...this.state} edit path='/mysips/new' />
         <SlideDisplay {...this.state} path='/:id' />
-        <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType} modalState={this.state.modalOpen}/>
+        <SipEditor {...this.state} path='/edit/:id' inputValue={this.state.inputValue} type={this.state.slideType}/>
+        <SipEditor {...this.state} insertUrl path='/edit/url' inputValue={this.state.inputValue} type={this.state.slideType} />
         <Home {...this.state} path='/' />
         <Home {...this.state} signUp path='/signup' />
       </Router>

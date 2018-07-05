@@ -9,7 +9,9 @@ const EditSlideImage = ({ slide, onChange }) => {
     <div className='__SlideDisplay'>
       <div className='EditImage'>
         <div className='SlideImage' style={{display: 'flex'}}>
-          <input type='file' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
+          <div className='uploadImageInput' >
+            <input type='file' style={{ padding: '0 10px' }} name='image_uploads' onChange={event => onChange(event, 'imageUrl')}/>
+          </div>
           <div className='img' style={{
             backgroundImage: `url("${imageUrl}")`,
             margin: '10px 0'}} />

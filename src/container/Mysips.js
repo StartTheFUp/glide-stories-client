@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import './Mysips.css'
 import Previewsip from '../components/Previewsip.js'
 import Newsip from '../components/Newsip.js'
-import Navbar from './Navbar.js'
 import { actions } from '../store.js'
 import { navigate, Redirect } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
-import  { createSip } from '../api.js'
+import { createSip } from '../api.js'
+import Sip from '../components/Sip.js'
+import Navbar from '../components/Navbar.js'
 
 class Mysips extends Component {
   componentDidMount() {

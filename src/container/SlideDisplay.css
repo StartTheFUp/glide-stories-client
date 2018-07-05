@@ -1,8 +1,13 @@
 .Container {
-  min-height: 100%;
   display: flex;
   justify-content: center;
-  background-color: #DDD;
+  background-color: #343434;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.ContainerProgressBarAndSlide {
+  flex-direction: column;
 }
 
 .__SlideDisplay {
@@ -14,7 +19,6 @@
   position: relative;
   justify-content: center;
   min-height: 100%;
-
 }
 
 .__SlideDisplay p,
@@ -63,4 +67,8 @@
   width: 70%;
   right: 0;
   top:0;
+}
+
+.rc-progress-line-trail {
+  stroke: #343434;
 }
