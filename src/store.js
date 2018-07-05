@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import { sendUpdatedSipOrder, sendNewSlide } from './api.js'
+import { sendUpdatedSipOrder, sendNewSlide, deleteSlideDB, deleteSipDB } from './api.js'
 
 const initialState = {
   currentStep: 0,
@@ -89,6 +89,21 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'DELETE_SLIDE') {
+    console.log('sip avant le delete : ', state.sip.slides)
+    console.log(state.currentStep)
+    console.log(state.sip.slides.slice(0, state.currentStep), state.sip.slides.slice(state.currentStep + 1))
+    return {
+      ...state,
+      sip: {
+        ...state.sip,
+        slides: [
+          ...state.sip.slides.slice(0, state.currentStep),
+          ...state.sip.slides.slice(state.currentStep + 1)
+        ]
+      }
+    }
+  }
   if (action.type === 'SHOW_MODAL') {
     return {
       ...state,
@@ -150,30 +165,38 @@ const reducer = (state, action) => {
   return state
 }
 
+const saveOrder = state => {
+  const sipOrder = state.sip.slides
+    .map(slide => slide.uid)
+    .join(' ')
+  console.log('sipOrder :', sipOrder)
+  return sendUpdatedSipOrder(sipOrder, state.sip.id)
+}
+
 const updateOrderInDatabase = store => next => async action => {
   /// CHECKS
   next(action)
   /// SIDE EFFECTS
   const state = store.getState()
-  switch (action.type) {
-    case 'ADD_SLIDE': {
-      const slide = await sendNewSlide({
-        type: action.slide.type,
-        sipId: state.sip.id,
-        url: state.inputValue
-      })
-      slide.uid = `${action.slide.type}-${slide.id}`
-      store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
-      state.sip.slides[state.currentStep] = slide
-    } // eslint-disable-next-line
-    case 'APPLY_DRAG': {
-      const sipOrder = state.sip.slides
-        .map(slide => slide.uid)
-        .join(' ')
 
-      return sendUpdatedSipOrder(sipOrder, state.sip.id)
-    }
-    default: return
+  if (action.type === 'DELETE_SLIDE') {
+    await deleteSlideDB({
+      type: action.slideContent.type,
+      id: action.slideContent.id,
+    })
+    saveOrder(state)
+  } else if (action.type === 'ADD_SLIDE') {
+    const slide = await sendNewSlide({
+      type: action.slide.type,
+      sipId: state.sip.id,
+      url: state.inputValue
+    })
+    slide.uid = `${action.slide.type}-${slide.id}`
+    store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
+    state.sip.slides[state.currentStep] = slide
+    saveOrder(state)
+  } else if (action.type === 'APPLY_DRAG') {
+    saveOrder(state)
   }
 }
 
@@ -191,5 +214,6 @@ export const actions = {
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
+  deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
 }
