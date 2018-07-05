@@ -190,7 +190,7 @@ const updateOrderInDatabase = store => next => async action => {
   if (action.type === 'DELETE_SLIDE') {
     await deleteSlideDB({
       type: action.slideContent.type,
-      id: action.slideContent.id,
+      id: action.slideContent.id
     })
     saveOrder(state)
   } else if (action.type === 'ADD_SLIDE') {
@@ -205,7 +205,7 @@ const updateOrderInDatabase = store => next => async action => {
     saveOrder(state)
   } else if (action.type === 'DELETE_SIP') {
     await deleteSipDB({
-      id: action.sipContent.id,
+      id: action.sipContent.id
     })
   } else if (action.type === 'APPLY_DRAG') {
     saveOrder(state)
