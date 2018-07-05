@@ -104,6 +104,17 @@ const reducer = (state, action) => {
       }
     }
   }
+
+  if (action.type === 'DELETE_SIP') {
+    return {
+      ...state,
+      sips: [
+        ...state.sips.slice(0, state.sips.indexOf(action.sipContent)),
+        ...state.sips.slice(state.sips.indexOf(action.sipContent) + 1)
+      ]
+    }
+  }
+
   if (action.type === 'SHOW_MODAL') {
     return {
       ...state,
@@ -195,6 +206,10 @@ const updateOrderInDatabase = store => next => async action => {
     store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
     state.sip.slides[state.currentStep] = slide
     saveOrder(state)
+  } else if (action.type === 'DELETE_SIP') {
+    await deleteSipDB({
+      id: action.sipContent.id,
+    })
   } else if (action.type === 'APPLY_DRAG') {
     saveOrder(state)
   }
@@ -215,5 +230,6 @@ export const actions = {
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
+  deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
 }
