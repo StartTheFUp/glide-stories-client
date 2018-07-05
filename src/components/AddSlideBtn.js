@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, navigate } from '@reach/router'
-import { actions } from '../store.js'
+import { navigate } from '@reach/router'
 import 'semantic-ui-css/semantic.min.css'
 import { Dropdown } from 'semantic-ui-react'
 import './AddSlideBtn.css'

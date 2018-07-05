@@ -211,5 +211,5 @@ export const actions = {
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
   deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
-  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
+  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
 }

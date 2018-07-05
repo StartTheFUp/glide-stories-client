@@ -51,7 +51,7 @@ export const deleteSlideDB = (params) => {
   return fetch(`${api.host}:${api.port}/slides/${params.type}/${params.id}`, {
     method: 'delete',
     headers: {
-      'X-Access-Token': localStorage.token,
+      'X-Access-Token': localStorage.token
     }
   })
     .then(res => res.json())
@@ -61,7 +61,7 @@ export const deleteSipDB = (params) => {
   return fetch(`${api.host}:${api.port}/sips/${params.id}`, {
     method: 'delete',
     headers: {
-      'X-Access-Token': localStorage.token,
+      'X-Access-Token': localStorage.token
     }
   })
     .then(res => res.json())
