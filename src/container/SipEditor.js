@@ -19,6 +19,10 @@ import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/ModalInputUrl.js'
 import Navbar from '../components/Navbar.js'
 
+import { navigate, Link } from '@reach/router'
+import { Button, Modal, Header, Icon } from 'semantic-ui-react'
+
+
 import './SipEditor.css'
 
 const slideComponents = {
@@ -147,6 +151,38 @@ class SipEditor extends Component {
                 <button onClick={this.onPrevious}>Previous</button>
                 <button onClick={this.onNext}>Next</button>
               </div>
+
+              {currentStep !== 0 && (
+                  <React.Fragment>
+                    <Link to={`/edit/${sip.id}/remove`}>
+                      <Button color='teal' fluid size='large'>Delete Slide</Button>
+                    </Link>
+                    <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
+
+                      <Header icon='archive' content='Are you sure you want to delete this slide ?' />
+                      <Modal.Content>
+                        <p>
+                          This is forever dude, becarefull, we won't care if you cry later...
+                          <br />
+                          Please, think twice, we can talk about it...
+                        </p>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
+                          <Icon name='remove' /> Cancel
+                        </Button>
+                        <Button inverted
+                          color='red'
+                          onClick={() => {
+                            actions.deleteSlide(currentSlide)
+                            navigate(`/edit/${sip.id}`)
+                          }}>
+                          <Icon name='checkmark' /> Confirm Delete Slide
+                        </Button>
+                      </Modal.Actions>
+                    </Modal>
+                  </React.Fragment>
+                )}
 
               <AddSlideBtn
                 addSlide={actions.addSlide}
