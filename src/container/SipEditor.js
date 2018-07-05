@@ -18,6 +18,7 @@ import EditSlideArticleQuote from '../components/EditSlideArticleQuote'
 import AddSlideBtn from '../components/AddSlideBtn.js'
 import ModalInputUrl from '../components/ModalInputUrl.js'
 import Navbar from '../components/Navbar.js'
+import { navigate } from '@reach/router'
 
 import './SipEditor.css'
 
@@ -115,9 +116,8 @@ class SipEditor extends Component {
             <div className='button'>
               <AddSlideBtn
                 addSlide={actions.addSlide}
-                showModal={actions.showModal}
-                id={this.props.id} 
-                icon='plus icon' />
+                id={this.props.id}
+                icon='plus' />
             </div>
             <div className='SlideBar'>
               <div>
@@ -145,10 +145,11 @@ class SipEditor extends Component {
               })}
             </div>
             <ModalInputUrl
-              onClose={actions.closeModal}
+              open= {this.props.insertUrl}
+              onClose={() => navigate(`/edit/${sip.id}`)}
               onChange={e => actions.updateUrl(e.target.value)}
+              // onSubmit={() => actions.addSlide(this.props.type)}
               onSubmit={() => actions.addSlide(this.props.type)}
-              open={this.props.modalState}
               url={this.props.inputValue}
               type={this.props.type}
             />

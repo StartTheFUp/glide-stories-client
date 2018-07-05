@@ -147,6 +147,20 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'FIND_TYPE_TWEET') {
+    return {
+      ...state,
+      slideType: 'tweet'
+    }
+  }
+
+  if (action.type === 'FIND_TYPE_ARTICLE') {
+    return {
+      ...state,
+      slideType: 'article'
+    }
+  }
+
   return state
 }
 
@@ -191,5 +205,7 @@ export const actions = {
   loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
-  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
+  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
+  tweetType: () => store.dispatch({ type: 'FIND_TYPE_TWEET' }),
+  articleType: () => store.dispatch({ type: 'FIND_TYPE_ARTICLE' })
 }

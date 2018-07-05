@@ -137,3 +137,7 @@ textarea {
 .navigationBtn {
   width: 8vh;
 }
+
+.ui.small.modal {
+  height: 20vh;
+}

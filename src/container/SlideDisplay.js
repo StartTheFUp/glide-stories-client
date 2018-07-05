@@ -32,7 +32,7 @@ class SlideDisplay extends Component {
       <div className='Container'>
         <div className='ContainerProgressBarAndSlide'>
           <div>
-            <Line percent={progressBarValue} strokeWidth='1' strokeColor='pink'/>
+            <Line percent={progressBarValue} strokeWidth='1' strokeColor='pink' fill-opacity='0.1'/>
           </div>
           <div className='__SlideDisplay'>
             <div className='previousBtn' onClick={actions.handlePreviousSlide} />
