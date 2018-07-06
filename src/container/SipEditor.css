@@ -75,6 +75,10 @@
   font-size: 10px;
 }
 
+.ui.fluid.input>input {
+    width: 70px;
+}
+
 .add-slide {
   z-index: 200;
 }
