@@ -15,7 +15,7 @@ class Navbar extends Component {
       <Menu width={16}>
 
         <Menu.Item name='title'>
-          <h3>Websips</h3>
+          <h3 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)'}}>Websips</h3>
         </Menu.Item>
 
         <Menu.Item name='sips'>
