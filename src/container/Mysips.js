@@ -21,15 +21,11 @@ class Mysips extends Component {
     const mysips = this.props.sips.map(mysip =>
       <Previewsip
         key={mysip.id}
-        title={mysip.title}
-        slideIntroTitle={mysip.slidesIntroTitle}
-        slideIntroSubtitle={mysip.subtitle}
-        SlideIntroImage={mysip.image_url}
-        sipId={mysip.id}
-        sipContent={mysip}
+        sip={mysip}
         deleteSip={actions.deleteSip}
         remove={this.props.remove}
-        embed= {`<iframe width='400' height='600' src=http://localhost:3000/${mysip.id} style='width: 100%;'></iframe>`}
+        selectedId={Number(this.props.id)}
+        embed={`<iframe width='400' height='600' src=http://localhost:3000/${mysip.id} style='width: 100%;'></iframe>`}
         publicUrl={<a href={`/${mysip.id}`} target="_blank">{`localhost/3000/${mysip.id}`}</a>}
       />)
 
