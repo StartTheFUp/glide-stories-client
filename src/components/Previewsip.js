@@ -24,18 +24,18 @@ const Previewsip = ({ remove, embed, publicUrl, deleteSip, sip, selectedId }) =>
               <h1>{slidesIntroTitle}</h1>
               <h2>{subtitle}</h2>
 
+              </div>
+            </Link>
+            <div className="BoxShare">
+              <h4>Embed</h4>
+              <textarea readOnly rows='3' value={embed} />
             </div>
-          </Link>
-          <div className="BoxShare">
-            <h4>Embed</h4>
-            <textarea readOnly rows='3' value={embed} />
-          </div>
 
-          <div className="BoxShare">
-            <h4>Public URL</h4>
-            <div className="url">{publicUrl}</div>
+            <div className="BoxShare">
+              <h4>Public URL</h4>
+              <div className="url">{publicUrl}</div>
+            </div>
           </div>
-        </div>
           <div className="Btn">
             <Link to={`/edit/${sip.id}`} ><Button basic color='violet'>Edit</Button></Link>
             <React.Fragment>

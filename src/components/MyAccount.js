@@ -24,7 +24,9 @@ const MyAccount = ({ actionName, onSubmit, error, children }) => {
           >
             <Segment stacked>
               <Form.Input
-                onChange={e => form.email = e.target.value }
+                onChange={e => {
+                  form.email = e.target.value
+                }}
                 name='email'
                 fluid
                 icon='user'
@@ -32,7 +34,9 @@ const MyAccount = ({ actionName, onSubmit, error, children }) => {
                 placeholder='E-mail address'
               />
               <Form.Input
-                onChange={e => form.password = e.target.value}
+                onChange={e => {
+                  form.password = e.target.value
+                }}
                 fluid
                 name='password'
                 icon='lock'
