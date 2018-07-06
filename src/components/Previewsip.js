@@ -5,7 +5,7 @@ import { Button, Segment, Grid, Modal, Header, Icon } from 'semantic-ui-react'
 import { navigate, Link } from '@reach/router'
 
 const Previewsip = ({ remove, embed, publicUrl, deleteSip, sip, selectedId }) => {
-  const { title, slidesIntroTitle, subtitle, image_url } = sip
+  const { title, slidesIntroTitle, subtitle, imageUrl } = sip
   console.log({ title, id: sip.id })
   return (
     <Grid.Column>
@@ -13,16 +13,14 @@ const Previewsip = ({ remove, embed, publicUrl, deleteSip, sip, selectedId }) =>
         <h3 style= {{height: '65px'}}>{title}</h3>
         <div className="SipShare">
 
-
-
-        <div className="PreviewBtn">
-          <Link to={`/edit/${sip.id}`} >
-            <div className="Previewsip" style={
-              {backgroundImage: `url(${image_url})`,
-                backgroundSize: 'cover'}
-            }>
-              <h1>{slidesIntroTitle}</h1>
-              <h2>{subtitle}</h2>
+          <div className="PreviewBtn">
+            <Link to={`/edit/${sip.id}`} >
+              <div className="Previewsip" style={
+                {backgroundImage: `url(${imageUrl})`,
+                  backgroundSize: 'cover'}
+              }>
+                <h1>{slidesIntroTitle}</h1>
+                <h2>{subtitle}</h2>
 
               </div>
             </Link>
