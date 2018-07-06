@@ -6,7 +6,7 @@ const AuthForm = ({ headerMessage, actionName, onSubmit, error, children }) => (
   <div className='AuthForm'>
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
+        <Header as='h2' textAlign='center' style={{color: '#222D25', fontFamily: 'Roboto Mono, monospace'}}>
           {headerMessage}
         </Header>
         <Form size='large' onSubmit={onSubmit}>
@@ -21,7 +21,7 @@ const AuthForm = ({ headerMessage, actionName, onSubmit, error, children }) => (
               type='password'
             />
 
-            <Button color='teal' fluid size='large'>
+            <Button style={{backgroundColor: '#222D25', color: '#ffffff', fontFamily: 'Roboto Mono, monospace'}} fluid size='large'>
               {actionName}
             </Button>
           </Segment>
