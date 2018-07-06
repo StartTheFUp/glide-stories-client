@@ -41,7 +41,6 @@ const EditSlideArticleQuote = ({ slide, onChange }) => {
               value={text || ''}
               onChange={event => onChange(event, 'text')} />
           </div>
-          <p className='greyInfo'>{formatedDate(publicationDate)}</p>
         </div>
       </div>
     </div>
