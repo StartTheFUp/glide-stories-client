@@ -162,7 +162,6 @@ const saveOrder = state => {
   const sipOrder = state.sip.slides
     .map(slide => slide.uid)
     .join(' ')
-  console.log('jupdate lorder sipOrder :', sipOrder)
   return sendUpdatedSipOrder(sipOrder, state.sip.id)
 }
 
