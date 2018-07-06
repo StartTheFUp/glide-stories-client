@@ -1,10 +1,9 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
-import { formatedDate } from '../formatedDate.js'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
-  const { articleUrl, sourceImage, sourceName, authorName, text, publicationDate } = slide || {}
+  const { articleUrl, sourceImage, sourceName, authorName, text } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>
