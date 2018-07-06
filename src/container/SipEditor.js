@@ -49,8 +49,8 @@ const SlideMiniature = ({ slide, currentSlide, index }) => (
     }`}
     onClick={() => actions.handleSlideSelection(slide)}
   >
-    {index}
-    {slideComponents[slide.type](slide)}
+    <div className='slidebarIndex'>{index}</div>
+    <div>{slideComponents[slide.type](slide)}</div>
 
   </div>
 )
@@ -151,40 +151,45 @@ class SipEditor extends Component {
               url={this.props.inputValue}
               type={this.props.type}
             />
-            <button className="ui icon button navigationBtn" onClick={actions.handleNextSlide}>
+            <button color='purple' inverted className="ui icon button navigationBtn" onClick={actions.handleNextSlide}>
               <i className="angle right icon"></i>
             </button>
-            {currentStep !== 0 && (
-              <React.Fragment>
-                <Link to={`/edit/${sip.id}/remove`}>
-                  <Button color='teal' fluid size='large'>Delete Slide</Button>
-                </Link>
-                <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
+            <div className='actions'>
+              <Link to={`/${sip.id}/${currentStep}`}>
+                <Button color='teal' fluid size='large'><Icon name='eye' />Preview Slide</Button>
+              </Link>
+              {currentStep !== 0 && (
+                <React.Fragment>
+                  <Link to={`/edit/${sip.id}/remove`}>
+                    <Button inverted color='red' fluid size='large'><Icon name='archive' />Delete Slide</Button>
+                  </Link>
+                  <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
 
-                  <Header icon='archive' content='Are you sure you want to delete this slide ?' />
-                  <Modal.Content>
-                    <p>
-                          This is forever dude, becarefull, we won't care if you cry later...
-                      <br />
-                          Please, think twice, we can talk about it...
-                    </p>
-                  </Modal.Content>
-                  <Modal.Actions>
-                    <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
-                      <Icon name='remove' /> Cancel
-                    </Button>
-                    <Button inverted
-                      color='red'
-                      onClick={e => {
-                        actions.deleteSlide(currentSlide)
-                        navigate(`/edit/${sip.id}`)
-                      }}>
-                      <Icon name='checkmark' /> Confirm Delete Slide
-                    </Button>
-                  </Modal.Actions>
-                </Modal>
-              </React.Fragment>
-            )}
+                    <Header icon='archive' content='Are you sure you want to delete this slide ?' />
+                    <Modal.Content>
+                      <p>
+                            This is forever dude, becarefull, we won't care if you cry later...
+                        <br />
+                            Please, think twice, we can talk about it...
+                      </p>
+                    </Modal.Content>
+                    <Modal.Actions>
+                      <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
+                        <Icon name='remove' /> Cancel
+                      </Button>
+                      <Button inverted
+                        color='red'
+                        onClick={e => {
+                          actions.deleteSlide(currentSlide)
+                          navigate(`/edit/${sip.id}`)
+                        }}>
+                        <Icon name='checkmark' /> Confirm Delete Slide
+                      </Button>
+                    </Modal.Actions>
+                  </Modal>
+                </React.Fragment>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -24,6 +24,15 @@
   overflow-x: hidden;
 }
 
+.slidebarIndex {
+  position: absolute;
+  color: white;
+  background-color: rgba(91, 61, 194, 0.6);
+  z-index: 100;
+  width: 15px;
+  text-align: center;
+}
+
 .SlideMiniature {
   flex-direction: column;
   height: 200px;  /* rm */
@@ -46,6 +55,28 @@
 .SlideMiniature h1 {
   font-size: 20px;
   padding: 1vh;
+}
+
+.ui.button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 100;
+}
+
+.SlideMiniature .SlideIntro .SlideIntroText .ui.button {
+  margin: auto;
+  line-height: 0px; 
+}
+
+.ui.buttons>.ui.dropdown:last-child .menu {
+  z-index: 200;
+}
+
+.SlideMiniature .SlideIntro .SlideIntroText .ui.button a {
+  font-size: 10px;
+}
+
+.add-slide {
+  z-index: 200;
 }
 
 /* .SlideMiniature SlideIntro {
@@ -73,6 +104,15 @@
 .SlideMiniature .img {
   max-width: 14.4rem;
   height: 5rem;
+}
+
+.SlideMiniature .SlideIntro {
+  background-size: cover;
+  height: 200px;
+}
+
+.SlideMiniature .SlideIntro > div {
+  height: 200px; 
 }
 
 .SlideImage {
@@ -124,6 +164,10 @@
   display: flex;
   align-items: center;
   margin: 3vh;
+}
+
+.actions .button {
+  margin: 5px;
 }
 
 .uploadImageInput {
