@@ -34,8 +34,9 @@ class Mysips extends Component {
         <Container fluid>
           <Navbar />
         </Container>
-        <Container>
-          <h1>My sips</h1>
+        <Container fluid>
+        <div id='mysipsContainer' style={{padding: '5%', backgroundColor: '#F6F9FC'}}>
+          <h1 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)', fontSize: '3rem'}}>My sips</h1>
           <Grid centered doubling columns={3}>
             <Grid.Row>
               <Newsip />
@@ -47,6 +48,7 @@ class Mysips extends Component {
               {mysips}
             </Grid.Row>
           </Grid>
+        </div>
         </Container>
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
           <Modal.Header>Create a new sip</Modal.Header>

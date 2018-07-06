@@ -28,6 +28,7 @@ h3 {
     display: flex;
     flex-direction: column;
     padding-bottom: 2vh;
+    margin-top: 2vh;
 }
 
 textarea {

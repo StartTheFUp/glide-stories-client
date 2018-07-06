@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono')
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 h1 {
   padding: 3vh;
+}
+
+h3 {
+  font-family: 'Roboto Mono', monospace;	
+}
+
+.ui.segment {
+  border: none;
 }
 
 .SipContainer {
   display: flex;
   flex-wrap: wrap;
 }
+
