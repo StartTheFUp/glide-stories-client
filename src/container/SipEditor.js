@@ -155,7 +155,7 @@ class SipEditor extends Component {
               <i className="angle right icon"></i>
             </button>
             <div className='actions'>
-              <Link to={`/${sip.id}/${currentStep}`}>
+              <Link to={`/${sip.id}`} target="_blank">
                 <Button color='teal' fluid size='large'><Icon name='eye' />Preview Slide</Button>
               </Link>
               {currentStep !== 0 && (
