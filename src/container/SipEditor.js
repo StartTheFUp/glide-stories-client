@@ -118,7 +118,7 @@ class SipEditor extends Component {
                 icon='plus' />
             </div>
             <div className='SlideBar'>
-              <div>
+              <div style={{ position: 'relative' }}>
                 {SlideMiniature({ slide: sip.slides[0], currentSlide, index: 1 })}
               </div>
               <Container onDrop={actions.applyDrag}>
