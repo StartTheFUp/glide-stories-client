@@ -56,7 +56,6 @@ const Previewsip = ({ remove, embed, publicUrl, deleteSip, sip, selectedId }) =>
                   <Button inverted
                     color='red'
                     onClick={() => {
-                      console.log('delete salopette', sip)
                       deleteSip(sip)
                       navigate('/mysips')
                     }}>
