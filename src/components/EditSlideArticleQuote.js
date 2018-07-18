@@ -7,6 +7,9 @@ const EditSlideArticleQuote = ({ slide, onChange }) => {
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>
+        <p style={{ marginBottom:'0px', padding:'0vh', fontWeight:'bold' }}>
+          Edit article link (<span style={{ color: 'red' }}>beware</span> : it will update the whole slide) :
+        </p>
         <input
           maxLength='500'
           value={articleUrl}
