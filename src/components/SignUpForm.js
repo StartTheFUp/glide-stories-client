@@ -8,11 +8,12 @@ const SignUpForm = ({ onSubmit, errors }) => (
     <HomeHeader />
     <AuthForm
       onSubmit={onSubmit}
-      error={errors.signup}
       headerMessage='Hi, Sign up to create your own, personnal and free for ever account'
       actionName='Sign Up'>
       Already a member? <Link to='/'>Sign In</Link>
     </AuthForm>
+    {errors.signup ? <div className='ui message'>{errors.signup}</div> : undefined }
+
   </React.Fragment>
 )
 
