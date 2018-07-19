@@ -11,7 +11,7 @@ const AuthForm = ({ headerMessage, actionName, onSubmit, error, children }) => (
         </Header>
         <Form size='large' onSubmit={onSubmit}>
           <Segment stacked>
-            <Form.Input name='email' fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+            <Form.Input name='email' type='email' fluid icon='user' iconPosition='left' placeholder='E-mail address' />
             <Form.Input
               fluid
               name='password'
