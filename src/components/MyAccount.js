@@ -22,8 +22,8 @@ const MyAccount = ({ profile, errors }) => {
           </Header>
           <Form id='editProfile' className='ui form' size='large' onSubmit={(e) => {
             if (form.password !== form.passwordBis) {
-              actions.showError('profile', 'youFUckinWHore')
-            } else { actions.showError('profile', 'GG are you proud ? idiot') }
+              actions.showError('profile', 'Please write the same password')
+            } else { actions.showError('profile', 'Your profile is updated !') }
           }}>
             <Segment stacked>
               <div className='field'>
