@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal, Form, Message } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import './ModalInputStyle.css'
 
 const messages = {
   tweet: 'Enter a tweet URL',
@@ -9,6 +10,12 @@ const messages = {
 
 const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
   const messageWarning = url ? '' : <Message content='Please enter an URL address'/>
+
+  const inputAccordingToType = (type) => {
+    if (type === 'tweet') {
+      return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+    } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+  }
 
   console.log({ url })
   return (
@@ -20,7 +27,7 @@ const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
           onSubmit(e)
         }}>
           <div className="ui fluid action input">
-            <input type="url" value={url} placeholder="https://..." onChange={onChange} />
+            {inputAccordingToType(type)}
             <input type="submit" disabled={!url} className="ui button" value="Search" />
           </div>
           <div>{messageWarning}</div>
