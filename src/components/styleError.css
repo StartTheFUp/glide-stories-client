@@ -1,0 +1,9 @@
+.ui.error.message {
+  text-align: center;
+  width: 51vh;
+  margin: 1vh auto;
+}
+
+.ui.stacked.segment:after, .ui.stacked.segment:before, .ui.stacked.segments:after, .ui.stacked.segments:before {
+  content: none;
+}

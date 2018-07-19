@@ -3,6 +3,7 @@ import { Button, Input, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import './MyAccount.css'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
+import './styleError.css'
 
 const MyAccount = ({ profile, errors }) => {
   const form = {
@@ -72,8 +73,7 @@ const MyAccount = ({ profile, errors }) => {
               <Button color='teal' fluid size='large'>
                 Save Changes
               </Button>
-              { errors.profile ? <div className='ui message'>{errors.profile}</div> : undefined }
-
+              { errors.profile ? <div className='ui message error centerError'>{errors.profile}</div> : undefined }
             </Segment>
           </Form>
         </Grid.Column>

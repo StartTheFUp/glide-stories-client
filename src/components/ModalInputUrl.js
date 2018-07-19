@@ -17,12 +17,6 @@ const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
     } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
   }
 
-  const inputAccordingToType = (type) => {
-    if (type === 'tweet') {
-      return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
-    } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
-  }
-
   console.log({ url })
   return (
     <Modal open={open} onClose={onClose} basic size='small' >

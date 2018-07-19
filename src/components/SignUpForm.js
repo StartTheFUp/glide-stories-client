@@ -12,7 +12,7 @@ const SignUpForm = ({ onSubmit, errors }) => (
       actionName='Sign Up'>
       Already a member? <Link to='/'>Sign In</Link>
     </AuthForm>
-    {errors.signup ? <div className='ui message'>{errors.signup}</div> : undefined }
+    {errors.signup ? <div className='ui message error centerError'>{errors.signup}</div> : undefined }
 
   </React.Fragment>
 )
