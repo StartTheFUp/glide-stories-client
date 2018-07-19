@@ -80,6 +80,7 @@ export const sendSignUp = (params) =>
   postJson(`${api.host}:${api.port}/users`, params)
     .then(res => res.json())
 
+
 export const sendLogin = (params) =>
   postJson(`${api.host}:${api.port}/auth/local`, params)
     .then(res => res.json())

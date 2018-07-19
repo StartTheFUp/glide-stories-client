@@ -10,6 +10,12 @@ const messages = {
 const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
   const messageWarning = url ? '' : <Message content='Please enter an URL address'/>
 
+  const inputAccordingToType = (type) => {
+    if (type === 'tweet') {
+      return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+    } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+  }
+
   console.log({ url })
   return (
     <Modal open={open} onClose={onClose} basic size='small' >
@@ -20,7 +26,7 @@ const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
           onSubmit(e)
         }}>
           <div className="ui fluid action input">
-            <input type="url" value={url} placeholder="https://..." onChange={onChange} />
+            {inputAccordingToType(type)}
             <input type="submit" disabled={!url} className="ui button" value="Search" />
           </div>
           <div>{messageWarning}</div>

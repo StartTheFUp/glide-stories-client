@@ -6,7 +6,6 @@ import { navigate, Link } from '@reach/router'
 
 const Previewsip = ({ remove, embed, publicUrl, deleteSip, sip, selectedId }) => {
   const { title, slidesIntroTitle, subtitle, imageUrl } = sip
-  console.log({ title, id: sip.id })
   return (
     <Grid.Column>
       <Segment>
