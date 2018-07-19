@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Input, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import './MyAccount.css'
 import Navbar from './Navbar.js'
-import { sendSignUp } from '../api'
 import { actions } from '../store.js'
 
 const MyAccount = ({ profile, errors }) => {
