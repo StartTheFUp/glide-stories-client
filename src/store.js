@@ -167,7 +167,13 @@ const reducer = (state, action) => {
       }
     }
   }
-
+  
+  // if (action.type === 'SHOW_FORM_ERROR') {
+  //   return {...state,
+  //     ...action.errorProfilePage
+  //   }
+  // }
+  
   return state
 }
 
@@ -224,5 +230,6 @@ export const actions = {
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
   deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
-  updateProfile: (profile) => store.dispatch({ type: 'UPDATE_PROFILE', profile })
+  updateProfile: (profile) => store.dispatch({ type: 'UPDATE_PROFILE', profile }),
+  // showProfileError: error => store.dispatch({ type: 'SHOW_FORM_ERROR', errorProfilePage: error })
 }

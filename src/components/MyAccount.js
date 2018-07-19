@@ -5,8 +5,7 @@ import Navbar from './Navbar.js'
 import { sendSignUp } from '../api'
 import { actions } from '../store.js'
 
-const MyAccount = ({ profile }) => {
-  console.log(profile)
+const MyAccount = ({ profile, errors }) => {
   const form = {
     email: '',
     password: '',
@@ -22,9 +21,10 @@ const MyAccount = ({ profile }) => {
             My profile
           </Header>
           <Form id='editProfile' className='ui form' size='large' onSubmit={(e) => {
-            form.password === form.passwordBis ? sendSignUp(form) : console.log('Please write the same password')
-          }}
-          >
+            if (form.password !== form.passwordBis) {
+              actions.showError('profile', 'youFUckinWHore')
+            } else { actions.showError('profile', 'GG are you proud ? idiot') }
+          }}>
             <Segment stacked>
               <div className='field'>
                 <label>E-mail adress</label>
@@ -73,6 +73,8 @@ const MyAccount = ({ profile }) => {
               <Button color='teal' fluid size='large'>
                 Save Changes
               </Button>
+              { errors.profile ? <div className='ui message'>{errors.profile}</div> : undefined }
+
             </Segment>
           </Form>
         </Grid.Column>
