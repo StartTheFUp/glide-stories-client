@@ -49,14 +49,13 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'UPDATE_SLIDE') {
-    const uid = action.slideContent.uid || state.sip.slides[state.currentStep].uid
     return {
       ...state,
       sip: {
         ...state.sip,
         slides: state.sip.slides
-          .map((slide) => {
-            if (slide.uid !== uid) return slide
+          .map((slide, step) => {
+            if (step !== state.currentStep) return slide
             return {
               ...slide,
               ...action.slideContent
