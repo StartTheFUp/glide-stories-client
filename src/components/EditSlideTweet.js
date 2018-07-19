@@ -9,7 +9,7 @@ const EditSlideTweet = ({ slide, onChange }) => {
   return (
     <div className='__SlideDisplay'>
       <div className='EditTweet' style={{flexDirection: 'column'}}>
-        <p style={{ marginBottom:'0px', padding:'0vh', fontWeight:'bold' }}>
+        <p style={{ marginBottom: '0px', padding: '0vh', fontWeight: 'bold' }}>
           Edit tweet link (<span style={{ color: 'red' }}>beware</span> : it will update the whole slide) :
         </p>
         <input

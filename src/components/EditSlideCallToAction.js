@@ -36,7 +36,7 @@ const EditSlideCallToAction = ({ slide, onChange, errors }) => {
             value={btnText || ''}
             placeholder='Edit the button text'
             onChange={event => onChange(event, 'btnText')} />
-          <p style={{ marginBottom:'0px', padding:'0vh', fontWeight:'bold' }}>Button's link :</p>
+          <p style={{ marginBottom: '0px', padding: '0vh', fontWeight: 'bold' }}>Button's link :</p>
           <input
             maxLength='500'
             value={btnLink || ''}

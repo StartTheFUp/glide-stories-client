@@ -60,11 +60,15 @@ class SipEditor extends Component {
     getSipBySipId(this.props.id).then(actions.loadSip)
   }
 
-  saveChange = () => {
+  saveChange = async () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
-      .map(sendUpdatedSlide)
+      .forEach(async slide => {
+        const update = await sendUpdatedSlide(slide)
+        actions.updateSlide({ ...slide, ...update })
+      })
+
     this.prevSip = this.props.sip
   }
 
@@ -155,7 +159,7 @@ class SipEditor extends Component {
               <i className="angle right icon"></i>
             </button>
             <div className='actions'>
-              <Link to={`/${sip.id}`} target="_blank">
+              <Link to={`/${sip.id}`}>
                 <Button color='teal' fluid size='large'><Icon name='eye' />Preview Slide</Button>
               </Link>
               {currentStep !== 0 && (
