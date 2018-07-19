@@ -9,7 +9,10 @@ const initialState = {
   inputValue: '',
   warningMessage: false,
   sips: [],
-  errors: {}
+  errors: {},
+  profile: {
+    email: localStorage.email,
+  },
 
 }
 const reducer = (state, action) => {
@@ -156,6 +159,16 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'UPDATE_PROFILE') {
+    return {
+      ...state,
+      profile: {
+        ...state.profile,
+        ...action.profile
+      }
+    }
+  }
+
   return state
 }
 
@@ -211,5 +224,6 @@ export const actions = {
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
   deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
-  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } })
+  showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
+  updateProfile: (profile) => store.dispatch({ type: 'UPDATE_PROFILE', profile })
 }

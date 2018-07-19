@@ -1,69 +1,84 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react'
+import { Button, Input, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import './MyAccount.css'
 import Navbar from './Navbar.js'
 import { sendSignUp } from '../api'
+import { actions } from '../store.js'
 
-const MyAccount = ({ actionName, onSubmit, error, children }) => {
+const MyAccount = ({ profile }) => {
+  console.log(profile)
   const form = {
     email: '',
-    password: ''
+    password: '',
+    passwordBis: ''
   }
+
   return (
     <div className='UpdateUserAccount'>
       <Navbar />
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
-            <h1>Update my profile</h1>
+        <Grid.Column style={{ maxWidth: 650 }}>
+          <Header as='h1' color='teal' textAlign='center'>
+            My profile
           </Header>
-          <Form size='large' onSubmit={() => {
-            console.log('lol')
-            sendSignUp(form)
+          <Form id='editProfile' className='ui form' size='large' onSubmit={(e) => {
+            form.password === form.passwordBis ? sendSignUp(form) : console.log('Please write the same password')
           }}
           >
             <Segment stacked>
-              <Form.Input
-                onChange={e => {
-                  form.email = e.target.value
-                }}
-                name='email'
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='E-mail address'
-              />
-              <Form.Input
-                onChange={e => {
-                  form.password = e.target.value
-                }}
-                fluid
-                name='password'
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-              />
-              <Form.Input
-                fluid
-                name='confirm password'
-                icon='lock'
-                iconPosition='left'
-                placeholder='Confirm your Password'
-                type='password'
-              />
+              <div className='field'>
+                <label>E-mail adress</label>
+                <Input
+                  onChange={e => {
+                    form.email = e.target.value
+                    actions.updateProfile(form)
+                  }}
+                  name='email'
+                  fluid
+                  icon='user'
+                  iconPosition='left'
+                  type='email'
+                  value={profile.email}
+                />
+              </div>
+              <div className='field'>
+                <label> Password </label>
+                <Input
+                  onChange={e => {
+                    form.password = e.target.value
+                  }}
+                  fluid
+                  name='password'
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Type your password'
+                  type='password'
+                />
+              </div>
+              <div className='field'>
+                <label>Confirm your password</label>
+                <Form.Input
+                  onChange={e => {
+                    form.passwordBis = e.target.value
+                  }}
+                  fluid
+                  name='confirm password'
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Confirm your password'
+                  type='password'
+                />
+              </div>
 
               <Button color='teal' fluid size='large'>
                 Save Changes
               </Button>
             </Segment>
           </Form>
-          <Message negative={Boolean(error)}>
-            {error || children}
-          </Message>
         </Grid.Column>
       </Grid>
-    </div>)
+    </div>
+  )
 }
 
 export default MyAccount
