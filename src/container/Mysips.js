@@ -16,6 +16,7 @@ class Mysips extends Component {
 
   sipTitle = ''
 
+
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
     const mysips = this.props.sips.map(mysip =>
@@ -25,8 +26,8 @@ class Mysips extends Component {
         deleteSip={actions.deleteSip}
         remove={this.props.remove}
         selectedId={Number(this.props.id)}
-        embed={`<iframe width='400' height='600' src=http://localhost:3000/${mysip.id} style='width: 100%;'></iframe>`}
-        publicUrl={<a href={`/${mysip.id}`} target="_blank">{`localhost/3000/${mysip.id}`}</a>}
+        embed={`<iframe width='400' height='600' src=${window.location.host}/${mysip.id} style='width: 100%;'></iframe>`}
+        publicUrl={<a href={`/${mysip.id}`} target="_blank">{`${window.location.host}/${mysip.id}`}</a>}
       />)
 
     return (
