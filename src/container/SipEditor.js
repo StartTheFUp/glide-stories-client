@@ -60,11 +60,15 @@ class SipEditor extends Component {
     getSipBySipId(this.props.id).then(actions.loadSip)
   }
 
-  saveChange = () => {
+  saveChange = async () => {
     if (this.prevSip === this.props.sip) return
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
-      .map(sendUpdatedSlide)
+      .forEach(async slide => {
+        const update = await sendUpdatedSlide(slide)
+        actions.updateSlide({ ...slide, ...update })
+      })
+
     this.prevSip = this.props.sip
   }
 
