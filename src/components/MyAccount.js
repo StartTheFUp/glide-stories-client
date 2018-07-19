@@ -3,15 +3,15 @@ import { Button, Input, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import './MyAccount.css'
 import Navbar from './Navbar.js'
 import { sendSignUp } from '../api'
+import { actions } from '../store.js'
 
-const MyAccount = () => {
+const MyAccount = ({ profile }) => {
+  console.log(profile)
   const form = {
     email: '',
     password: '',
     passwordBis: ''
   }
-
-  let email = localStorage.email
 
   return (
     <div className='UpdateUserAccount'>
@@ -30,15 +30,15 @@ const MyAccount = () => {
                 <label>E-mail adress</label>
                 <Input
                   onChange={e => {
-                    email = e.target.value
                     form.email = e.target.value
+                    actions.updateProfile(form)
                   }}
                   name='email'
                   fluid
                   icon='user'
                   iconPosition='left'
                   type='email'
-                  value={email}
+                  value={profile.email}
                 />
               </div>
               <div className='field'>

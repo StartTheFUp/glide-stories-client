@@ -17,11 +17,12 @@ const getFormBody = event => {
 
 const signUp = (event) => {
   sendSignUp(getFormBody(event))
-    .then(({ token, error }) => {
+    .then(({ token, email, error }) => {
       if (error) {
         actions.showError('signup', error)
       } else {
         localStorage.token = token || ''
+        localStorage.email = email || ''
         navigate('/mysips')
       }
     })
@@ -29,11 +30,12 @@ const signUp = (event) => {
 
 const login = (event) => {
   sendLogin(getFormBody(event))
-    .then(({ token, error }) => {
+    .then(({ token, email, error }) => {
       if (error) {
         actions.showError('login', error)
       } else {
         localStorage.token = token || ''
+        localStorage.email = email || ''
         navigate('/mysips')
       }
     })
