@@ -16,7 +16,6 @@ class Mysips extends Component {
 
   sipTitle = ''
 
-
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
     const mysips = this.props.sips.map(mysip =>
