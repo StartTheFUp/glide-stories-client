@@ -19,6 +19,8 @@ const AuthForm = ({ headerMessage, actionName, onSubmit, error, children }) => (
               iconPosition='left'
               placeholder='Password'
               type='password'
+              minLength='6'
+              maxLength='18'
             />
 
             <Button style={{backgroundColor: '#222D25', color: '#ffffff', fontFamily: 'Roboto Mono, monospace'}} fluid size='large'>
