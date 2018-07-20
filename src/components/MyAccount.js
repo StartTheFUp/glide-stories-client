@@ -3,7 +3,6 @@ import { Button, Input, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import './MyAccount.css'
 import Navbar from './Navbar.js'
 import { actions } from '../store.js'
-import './styleError.css'
 
 const MyAccount = ({ profile, errors }) => {
   const form = {
@@ -23,7 +22,9 @@ const MyAccount = ({ profile, errors }) => {
           <Form id='editProfile' className='ui form' size='large' onSubmit={(e) => {
             if (form.password !== form.passwordBis) {
               actions.showError('profile', 'Please write the same password')
-            } else { actions.showError('profile', 'Your profile is updated !') }
+            } else {
+              actions.showError('profile', 'Your profile is updated !')
+            }
           }}>
             <Segment stacked>
               <div className='field'>
@@ -73,7 +74,8 @@ const MyAccount = ({ profile, errors }) => {
               <Button color='teal' fluid size='large'>
                 Save Changes
               </Button>
-              { errors.profile ? <div className='ui message error centerError'>{errors.profile}</div> : undefined }
+              { errors.profile ? <div className='ui message'>{errors.profile}</div> : undefined }
+
             </Segment>
           </Form>
         </Grid.Column>
