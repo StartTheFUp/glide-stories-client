@@ -13,11 +13,14 @@ const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
 
   const inputAccordingToType = (type) => {
     if (type === 'tweet') {
-      return <input value={url} placeholder="https://..." onChange={onChange} pattern='(https?:\/\/)(twitter.com)\/([a-zA-Z0-9_]*)\/(status)\/([0-9]*)' title="Exemple of right tweet url format: https://twitter.com/tagesschau/status/1019842394743820289"/>
+      return <input value={url}
+        placeholder="https://..."
+        onChange={onChange}
+        pattern='(https?:\/\/)(twitter.com)\/([a-zA-Z0-9_]*)\/(status)\/([0-9]*)'
+        title="Exemple of right tweet url format: https://twitter.com/tagesschau/status/1019842394743820289"/>
     } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
   }
 
-  console.log({ url })
   return (
     <Modal open={open} onClose={onClose} basic size='small' >
       <Modal.Header><p>{messages[type]}</p></Modal.Header>
