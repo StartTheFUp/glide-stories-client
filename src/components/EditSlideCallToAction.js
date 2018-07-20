@@ -14,7 +14,7 @@ const EditSlideCallToAction = ({ slide, onChange, errors }) => {
           </div>
           <div className='uploadImageInput' >
             <label htmlFor='image_uploads'>Sélectionnez une image (PNG, JPG)</label>
-            <input style={{flexGrow: 0.5}} type='file' onChange={event => onChange(event, 'imageUrl')}/>
+            <input style={{flexGrow: 0.5}} type='file' accept='image/*' onChange={event => onChange(event, 'imageUrl')}/>
           </div>
           <h1><textarea
             maxLength='60'

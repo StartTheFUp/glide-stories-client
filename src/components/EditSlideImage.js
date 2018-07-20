@@ -9,7 +9,7 @@ const EditSlideImage = ({ slide, onChange, errors }) => {
     <div className='__SlideDisplay'>
       <div className='EditImage'>
         <div className='SlideImage' style={{display: 'flex'}}>
-          <input type='file' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
+          <input type='file' accept='image/*' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
           <div className='errors'>
             {errors.upload ? errors.upload : ''}
           </div>
