@@ -155,7 +155,7 @@ class SipEditor extends Component {
               url={this.props.inputValue}
               type={this.props.type}
             />
-            <button color='purple' inverted className="ui icon button navigationBtn" onClick={actions.handleNextSlide}>
+            <button className="ui icon button navigationBtn" onClick={actions.handleNextSlide}>
               <i className="angle right icon"></i>
             </button>
             <div className='actions'>
