@@ -90,6 +90,7 @@ class SipEditor extends Component {
         console.log({ error, url })
         actions.showError('upload', error)
       } else {
+        actions.showError('upload', undefined)
         actions.updateSlide({ [key]: url })
       }
     } else {
