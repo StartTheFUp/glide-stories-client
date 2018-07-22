@@ -159,9 +159,9 @@ class SipEditor extends Component {
               <i className="angle right icon"></i>
             </button>
             <div className='actions'>
-              <Link to={`/${sip.id}`}>
-                <Button color='teal' fluid size='large'><Icon name='eye' />Preview Slide</Button>
-              </Link>
+              <a href={`/${sip.id}`} target="_blank">
+                <Button color='teal' fluid size='large'><Icon name='eye' />Preview Sip</Button>
+              </a>
               {currentStep !== 0 && (
                 <React.Fragment>
                   <Link to={`/edit/${sip.id}/remove`}>
