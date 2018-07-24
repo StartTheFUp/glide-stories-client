@@ -23,8 +23,11 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
         </p>
         <input
           maxLength='500'
-          value={articleUrl}
-          onChange={event => onChange(event, 'articleUrl')} />
+          placeholder={articleUrl}
+          value={articleLink}
+          type='url'
+          onChange={event => onChange(event, 'articleLink')}
+          required />
         {messageWarning}
         <div className='quote' style= {{justifyContent: 'center'}}>
           <span className='quoteHead'>
