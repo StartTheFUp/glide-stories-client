@@ -3,8 +3,8 @@ import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
 import { Button } from 'semantic-ui-react'
 
-const EditSlideArticleQuote = ({ slide, onChange }) => {
-  const { articleUrl, sourceImage, sourceName, authorName, text } = slide || {}
+const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink }) => {
+  const { articleUrl, articleLink, sourceImage, sourceName, authorName, text, uid } = slide || {}
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>
