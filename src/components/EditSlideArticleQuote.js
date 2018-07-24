@@ -1,6 +1,7 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
 import '../container/SipEditor.js'
+import { Button } from 'semantic-ui-react'
 
 const EditSlideArticleQuote = ({ slide, onChange }) => {
   const { articleUrl, sourceImage, sourceName, authorName, text } = slide || {}
