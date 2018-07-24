@@ -160,7 +160,7 @@ class SipEditor extends Component {
               {EditSlideComponents[currentSlide.type]({
                 slide: currentSlide,
                 onChange: this.requestSave,
-                errors: this.props.errors
+                errors: this.props.errors,
                 onChangeArticleLink: () => actions.updateSlide({ articleLink: currentSlide.articleUrl }) && actions.showError(`url-${currentSlide.uid}`, undefined)
               })}
             </div>
