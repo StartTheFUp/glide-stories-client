@@ -5,6 +5,11 @@ import { Button } from 'semantic-ui-react'
 
 const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink }) => {
   const { articleUrl, articleLink, sourceImage, sourceName, authorName, text, uid } = slide || {}
+  const messageWarning = errors[`url-${uid}`]
+      ? <p style={{margin: '0px', padding: '0px', color: 'red'}}>
+        {errors[`url-${uid}`]} - Enter a good format to make any change in the slide
+        </p>
+      : ''
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>
@@ -15,6 +20,7 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
           maxLength='500'
           value={articleUrl}
           onChange={event => onChange(event, 'articleUrl')} />
+        {messageWarning}
         <div className='quote' style= {{justifyContent: 'center'}}>
           <span className='quoteHead'>
             <img src={sourceImage} alt='Article source icon' />
