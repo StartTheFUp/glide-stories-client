@@ -13,6 +13,12 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
   const recoverUrlBtn = errors[`url-${uid}`]
     ? <Button onClick={onChangeArticleLink}>Recover the previous url</Button>
     : ''
+  const readOnly = 'readOnly'
+  const information = errors[`url-${uid}`]
+    ? <span style={{margin: '0px', padding: '0px', color: 'red'}}>
+      Please, enter a good url format to make any change in the slide
+    </span>
+    : ''
 
   return (
     <div className='__SlideDisplay'>
@@ -34,6 +40,7 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
             <img src={sourceImage} alt='Article source icon' />
             <textarea
               className='authorName'
+              {... (errors[`url-${uid}`] ? {readOnly} : '')}
               maxLength='120'
               rows='2'
               wrap='hard'
@@ -42,6 +49,7 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
               onChange={event => onChange(event, 'sourceName')} />
             <textarea
               className='greyInfo'
+              {... (errors[`url-${uid}`] ? {readOnly} : '')}
               maxLength='120'
               rows='2'
               wrap='hard'
@@ -52,11 +60,13 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
           <div className='EditText'>
             <textarea
               maxLength='300'
+              {... (errors[`url-${uid}`] ? {readOnly} : '')}
               rows='4'
               wrap='hard'
               placeholer='Type your text here'
               value={text || ''}
               onChange={event => onChange(event, 'text')} />
+              {information}
           </div>
         </div>
       </div>
