@@ -66,7 +66,7 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
               placeholer='Type your text here'
               value={text || ''}
               onChange={event => onChange(event, 'text')} />
-              {information}
+            {information}
           </div>
         </div>
       </div>
