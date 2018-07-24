@@ -145,6 +145,7 @@ class SipEditor extends Component {
                 slide: currentSlide,
                 onChange: this.requestSave,
                 errors: this.props.errors
+                onChangeArticleLink: () => actions.updateSlide({ articleLink: currentSlide.articleUrl }) && actions.showError(`url-${currentSlide.uid}`, undefined)
               })}
             </div>
             <ModalInputUrl
