@@ -18,7 +18,9 @@ const ModalInputUrl = ({ onClose, onChange, onSubmit, open, url, type }) => {
         onChange={onChange}
         pattern='(https?:\/\/)(twitter.com)\/([a-zA-Z0-9_]*)\/(status)\/([0-9]*)'
         title="Exemple of right tweet url format: https://twitter.com/tagesschau/status/1019842394743820289"/>
-    } return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+    } else if (type === 'article') {
+      return <input type='url' value={url} placeholder="https://..." onChange={onChange} />
+    }
   }
 
   return (
