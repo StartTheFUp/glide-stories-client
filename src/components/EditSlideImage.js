@@ -11,7 +11,7 @@ const EditSlideImage = ({ slide, onChange, errors }) => {
         <div className='SlideImage' style={{display: 'flex'}}>
           <input type='file' accept='image/*' style={{ padding: '0 10px' }} onChange={event => onChange(event, 'imageUrl')}/>
           <div className='errors'>
-            {errors.upload ? errors.upload : ''}
+            {errors.upload ? errors.upload : 'Max file size : 5Mo'}
           </div>
           <div className='img' style={{
             backgroundImage: `url("${imageUrl}")`,

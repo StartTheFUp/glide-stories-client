@@ -10,7 +10,7 @@ const EditSlideIntro = ({ slide, onChange, errors }) => {
       <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <div>
           <div className='errors'>
-            {errors.upload ? errors.upload : ''}
+            {errors.upload ? errors.upload : 'Max file size : 5Mo'}
           </div>
           <input style={{flexGrow: 0.5}} type='file' accept='image/*' onChange={event => onChange(event, 'imageUrl')}/>
           <h1><textarea

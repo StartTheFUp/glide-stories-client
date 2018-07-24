@@ -10,7 +10,7 @@ const EditSlideCallToAction = ({ slide, onChange, errors }) => {
       <div className='SlideIntro' style={{backgroundImage: `url("${imageUrl}")`}}>
         <div>
           <div className='errors'>
-            {errors.upload ? errors.upload : ''}
+            {errors.upload ? errors.upload : 'Max file size : 5Mo'}
           </div>
           <div className='uploadImageInput' >
             <label htmlFor='image_uploads'>Sélectionnez une image (PNG, JPG)</label>
