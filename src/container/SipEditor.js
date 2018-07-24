@@ -210,6 +210,13 @@ class SipEditor extends Component {
                   </Modal>
                 </React.Fragment>
               )}
+              {/* handle server errors*/ }
+              {this.props.errors.db || this.props.errors.server
+                ? this.props.errors.db || this.props.errors.server
+                : ''}
+            </div>
+            <div>
+
             </div>
           </div>
         </div>
