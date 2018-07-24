@@ -65,8 +65,24 @@ class SipEditor extends Component {
     this.props.sip.slides
       .filter((slide, i) => slide !== this.prevSip.slides[i])
       .forEach(async slide => {
-        const update = await sendUpdatedSlide(slide)
-        actions.updateSlide({ ...slide, ...update })
+        const { error, ...update } = await sendUpdatedSlide({
+          ...slide,
+          articleUrl: slide.articleLink
+        })
+        if (error) {
+          if (error === "wrong url") {
+            actions.showError(`url-${slide.uid}`, error)
+          } else if (error === "Unabled to save data in database. Try again later.") {
+            actions.showError('db', error)
+          } else if (error) {
+            actions.showError('server', 'Internal server error. Please try again.')
+          }
+        } else {
+          actions.showError(`url-${slide.uid}`, undefined)
+          actions.showError('db', undefined)
+          actions.showError('server', undefined)
+          actions.updateSlide({ ...slide, ...update })
+        }
       })
 
     this.prevSip = this.props.sip
