@@ -10,11 +10,16 @@ const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink })
         {errors[`url-${uid}`]} - Enter a good format to make any change in the slide
         </p>
       : ''
+  const recoverUrlBtn = errors[`url-${uid}`]
+      ? <Button onClick={onChangeArticleLink}>Recover the previous url</Button>
+      : ''
+
   return (
     <div className='__SlideDisplay'>
       <div className='EditArticle' style={{flexDirection: 'column'}}>
         <p style={{ marginBottom: '0px', padding: '0vh', fontWeight: 'bold' }}>
           Edit article link (<span style={{ color: 'red' }}>beware</span> : it will update the whole slide) :
+          {recoverUrlBtn}
         </p>
         <input
           maxLength='500'
