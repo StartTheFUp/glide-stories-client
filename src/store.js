@@ -69,6 +69,23 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'REPLACE_SLIDE') {
+    return {
+      ...state,
+      sip: {
+        ...state.sip,
+        slides: state.sip.slides
+          .map((slide) => {
+            if (slide.uid !== action.uid) return slide
+            return {
+              ...slide,
+              ...action.slide
+            }
+          })
+      }
+    }
+  }
+
   if (action.type === 'ADD_SLIDE') {
     const nextStep = state.currentStep + 1
     const id = Math.random()
