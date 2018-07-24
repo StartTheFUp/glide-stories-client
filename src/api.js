@@ -27,7 +27,6 @@ export const getSipBySipId = id => {
 }
 
 export const createSip = title => {
-  console.log({ title })
   return postJson(`${api.host}:${api.port}/sips`, { title })
     .then(res => res.json())
 }

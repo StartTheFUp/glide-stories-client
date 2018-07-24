@@ -87,7 +87,6 @@ class SipEditor extends Component {
       body.append('image', files[0])
       const { error, url } = await sendNewImage(slide, body)
       if (error) {
-        console.log({ error, url })
         actions.showError('upload', error)
       } else {
         actions.showError('upload', undefined)
