@@ -70,9 +70,9 @@ class SipEditor extends Component {
           articleUrl: slide.articleLink
         })
         if (error) {
-          if (error === "wrong url") {
+          if (error === 'wrong url') {
             actions.showError(`url-${slide.uid}`, error)
-          } else if (error === "Unabled to save data in database. Try again later.") {
+          } else if (error === 'Unabled to save data in database. Try again later.') {
             actions.showError('db', error)
           } else if (error) {
             actions.showError('server', 'Internal server error. Please try again.')
@@ -210,7 +210,7 @@ class SipEditor extends Component {
                   </Modal>
                 </React.Fragment>
               )}
-              {/* handle server errors*/ }
+              {/* handle server errors */ }
               {this.props.errors.db || this.props.errors.server
                 ? this.props.errors.db || this.props.errors.server
                 : ''}

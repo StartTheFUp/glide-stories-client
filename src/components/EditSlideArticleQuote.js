@@ -6,13 +6,13 @@ import { Button } from 'semantic-ui-react'
 const EditSlideArticleQuote = ({ slide, onChange, errors, onChangeArticleLink }) => {
   const { articleUrl, articleLink, sourceImage, sourceName, authorName, text, uid } = slide || {}
   const messageWarning = errors[`url-${uid}`]
-      ? <p style={{margin: '0px', padding: '0px', color: 'red'}}>
-        {errors[`url-${uid}`]} - Enter a good format to make any change in the slide
-        </p>
-      : ''
+    ? <p style={{margin: '0px', padding: '0px', color: 'red'}}>
+      {errors[`url-${uid}`]} - Enter a good format to make any change in the slide
+    </p>
+    : ''
   const recoverUrlBtn = errors[`url-${uid}`]
-      ? <Button onClick={onChangeArticleLink}>Recover the previous url</Button>
-      : ''
+    ? <Button onClick={onChangeArticleLink}>Recover the previous url</Button>
+    : ''
 
   return (
     <div className='__SlideDisplay'>
