@@ -53,9 +53,9 @@ class Mysips extends Component {
         <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
           <Modal.Header>Create a new sip</Modal.Header>
           <Modal.Content>
-            <Form onSubmit={() => {
-              createSip(this.sipTitle)
-                .then(res => (navigate(`/edit/${res.id}`)))
+            <Form onSubmit={async () => {
+              const { id } = await createSip(this.sipTitle)
+              navigate(`/edit/${id}`)
             }} >
               <Form.Field required>
                 <label>Sip title : </label>
