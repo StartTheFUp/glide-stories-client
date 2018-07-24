@@ -221,14 +221,13 @@ const updateOrderInDatabase = store => next => async action => {
       url: state.inputValue
     })
     slide.uid = `${action.slide.type}-${slide.id}`
-    store.dispatch({ type: 'UPDATE_SLIDE', slideContent: slide })
-    state.sip.slides[state.currentStep] = slide
-    saveOrder(state)
+    if (action.slide.type === 'article') { slide.articleLink = slide.articleUrl }
+    store.dispatch({ type: 'REPLACE_SLIDE', slide, uid: state.sip.slides[state.currentStep].uid })
   } else if (action.type === 'DELETE_SIP') {
     await deleteSipDB({
       id: action.sipContent.id
     })
-  } else if (action.type === 'APPLY_DRAG') {
+  } else if (action.type === 'APPLY_DRAG' || action.type === 'REPLACE_SLIDE') {
     saveOrder(state)
   }
 }
