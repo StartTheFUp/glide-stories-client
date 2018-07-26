@@ -181,16 +181,10 @@ const reducer = (state, action) => {
       ...state,
       profile: {
         ...state.profile,
-        ...action.profile
+        email: action.profile
       }
     }
   }
-
-  // if (action.type === 'SHOW_FORM_ERROR') {
-  //   return {...state,
-  //     ...action.errorProfilePage
-  //   }
-  // }
 
   return state
 }
@@ -248,5 +242,4 @@ export const actions = {
   deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
   updateProfile: (profile) => store.dispatch({ type: 'UPDATE_PROFILE', profile })
-  // showProfileError: error => store.dispatch({ type: 'SHOW_FORM_ERROR', errorProfilePage: error })
 }
