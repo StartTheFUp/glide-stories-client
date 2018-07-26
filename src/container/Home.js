@@ -23,6 +23,7 @@ const signUp = (event) => {
       } else {
         localStorage.token = token || ''
         localStorage.email = email || ''
+        actions.updateProfile(email)
         navigate('/mysips')
       }
     })
@@ -35,7 +36,8 @@ const login = (event) => {
         actions.showError('login', error)
       } else {
         localStorage.token = token || ''
-        localStorage.email = email || ''
+        localStorage.email = email || 'test'
+        actions.updateProfile(email)
         navigate('/mysips')
       }
     })
