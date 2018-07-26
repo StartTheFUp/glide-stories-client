@@ -1,0 +1,34 @@
+.EditText {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.EditText textarea {
+    border: dotted 1.5px #ced0d5;
+    width: 75vh;
+    height: auto;
+    padding: 3vh;
+    vertical-align: middle;
+    line-height: 3.6vh;
+    text-align: justify;
+    resize: none;
+    text-decoration: none;
+    overflow: hidden;
+    font-size: 2vh;
+}
+
+.EditText textarea:focus {
+    /* outline: 0; */
+}
+
+/* .SlideDisplay {
+    height: 100vh;
+    width: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    position: relative;
+  } */

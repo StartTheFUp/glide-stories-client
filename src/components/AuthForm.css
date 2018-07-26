@@ -1,0 +1,7 @@
+.AuthForm .ui.form .field {
+  width: 100%;
+}
+
+.AuthForm {
+  padding-top: 12vh;
+}

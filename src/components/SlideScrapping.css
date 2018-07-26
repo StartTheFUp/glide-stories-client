@@ -1,0 +1,47 @@
+.slideDisplay {
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.quote {
+    display : flex;
+    flex-direction: column;
+}
+
+.quote > p {
+    padding: 0 3vh;
+    margin: 2vh 0 2vh 0; 
+}
+
+.quoteHead {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 3vh;
+    margin: 2vh 0;
+}
+
+.quoteHead > p {
+    padding-top: 0vh;
+    padding-left: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vh;
+    margin-bottom: 0;
+}
+
+.quoteHead > img {
+    max-height: 3rem;
+    max-width: 3rem;
+    border-radius: 50%;
+    margin: auto 0;
+}
+
+.greyInfo {
+    color: lightslategray;
+}
+
+.authorName {
+    font-weight: 900; 
+}

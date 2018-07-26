@@ -1,0 +1,194 @@
+.ContainerEditor {
+  max-height: 100vh;
+  display: flex;
+  background-color: #f6f9fc;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ContainerEditor .__SlideDisplay {
+  height: calc(100vh - 75px);
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+}
+
+.SlideBar {
+  flex-direction: row;
+  width: 250px;
+  overflow-y: scroll;
+  background-color: #f6f9fc;
+  padding-left: 2vh;
+  overflow-x: hidden;
+}
+
+.slidebarIndex {
+  position: absolute;
+  color: white;
+  background-color: rgba(91, 61, 194, 0.6);
+  z-index: 100;
+  width: 15px;
+  text-align: center;
+}
+
+.SlideMiniature {
+  flex-direction: column;
+  height: 200px;  /* rm */
+  width: 200px;
+  margin: 5px; /* rm */
+  background-color: white; /* rm */
+}
+
+.SlideMiniature p {
+  font-size: 10px;
+  padding: 0 1vh;
+  /* margin: 1vh; */
+}
+
+.SlideMiniature .SlideText p {
+  padding: 7vh 1vh;
+  font-size: 10px;
+}
+
+.SlideMiniature h1 {
+  font-size: 20px;
+  padding: 1vh;
+}
+
+.ui.button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 100;
+}
+
+.SlideMiniature .SlideIntro .SlideIntroText .ui.button {
+  margin: auto;
+  line-height: 0px; 
+}
+
+.ui.buttons>.ui.dropdown:last-child .menu {
+  z-index: 200;
+}
+
+.SlideMiniature h2, a {
+  font-size: 15px;
+}
+
+.SlideMiniature .SlideIntro .SlideIntroText .ui.button a {
+  font-size: 10px;
+}
+
+.ui.fluid.input>input {
+    width: 70px !important;
+}
+
+.add-slide {
+  z-index: 200;
+}
+
+/* .SlideMiniature SlideIntro {
+  font-size: 20px;
+  padding: 1vh;
+} */
+
+.SlideMiniature .quoteHead {
+  padding: 0 1vh;
+}
+
+.SlideMiniature button {
+  height: 10px;
+  width: 110px;
+}
+
+.SlideMiniature img {
+  width: 2rem;
+}
+
+.SlideMiniature .img {
+  max-width: 14.4rem;
+  height: 5rem;
+}
+
+.SlideMiniature .SlideIntro {
+  background-size: cover;
+  height: 200px;
+}
+
+.SlideMiniature .SlideIntro > div {
+  height: 200px; 
+}
+
+.SlideImage {
+  padding-top: 5vh;
+}
+
+/* SlideMiniature .SlideImage {
+  padding-top: 5vh;
+} */
+
+.__SlideEditor {
+  display: flex;
+  margin: auto;
+}
+
+.editorScreen {
+  height: 80vh;
+}
+
+.Editor {
+  display: flex;
+  flex-direction: row;
+}
+
+.EditorNavigation button {
+  width: 15vh;
+  color: #DBFCFF ;
+  padding: 1vh;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background-color: #00072D;
+}
+
+.test {
+  height: 5vh;
+}
+
+.selected {
+  /* outline: 2px solid blue; */
+    outline: 10px solid #f200ff4f;
+    /* background-color: yellow; */
+    /* outline: 10px solid yellow; */
+    outline-offset: -10px;
+    /* box-shadow: inset 0 0 0px 2px #EAC9C1; */
+    box-shadow: inset 0 0 0px 2px #7d00ff, inset 0 0 20px 4px #39d76b;
+}
+
+.button {
+  flex-flow: 0;
+  display: flex;
+  align-items: center;
+  margin: 3vh;
+}
+
+.actions .button {
+  margin: 5px;
+}
+
+.uploadImageInput {
+  display: flex;
+  justify-content: center;
+  color: #89909F;
+  padding-bottom: 5vh;
+}
+
+textarea {
+  border: dotted 1.5px #ced0d5;
+}
+
+.navigationBtn {
+  width: 8vh;
+}
+
+.ui.small.modal {
+  height: 20vh;
+}

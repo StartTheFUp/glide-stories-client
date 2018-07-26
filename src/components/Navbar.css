@@ -1,0 +1,21 @@
+/*CSS*/
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono')
+
+.item::before{
+  display: none;
+}
+
+.ui.menu {
+  background-color: #1E2D24;
+  border-radius: 0;
+}
+
+.ui.menu .item:before {
+	background: none;
+}
+
+.ui.menu .item>a:not(.ui) {
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+}
+

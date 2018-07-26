@@ -1,0 +1,11 @@
+.BtnNewsip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    text-decoration:none;
+    color:#000;
+}

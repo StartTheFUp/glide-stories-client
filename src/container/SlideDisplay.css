@@ -1,0 +1,77 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  background-color: #343434;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.ContainerProgressBarAndSlide {
+  flex-direction: column;
+}
+
+.__SlideDisplay {
+  height: 100vh;
+  /*width: 80vh;*/
+  width: 100vw;
+  max-width: 624px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  position: relative;
+  justify-content: center;
+  min-height: 100%;
+  white-space: pre-line;
+}
+
+.__SlideDisplay p,
+.__SlideDisplay h1,
+.__SlideDisplay h2,
+.__SlideDisplay h3 {
+  padding: 3vh;
+  vertical-align: middle;
+  line-height: 4.5vh;
+  text-align: justify;
+}
+
+.__SlideDisplay > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.__SlideDisplay > div.darkBackground {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.__SlideDisplay > div > div {
+  flex: 1;
+}
+
+.__SlideDisplay .nextBtn, .__SlideDisplay .previousBtn {
+  position: absolute;
+  height: 100%;
+  z-index: 2;
+}
+
+.__SlideDisplay .previousBtn {
+  width: 30%;
+  left:0;
+  top:0;
+}
+
+.__SlideDisplay .nextBtn {
+  width: 70%;
+  right: 0;
+  top:0;
+}
+
+.rc-progress-line-trail {
+  stroke: #343434;
+}

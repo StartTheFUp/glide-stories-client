@@ -1,0 +1,69 @@
+.ui.segment {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ui.grid>.row>.column {
+    padding-bottom: 5vh;
+}
+
+.ui[class*="three column"].doubling.grid>.row>.column {
+    min-width: 55vh;
+}
+
+h3 {
+    font-size: 3vh;
+    padding: 0.5vh;
+}
+
+.SipShare {
+    display: flex;
+    width: 40vh;
+    flex-direction: column;
+}
+
+.BoxShare {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+textarea {
+    resize: none;
+    height: auto;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.PreviewBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Previewsip {
+    width: 40vh;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2vh;
+}
+
+.Btn {
+    display: flex;
+    justify-content: center;
+    padding: 2vh;
+}
+
+.ui.button {
+    padding:1.5vh;
+    z-index: 100;
+}
