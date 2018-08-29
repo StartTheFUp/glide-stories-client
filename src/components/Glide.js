@@ -1,13 +1,13 @@
 import React from 'react'
-import '../container/Mysips.js'
-import './Previewsip.css'
+import '../container/Myglides.js'
+import './Previewglide.css'
 import { Segment, Grid } from 'semantic-ui-react'
 
-const Sip = () =>
+const Glide = () =>
   <Grid.Column>
     <Segment>
-      <h3>New sip</h3>
-      <div className="SipShare">
+      <h3>New </h3>
+      <div className="GlideShare">
 
         <div className="BoxShare">
           <h4>Embed</h4>
@@ -22,7 +22,7 @@ const Sip = () =>
 
       <div className="PreviewBtn">
 
-        <div className="Previewsip">
+        <div className="Previewglide">
           <h1>Hey</h1>
           <h2>Hey</h2>
 
@@ -32,4 +32,4 @@ const Sip = () =>
     </Segment>
   </Grid.Column>
 
-export default Sip
+export default Glide

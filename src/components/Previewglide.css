@@ -18,7 +18,7 @@ h3 {
     padding: 0.5vh;
 }
 
-.SipShare {
+.GlideShare {
     display: flex;
     width: 40vh;
     flex-direction: column;
@@ -46,7 +46,7 @@ textarea:focus {
     justify-content: space-around;
 }
 
-.Previewsip {
+.Previewglide {
     width: 40vh;
     height: 50vh;
     display: flex;

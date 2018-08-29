@@ -1,7 +1,7 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
 import './SlideIntro.css'
-import '../container/SipEditor.js'
+import '../container/GlideEditor.js'
 
 const EditSlideIntro = ({ slide, onChange, errors }) => {
   const { imageUrl, title, subtitle } = slide || {}

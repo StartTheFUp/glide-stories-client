@@ -16,7 +16,7 @@ h3 {
   border: none;
 }
 
-.SipContainer {
+.GlideContainer {
   display: flex;
   flex-wrap: wrap;
 }

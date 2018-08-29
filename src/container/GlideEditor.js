@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { actions } from '../store.js'
-import { sendUpdatedSlide, getSipBySipId, sendNewImage } from '../api.js'
+import { sendUpdatedSlide, getGlideByGlideId, sendNewImage } from '../api.js'
 import { Redirect, navigate, Link } from '@reach/router'
 
 import SlideText from '../components/SlideText'
@@ -22,7 +22,7 @@ import Navbar from '../components/Navbar.js'
 
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
 
-import './SipEditor.css'
+import './GlideEditor.css'
 
 const slideComponents = {
   text: SlideText,
@@ -55,15 +55,15 @@ const SlideMiniature = ({ slide, currentSlide, index }) => (
   </div>
 )
 
-class SipEditor extends Component {
+class GlideEditor extends Component {
   componentDidMount() {
-    getSipBySipId(this.props.id).then(actions.loadSip)
+    getGlideByGlideId(this.props.id).then(actions.loadGlide)
   }
 
   saveChange = async () => {
-    if (this.prevSip === this.props.sip) return
-    this.props.sip.slides
-      .filter((slide, i) => slide !== this.prevSip.slides[i])
+    if (this.prevGlide === this.props.glide) return
+    this.props.glide.slides
+      .filter((slide, i) => slide !== this.prevGlide.slides[i])
       .forEach(async slide => {
         const { error, ...update } = await sendUpdatedSlide({
           ...slide,
@@ -85,20 +85,20 @@ class SipEditor extends Component {
         }
       })
 
-    this.prevSip = this.props.sip
+    this.prevGlide = this.props.glide
   }
 
   componentDidUpdate(prevProps) {
-    if (this.prevSip && this.prevSip.id === this.props.sip.id) {
+    if (this.prevGlide && this.prevGlide.id === this.props.glide.id) {
       return
     }
-    this.prevSip = this.props.sip
+    this.prevGlide = this.props.glide
   }
 
   requestSave = async (event, key) => {
     const { value, files } = event.target // value argument deleted (lint)
     if (files) {
-      const slide = this.props.sip.slides[this.props.currentStep]
+      const slide = this.props.glide.slides[this.props.currentStep]
       const body = new FormData()
       body.append('image', files[0])
       const { error, url } = await sendNewImage(slide, body)
@@ -121,8 +121,8 @@ class SipEditor extends Component {
 
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
-    const { sip, currentStep } = this.props
-    const currentSlide = sip.slides[currentStep]
+    const {glide , currentStep } = this.props
+    const currentSlide = glide.slides[currentStep]
 
     if (!currentSlide) return 'loading'
     return (
@@ -139,14 +139,14 @@ class SipEditor extends Component {
             </div>
             <div className='SlideBar'>
               <div style={{ position: 'relative' }}>
-                {SlideMiniature({ slide: sip.slides[0], currentSlide, index: 1 })}
+                {SlideMiniature({ slide: glide.slides[0], currentSlide, index: 1 })}
               </div>
               <Container onDrop={actions.applyDrag}>
-                {sip.slides
+                {glide.slides
                   .slice(1)
                   .map(slide => (
                     <Draggable key={slide.uid}>
-                      {SlideMiniature({ slide, currentSlide, index: sip.slides.indexOf(slide) + 1 })}
+                      {SlideMiniature({ slide, currentSlide, index: glide.slides.indexOf(slide) + 1 })}
                     </Draggable>
                   ))}
               </Container>
@@ -166,7 +166,7 @@ class SipEditor extends Component {
             </div>
             <ModalInputUrl
               open={this.props.insertUrl}
-              onClose={() => navigate(`/edit/${sip.id}`)}
+              onClose={() => navigate(`/edit/${glide.id}`)}
               onChange={e => actions.updateUrl(e.target.value)}
               onSubmit={() => actions.addSlide(this.props.type)}
               url={this.props.inputValue}
@@ -176,15 +176,15 @@ class SipEditor extends Component {
               <i className="angle right icon"></i>
             </button>
             <div className='actions'>
-              <a href={`/${sip.id}`} target="_blank">
-                <Button color='teal' fluid size='large'><Icon name='eye' />Preview Sip</Button>
+              <a href={`/${glide.id}`} target="_blank">
+                <Button color='teal' fluid size='large'><Icon name='eye' />Preview Glide</Button>
               </a>
               {currentStep !== 0 && (
                 <React.Fragment>
-                  <Link to={`/edit/${sip.id}/remove`}>
+                  <Link to={`/edit/${glide.id}/remove`}>
                     <Button inverted color='red' fluid size='large'><Icon name='archive' />Delete Slide</Button>
                   </Link>
-                  <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${sip.id}`)}>
+                  <Modal open={this.props.remove} basic size='small' onClose={() => navigate(`/edit/${glide.id}`)}>
 
                     <Header icon='archive' content='Are you sure you want to delete this slide ?' />
                     <Modal.Content>
@@ -195,14 +195,14 @@ class SipEditor extends Component {
                       </p>
                     </Modal.Content>
                     <Modal.Actions>
-                      <Button basic inverted onClick={() => navigate(`/edit/${sip.id}`)}>
+                      <Button basic inverted onClick={() => navigate(`/edit/${glide.id}`)}>
                         <Icon name='remove' /> Cancel
                       </Button>
                       <Button inverted
                         color='red'
                         onClick={e => {
                           actions.deleteSlide(currentSlide)
-                          navigate(`/edit/${sip.id}`)
+                          navigate(`/edit/${glide.id}`)
                         }}>
                         <Icon name='checkmark' /> Confirm Delete Slide
                       </Button>
@@ -225,4 +225,4 @@ class SipEditor extends Component {
   }
 }
 
-export default SipEditor
+export default GlideEditor

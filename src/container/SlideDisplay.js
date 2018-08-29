@@ -7,7 +7,7 @@ import SlideTweet from '../components/SlideTweet'
 import SlideArticleQuote from '../components/SlideArticleQuote'
 import { actions } from '../store.js'
 import { Line } from 'rc-progress'
-import { getSipBySipId } from '../api.js'
+import { getGlideByGlideId } from '../api.js'
 import './SlideDisplay.css'
 
 const slideComponents = {
@@ -21,12 +21,12 @@ const slideComponents = {
 
 class SlideDisplay extends Component {
   componentDidMount() {
-    getSipBySipId(this.props.id).then(actions.loadSip)
+    getGlideByGlideId(this.props.id).then(actions.loadGlide)
   }
   render() {
-    const progressBarValue = (this.props.currentStep * 100) / (this.props.sip.slides.length - 1)
-    const { sip, currentStep } = this.props
-    const slide = sip.slides[currentStep]
+    const progressBarValue = (this.props.currentStep * 100) / (this.props.glide.slides.length - 1)
+    const { glide , currentStep } = this.props
+    const slide = glide.slides[currentStep]
     if (!slide) return 'loading'
     return (
       <div className='Container'>

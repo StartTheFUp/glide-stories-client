@@ -1,32 +1,32 @@
 import React, { Component } from 'react'
-import './Mysips.css'
-import Previewsip from '../components/Previewsip.js'
-import Newsip from '../components/Newsip.js'
+import './Myglides.css'
+import Previewglide from '../components/Previewglide.js'
+import Newglide from '../components/Newglide.js'
 import { actions } from '../store.js'
 import { Redirect, navigate } from '@reach/router'
 import { Grid, Container, Modal, Form } from 'semantic-ui-react'
-import { createSip, getAllSips } from '../api.js'
+import { createGlide, getAllGlides } from '../api.js'
 import Navbar from '../components/Navbar.js'
 
-class Mysips extends Component {
+class Myglides extends Component {
   componentDidMount() {
-    getAllSips()
-      .then(actions.loadSips)
+    getAllGlides()
+      .then(actions.loadGlides)
   }
 
-  sipTitle = ''
+  glideTitle = ''
 
   render() {
     if (!localStorage.token) return <Redirect noThrow to='/' />
-    const mysips = this.props.sips.map(mysip =>
-      <Previewsip
-        key={mysip.id}
-        sip={mysip}
-        deleteSip={actions.deleteSip}
+    const myglides = this.props.glides.map(myglide =>
+      <Previewglide
+        key={myglide.id}
+        glide={myglide}
+        deleteGlide={actions.deleteGlide}
         remove={this.props.remove}
         selectedId={Number(this.props.id)}
-        embed={`<iframe width='400' height='600' src=${window.location.host}/${mysip.id} style='width: 100%;'></iframe>`}
-        publicUrl={<a href={`/${mysip.id}`} target="_blank">{`${window.location.host}/${mysip.id}`}</a>}
+        embed={`<iframe width='400' height='600' src=${window.location.host}/${myglide.id} style='width: 100%;'></iframe>`}
+        publicUrl={<a href={`/${myglide.id}`} target="_blank">{`${window.location.host}/${myglide.id}`}</a>}
       />)
 
     return (
@@ -35,32 +35,32 @@ class Mysips extends Component {
           <Navbar />
         </Container>
         <Container fluid>
-          <div id='mysipsContainer' style={{padding: '5%', backgroundColor: '#F6F9FC'}}>
-            <h1 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)', fontSize: '3rem'}}>My sips</h1>
+          <div id='myglidesContainer' style={{padding: '5%', backgroundColor: '#F6F9FC'}}>
+            <h1 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)', fontSize: '3rem'}}>My glides</h1>
             <Grid centered doubling columns={3}>
               <Grid.Row>
-                <Newsip />
+                <Newglide />
               </Grid.Row>
             </Grid>
 
             <Grid centered doubling columns={3}>
               <Grid.Row>
-                {mysips}
+                {myglides}
               </Grid.Row>
             </Grid>
           </div>
         </Container>
-        <Modal open={this.props.edit} onClose={() => navigate('/mysips')}>
-          <Modal.Header>Create a new sip</Modal.Header>
+        <Modal open={this.props.edit} onClose={() => navigate('/myglides')}>
+          <Modal.Header>Create a new </Modal.Header>
           <Modal.Content>
             <Form onSubmit={async () => {
-              const { id } = await createSip(this.sipTitle)
+              const { id } = await createGlide(this.glideTitle)
               navigate(`/edit/${id}`)
             }} >
               <Form.Field required>
-                <label>Sip title : </label>
+                <label>Glide title : </label>
                 <input type="text" required onChange={ (e) => {
-                  this.sipTitle = e.target.value
+                  this.glideTitle = e.target.value
                 }} />
                 <input type="submit" className="ui button" value="Create" />
 
@@ -73,4 +73,4 @@ class Mysips extends Component {
   }
 }
 
-export default Mysips
+export default Myglides

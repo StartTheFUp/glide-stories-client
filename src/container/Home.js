@@ -24,7 +24,7 @@ const signUp = (event) => {
         localStorage.token = token || ''
         localStorage.email = email || ''
         actions.updateProfile(email)
-        navigate('/mysips')
+        navigate('/myglides')
       }
     })
 }
@@ -38,13 +38,13 @@ const login = (event) => {
         localStorage.token = token || ''
         localStorage.email = email || 'test'
         actions.updateProfile(email)
-        navigate('/mysips')
+        navigate('/myglides')
       }
     })
 }
 
 const Home = (props) => {
-  if (localStorage.token) return <Redirect noThrow to='/mysips' />
+  if (localStorage.token) return <Redirect noThrow to='/myglides' />
   if (props.signUp) {
     return <SignUpForm onSubmit={signUp} {...props} />
   }

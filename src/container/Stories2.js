@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 import './Stories.css'
-import Previewsip from '../components/Previewsip.js'
+import Previewglide from '../components/Previewglide.js'
 import { actions } from '../store.js'
-import { getAllSips } from '../api.js'
+import { getAllGlides } from '../api.js'
 
 class Stories extends Component {
   componentDidMount() {
-    getAllSips()
-      .then(actions.loadSips)
+    getAllGlides()
+      .then(actions.loadGlides)
   }
 
   render() {
-    const mysips = this.props.sips.map(mysip =>
-      <Previewsip
-        key={mysip.id}
-        title={mysip.title}
-        slideIntro={this.props.sip.slides[0]} />)
+    const myglides = this.props.glides.map(myglide =>
+      <Previewglide
+        key={myglide.id}
+        title={myglide.title}
+        slideIntro={this.props..slides[0]} />)
     return (
 
       <div className='Stories'>
-        <h1>My sips</h1>
-        {mysips}
+        <h1>My glides</h1>
+        {myglides}
       </div>
     )
   }

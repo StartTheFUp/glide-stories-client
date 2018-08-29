@@ -11,20 +11,20 @@ const postJson = (url, content) => {
   })
 }
 
-export const getAllSips = () => {
-  return fetch(`${api}/sips`,
+export const getAllGlides = () => {
+  return fetch(`${api}/glides`,
     {headers: { 'X-Access-Token': localStorage.token }
     })
-    .then(sips => sips.json())
+    .then(glides => glides.json())
 }
 
-export const getSipBySipId = id => {
-  return fetch(`${api}/sips/${id}`)
+export const getGlideByGlideId = id => {
+  return fetch(`${api}/glides/${id}`)
     .then(res => res.json())
 }
 
-export const createSip = title => {
-  return postJson(`${api}/sips`, { title })
+export const createGlide = title => {
+  return postJson(`${api}/glides`, { title })
     .then(res => res.json())
 }
 
@@ -33,12 +33,12 @@ export const sendUpdatedSlide = slide => {
     .then(res => res.json())
 }
 
-export const sendUpdatedSipOrder = (order, id) => {
-  return postJson(`${api}/sips/${id}`, { order })
+export const sendUpdatedGlideOrder = (order, id) => {
+  return postJson(`${api}/glides/${id}`, { order })
     .then(res => res.json())
 }
 
-export const sendNewSlide = (params) => { // { type, sipId, url }
+export const sendNewSlide = (params) => { // { type, glideId, url }
   return postJson(`${api}/slides`, params)
     .then(res => res.json())
 }
@@ -53,8 +53,8 @@ export const deleteSlideDB = (params) => {
     .then(res => res.json())
 }
 
-export const deleteSipDB = (params) => {
-  return fetch(`${api}/sips/${params.id}`, {
+export const deleteGlideDB = (params) => {
+  return fetch(`${api}/glides/${params.id}`, {
     method: 'delete',
     headers: {
       'X-Access-Token': localStorage.token

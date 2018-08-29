@@ -15,11 +15,11 @@ class Navbar extends Component {
       <Menu width={16}>
 
         <Menu.Item name='title'>
-          <h3 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)'}}>Websips</h3>
+          <h3 style={{fontFamily: 'Roboto Mono, monospace', color: 'rgb(254, 184, 226)'}}>Webglides</h3>
         </Menu.Item>
 
-        <Menu.Item name='sips'>
-          <Link to="/mysips">My Sips</Link>
+        <Menu.Item name='glides'>
+          <Link to="/myglides">My glides</Link>
         </Menu.Item>
 
         <Menu.Item position="right" name='account'>

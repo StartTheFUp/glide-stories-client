@@ -1,6 +1,6 @@
 import React from 'react'
 import '../container/SlideDisplay.css'
-import '../container/SipEditor.js'
+import '../container/GlideEditor.js'
 import { formatedDate } from '../formatedDate.js'
 
 const EditSlideTweet = ({ slide, onChange }) => {

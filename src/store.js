@@ -1,14 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
-import { sendUpdatedSipOrder, sendNewSlide, deleteSlideDB, deleteSipDB } from './api.js'
+import { sendUpdatedGlideOrder, sendNewSlide, deleteSlideDB, deleteGlideDB } from './api.js'
 
 const initialState = {
   currentStep: 0,
-  sip: {
+  glide : {
     slides: []
   },
   inputValue: '',
   warningMessage: false,
-  sips: [],
+  glides: [],
   errors: {},
   profile: {
     email: localStorage.email
@@ -16,16 +16,16 @@ const initialState = {
 
 }
 const reducer = (state, action) => {
-  if (action.type === 'LOAD_SIP') {
+  if (action.type === 'LOAD_GLIDE') {
     return {
       ...state,
-      sip: action.sip
+      glide : action.glide
     }
   }
 
   if (action.type === 'HANDLE_NEXT_SLIDE') {
     const currentStep = state.currentStep + 1
-    if (currentStep >= state.sip.slides.length) {
+    if (currentStep >= state.glide.slides.length) {
       return state
     }
     return {
@@ -44,7 +44,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'HANDLE_SLIDE_SELECTION') {
-    const currentStep = state.sip.slides.indexOf(action.slide)
+    const currentStep = state.glide.slides.indexOf(action.slide)
     return {
       ...state,
       currentStep
@@ -52,12 +52,12 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'UPDATE_SLIDE') {
-    const uid = action.slideContent.uid || state.sip.slides[state.currentStep].uid //
+    const uid = action.slideContent.uid || state.glide.slides[state.currentStep].uid //
     return {
       ...state,
-      sip: {
-        ...state.sip,
-        slides: state.sip.slides
+      glide : {
+        ...state.glide,
+        slides: state.glide.slides
           .map((slide) => {
             if (slide.uid !== uid) return slide
             return {
@@ -72,9 +72,9 @@ const reducer = (state, action) => {
   if (action.type === 'REPLACE_SLIDE') {
     return {
       ...state,
-      sip: {
-        ...state.sip,
-        slides: state.sip.slides
+    glide : {
+        ...state.glide,
+        slides: state.glide.slides
           .map((slide) => {
             if (slide.uid !== action.uid) return slide
             return {
@@ -92,17 +92,17 @@ const reducer = (state, action) => {
     return {
       ...state,
       currentStep: nextStep,
-      sip: {
-        ...state.sip,
+    glide : {
+        ...state.glide,
         slides: [
-          ...state.sip.slides.slice(0, nextStep),
+          ...state.glide.slides.slice(0, nextStep),
           {
-            sipId: state.sip.id,
+            glideId: state.glide.id,
             id,
             uid: `${action.slide.type}-${id}`,
             ...action.slide
           },
-          ...state.sip.slides.slice(nextStep)
+          ...state.glide.slides.slice(nextStep)
         ]
       }
     }
@@ -110,25 +110,25 @@ const reducer = (state, action) => {
 
   if (action.type === 'DELETE_SLIDE') {
     const slides = [
-      ...state.sip.slides.slice(0, state.currentStep),
-      ...state.sip.slides.slice(state.currentStep + 1)
+      ...state.glide.slides.slice(0, state.currentStep),
+      ...state.glide.slides.slice(state.currentStep + 1)
     ]
     return {
       ...state,
       currentStep: Math.min(state.currentStep, slides.length - 1),
-      sip: {
-        ...state.sip,
+    glide : {
+        ...state.glide,
         slides
       }
     }
   }
 
-  if (action.type === 'DELETE_SIP') {
+  if (action.type === 'DELETE_GLIDE') {
     return {
       ...state,
-      sips: [
-        ...state.sips.slice(0, state.sips.indexOf(action.sipContent)),
-        ...state.sips.slice(state.sips.indexOf(action.sipContent) + 1)
+      glides: [
+        ...state.glides.slice(0, state.glides.indexOf(action.glideContent)),
+        ...state.glides.slice(state.glides.indexOf(action.glideContent) + 1)
       ]
     }
   }
@@ -140,10 +140,10 @@ const reducer = (state, action) => {
     }
   }
 
-  if (action.type === 'LOAD_SIPS') {
+  if (action.type === 'LOAD_GLIDES') {
     return {
       ...state,
-      sips: action.sips
+      glides: action.glides
     }
   }
 
@@ -152,7 +152,7 @@ const reducer = (state, action) => {
 
     if (removedIndex === null && addedIndex === null) return state
 
-    const slides = [...state.sip.slides]
+    const slides = [...state.glide.slides]
     let itemToAdd = payload
 
     if (removedIndex !== null) {
@@ -163,7 +163,7 @@ const reducer = (state, action) => {
       slides.splice(addedIndex + 1, 0, itemToAdd)
     }
 
-    return { ...state, sip: { ...state.sip, slides } }
+    return { ...state, glide : { ...state.glide, slides } }
   }
 
   if (action.type === 'UPDATE_ERROR') {
@@ -190,10 +190,10 @@ const reducer = (state, action) => {
 }
 
 const saveOrder = state => {
-  const sipOrder = state.sip.slides
+  const glideOrder = state.glide.slides
     .map(slide => slide.uid)
     .join(' ')
-  return sendUpdatedSipOrder(sipOrder, state.sip.id)
+  return sendUpdatedGlideOrder(glideOrder, state.glide.id)
 }
 
 const updateOrderInDatabase = store => next => async action => {
@@ -211,15 +211,15 @@ const updateOrderInDatabase = store => next => async action => {
   } else if (action.type === 'ADD_SLIDE') {
     const slide = await sendNewSlide({
       type: action.slide.type,
-      sipId: state.sip.id,
+      glideId: state.glide.id,
       url: state.inputValue
     })
     slide.uid = `${action.slide.type}-${slide.id}`
     if (action.slide.type === 'article') { slide.articleLink = slide.articleUrl }
-    store.dispatch({ type: 'REPLACE_SLIDE', slide, uid: state.sip.slides[state.currentStep].uid })
-  } else if (action.type === 'DELETE_SIP') {
-    await deleteSipDB({
-      id: action.sipContent.id
+    store.dispatch({ type: 'REPLACE_SLIDE', slide, uid: state.glide.slides[state.currentStep].uid })
+  } else if (action.type === 'DELETE_GLIDE') {
+    await deleteGlideDB({
+      id: action.glideContent.id
     })
   } else if (action.type === 'APPLY_DRAG' || action.type === 'REPLACE_SLIDE') {
     saveOrder(state)
@@ -229,17 +229,17 @@ const updateOrderInDatabase = store => next => async action => {
 export const store = createStore(reducer, initialState, applyMiddleware(updateOrderInDatabase))
 
 export const actions = {
-  loadSip: sip => store.dispatch({ type: 'LOAD_SIP', sip }),
+  loadGlide: glide => store.dispatch({ type: 'LOAD_GLIDE', glide}),
   handleNextSlide: () => store.dispatch({ type: 'HANDLE_NEXT_SLIDE' }),
   handlePreviousSlide: () => store.dispatch({ type: 'HANDLE_PREVIOUS_SLIDE' }),
   handleSlideSelection: slide => store.dispatch({ type: 'HANDLE_SLIDE_SELECTION', slide }),
   updateSlide: slideContent => store.dispatch({ type: 'UPDATE_SLIDE', slideContent }),
   updateUrl: url => store.dispatch({ type: 'UPDATE_URL', url }),
-  loadSips: sips => store.dispatch({ type: 'LOAD_SIPS', sips }),
+  loadGlides: glides => store.dispatch({ type: 'LOAD_GLIDES', glides }),
   applyDrag: event => store.dispatch({ type: 'APPLY_DRAG', event }),
   addSlide: type => store.dispatch({ type: 'ADD_SLIDE', slide: { type } }),
   deleteSlide: slideContent => store.dispatch({ type: 'DELETE_SLIDE', slideContent }),
-  deleteSip: sipContent => store.dispatch({ type: 'DELETE_SIP', sipContent }),
+  deleteGlide: glideContent => store.dispatch({ type: 'DELETE_GLIDE', glideContent }),
   showError: (type, message) => store.dispatch({ type: 'UPDATE_ERROR', error: { type, message } }),
   updateProfile: (profile) => store.dispatch({ type: 'UPDATE_PROFILE', profile })
 }
